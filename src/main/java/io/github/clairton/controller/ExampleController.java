@@ -1,10 +1,10 @@
 package io.github.clairton.controller;
 
-import javax.annotation.ManagedBean;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 @Named
-@ManagedBean
+@RequestScoped
 public class ExampleController {
   
   private String username;
