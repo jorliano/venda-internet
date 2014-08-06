@@ -5,13 +5,15 @@
 	
 	<head jsf:id="head">
 		<title>Exemplo JSF Bootstrap</title>
+		
+		<link href="#{request.contextPath}/css/bootstrap.min.css" rel="stylesheet" />
 	</head>
 	<body jsf:id="body">
 		
 		<form jsf:id="form" class="form-horizontal">
 			<input jsf:id="usuario" type="text" jsf:value="#{exampleController.username}" class="form-control" placeholder="Login" autofocus="autofocus"/>
 			<input jsf:id="senha" type="password" jsf:value="#{exampleController.password}" class="form-control" placeholder="Senha" />
-			<button jsf:id="btLogin" jsf:actionListener="#{exampleController.login()}" class="btn btn-primary btn-block" >Entrar</button>
+			<button jsf:id="btLogin" type="submit" jsf:actionListener="#{exampleController.login()}" class="btn btn-primary btn-block" >Entrar</button>
 		</form>
 	</body>
 
