@@ -52,5 +52,16 @@ public final class ClienteDao {
 		 
 	    return query.getResultList();
 	}
+	
+	public List busca(String nome){
+		EntityManager em = JPAUtil.getEntityManager();
+		em.getTransaction().begin();
+		Query query = em.createQuery("select c from Cliente c where nome:name order by nome", Cliente.class);
+		query.setParameter("nome", nome); 
+	    
+		return query.getResultList();
+	}
+
+	
 
 }

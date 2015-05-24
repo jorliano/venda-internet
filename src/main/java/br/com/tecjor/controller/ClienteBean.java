@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.inject.Named;
 
 import br.com.tecjor.dao.ClienteDao;
@@ -22,12 +23,25 @@ public class ClienteBean {
 public ClienteBean(){
 	 lista = new ClienteDao().listar();
  }
-  public void salvar(){
+  public String salvar(){
 	new ClienteDao().salvar(cliente);    
     Alerta.info("Cliente salvo com sucesso");
+    return "/sistema.xhtml";
+  }
+  
+  public void deletar(){
+	new ClienteDao().Deletar(cliente);    
+    Alerta.info("Cliente deletado com sucesso");
+  }
+  
+  public void busca(){
+	lista = new ClienteDao().busca(cliente.getNome());    
+    //Alerta.info("Cliente salvo com sucesso");
   }
 
-
+  public String edita(){
+	  return "configuracao.xhtml?faces-redirect=true";
+  }
 
 public Cliente getCliente() {
 	return cliente;
