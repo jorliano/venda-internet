@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"	
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+
+<body>
+  <ui:composition template="sistema.xhtml">
+  <ui:define name="Titulo"><i class="fa fa-angle-right"></i> cliente</ui:define>
+  <ui:define name="conteudo">     
+      <h:form id="formCli" prependId="false">    
+         <div class="row">	  
+	          
+				<div class="input-group col-sm-6 col-sm-offset-6   ">
+					<input type="text"  class="form-control"/>
+					<span class="input-group-btn">
+							<button type="submit" class="btn btn-primary" ><i class="fa fa-search"></i>
+					     	</button>
+					</span>						
+        		</div>        	 																											
+		</div>			
+		<br/>  	       
+        <h:dataTable id="tabelaCli" var="list" value="#{clienteBean.lista}" 
+            styleClass="table table-responsive  table-hover" rows="7">
+           <h:column >
+              <div class="row">
+                <div class="col-xs-6">
+                  <label>Nome : #{list.nome}</label>
+                  <br/>
+                  <label>Endereco : #{list.rua} #{list.numero}</label>
+                  <br/>
+                  <label>Referencia : #{list.referencia}</label>
+                   <br/>
+                  <label>Plano : #{list.plano}</label>
+                </div>                
+                
+              
+                <div class="col-xs-6">
+                  <label>CPF : #{list.cpf}</label>
+                  <br/>
+                  <label>Bairro : #{list.bairro}</label>
+                  <br/>
+                  <label>Data e hora : #{list.plano}</label>
+                  <br/>
+                  <h:commandButton value="Imprimir" styleClass="btn btn-default " />
+                  <h:commandButton value="Finalizar" styleClass="btn btn-default col-xs-offset-1" />
+                </div>                
+              </div>           
+          </h:column>
+          
+      </h:dataTable> 
+     <!-- final da tabela -->            
+	 
+		 
+		 	    
+        </h:form>    		        
+     
+    </ui:define> 
+   </ui:composition>
+</body> 
+</html>

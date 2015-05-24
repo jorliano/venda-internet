@@ -2,19 +2,64 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+<head jsf:id="head">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="jortec" />
+<meta name="author" content="jorliano" />
+
+<!-- Bootstrap -->
+<link href="#{request.contextPath}/css/bootstrap.css" rel="stylesheet"	type="text/css" />
+<link href="#{request.contextPath}/css/bootstrap.min.css"	rel="stylesheet" />
+<!--fonte de icones externa -->
+<link rel="stylesheet"	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+
+<link href="#{request.contextPath}/css/stilo.css" rel="stylesheet"	type="text/css" />
+
+
+</head>
+<body jsf:id="body">	
+	<header>
+		<nav class="navbar navbar-default navbar-transparent">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand logo" href="#"> Logo<img
+						src="images/logo.png" alt="App logo" width="175"/></a>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<div class="container form-container">
+		<div class="row">
+			<div
+				class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+				<div class="panel panel-default panel-more-shadow">
+					<div class="panel-body">
+						<div class="panel-desc">Login</div>
+						<hr/>
+						<form jsf:id="form" role="form">
+							<div class="form-group">
+								<input jsf:id="usuario" type="text"
+									jsf:value="#{usuarioBean.usuario.nome}"
+									class="form-control input-lg" placeholder="Login"
+									autofocus="autofocus" />
+							</div>
+							<div class="form-group">
+								<input jsf:id="senha" type="password"
+									jsf:value="#{usuarioBean.usuario.senha}"
+									class="form-control input-lg" placeholder="Senha" />
+							</div>
+
+							<button type="submit" class="btn btn-lg btn-primary btn-block" jsf:action="#{usuarioBean.logar()}">Logar</button>
+                            
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	
-	<head jsf:id="head">
-		<title>Exemplo JSF Bootstrap</title>
-		
-		<link href="#{request.contextPath}/css/bootstrap.min.css" rel="stylesheet" />
-	</head>
-	<body jsf:id="body">
-		
-		<form jsf:id="form" class="form-horizontal">
-			<input jsf:id="usuario" type="text" jsf:value="#{exampleController.username}" class="form-control" placeholder="Login" autofocus="autofocus"/>
-			<input jsf:id="senha" type="password" jsf:value="#{exampleController.password}" class="form-control" placeholder="Senha" />
-			<button jsf:id="btLogin" type="submit" jsf:actionListener="#{exampleController.login()}" class="btn btn-primary btn-block" >Entrar</button>
-		</form>
-	</body>
+</body>
 
 </html>
