@@ -15,26 +15,25 @@ import com.jortec.model.Usuario;
 @Named
 @RequestScoped
 public class ClienteBean {
-  Usuario usuario = new Usuario();
+ Cliente cliente = new Cliente();
  List<Cliente> lista = new ArrayList<Cliente>();
   
  @SuppressWarnings("unchecked")
 public ClienteBean(){
 	 lista = new ClienteDao().listar();
  }
-  public void login(){
-	//new ClienteDao().salvar(usuario);    
+  public void salvar(){
+	new ClienteDao().salvar(cliente);    
     Alerta.info("Cliente salvo com sucesso");
   }
 
 
-public Usuario getUsuario() {
-	return usuario;
+
+public Cliente getCliente() {
+	return cliente;
 }
-
-
-public void setUsuario(Usuario usuario) {
-	this.usuario = usuario;
+public void setCliente(Cliente cliente) {
+	this.cliente = cliente;
 }
 public List<Cliente> getLista() {
 	return lista;
