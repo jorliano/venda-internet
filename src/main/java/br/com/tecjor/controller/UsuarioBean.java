@@ -1,6 +1,7 @@
 package br.com.tecjor.controller;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.inject.Named;
 
@@ -17,6 +18,7 @@ public class UsuarioBean {
 
 	Usuario usuario = new Usuario();	
 	//List lista = new ArrayList();
+	
 	
 	public void salvar(){
 		
