@@ -27,16 +27,7 @@ public class UsuarioBean {
 		new ClienteDao().salvar(cliente);    
 	    Alerta.info("Cliente salvo com sucesso");
 	  }
-	public String logar(){
-		
-		this.usuario = new UsuarioDao().autentica(usuario.getNome(), usuario.getSenha());
-	    System.out.println("nome do usuario : "+usuario.getNome());
-		if(this.usuario != null){
-	    	return "sistema?faces-redirect=true";
-	    }
-		Alerta.error("Senha ou usuario incorreto");
-	    return null;
-	}
+	
 	public void cadastar(){
 		
 	}

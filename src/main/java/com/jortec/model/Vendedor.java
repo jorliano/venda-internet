@@ -31,5 +31,55 @@ public class Vendedor implements Serializable{
 
 	@Column(name="telefone")
 	private String Telefone;
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getNome() {
+		return Nome;
+	}
+
+	public void setNome(String nome) {
+		Nome = nome;
+	}
+
+	public String getSenha() {
+		return Senha;
+	}
+
+	public void setSenha(String senha) {
+		Senha = senha;
+	}
+
+	public String getCpf() {
+		return Cpf;
+	}
+
+	public void setCpf(String cpf) {
+		Cpf = cpf;
+	}
+
+	public String getRg() {
+		return Rg;
+	}
+
+	public void setRg(String rg) {
+		Rg = rg;
+	}
+
+	public String getTelefone() {
+		return Telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		Telefone = telefone;
+	}
+
+	
 	
 }
