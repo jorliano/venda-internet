@@ -4,13 +4,13 @@
 	xmlns:f="http://java.sun.com/jsf/core"	
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:jsf="http://xmlns.jcp.org/jsf">   
-<h:head></h:head>
+
 <body>
 	<ui:composition template="/sistema.xhtml">
 	    <ui:define name="titulo"><a href="cliente.xhtml"><i class="fa fa-angle-right"></i> cliente </a><i class="fa fa-angle-right"></i> cadastro </ui:define>		
 		<ui:define name="conteudo">
 		
-			<form jsf:id="from3" jsf:prependId="false" class="form-horizontal" >						 
+			<form jsf:id="from3" class="form-horizontal" >						 
 				  <div class="row-fluid">
 				    <div class="col-xs-6">
 				         <label for="nome" class=" control-label">Nome</label>				    
@@ -67,13 +67,15 @@
 				  
 				 <div class="row-fluid col-xs-12" >				      
 				      <button jsf:id="bt_conf_incluir"  jsf:action="#{clienteBean.salvar}"  class="btn btn-primary"  style="margin-top: 20px">Salvar <i class="fa fa-user-plus "></i></button>		     						
+				      &nbsp;
 				      <button jsf:id="bt_conf_delite"   jsf:action="#{clienteBean.deletar}" class="btn btn-default"  style="margin-top: 20px"
 				          jsf:rendered="#{clienteBean.cliente.id != 0}" >Deletar <i class="fa fa-user-times "></i></button>
+				       &nbsp;
 				       <button jsf:outcome="cliente.xhtml" class="btn btn-danger" style="margin-top: 20px">Cancelar <i class="fa fa-undo"></i></button>
 				    
 				 </div>							               				 								
 			     
-				
+				<h:inputHidden value="#{clienteBean.cliente.id}" />
 			</form>
 		</ui:define>
 	</ui:composition>

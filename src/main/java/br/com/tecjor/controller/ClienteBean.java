@@ -19,7 +19,7 @@ import com.jortec.model.Usuario;
 
 @ManagedBean
 @RequestScoped
-public class ClienteBean {
+public class ClienteBean implements Serializable{
  Cliente cliente = new Cliente();
  List<Cliente> lista = new ArrayList<Cliente>();
   
@@ -32,14 +32,24 @@ public void loade(){
  }
 
   public String salvar(){
-	dao.salvar(cliente);    
-    Alerta.info("Cliente salvo com sucesso");
+	  if(cliente.getId() == 0 ){
+		  dao.salvar(cliente);   		  
+		  Alerta.info("Cliente salvo com sucesso");
+	  }	
+	  else{
+		  dao.atualiza(cliente);		  
+		  Alerta.info("Cliente atualizado com sucesso");
+		  
+	  }	
+	  loade();
     return "cliente?faces-redirect=true";
   }
   
-  public void deletar(){
+  public String deletar(){
 	dao.Deletar(cliente);    
     Alerta.info("Cliente deletado com sucesso");
+    loade();
+    return "vendedor?faces-redirect=true";
   }
   
   public void busca(){
@@ -47,7 +57,8 @@ public void loade(){
   }
 
   public String edita(){
-	  return "configuracao.xhtml?faces-redirect=true";
+	  System.out.println("Noome do cliente"+cliente.getNome());
+	  return "configuracao";
   }
 
 public Cliente getCliente() {

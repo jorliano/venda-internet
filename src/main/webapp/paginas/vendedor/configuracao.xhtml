@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"	
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+
+<body>
+	<ui:composition template="/sistema.xhtml">
+		<ui:define name="titulo">
+			<i class="fa fa-angle-right"></i> cadastro de vendedor</ui:define>
+		<ui:define name="conteudo">
+
+			<div class="main-content">
+				<section>
+				<div class="container-fluid container-padded">
+					<div class="row">
+						<div class="col-md-12 page-title">
+							<h2>Vendedor</h2>
+							<hr />
+						</div>
+					</div>
+				</div>
+				<div class="container-fluid container-padded">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="panel panel-plain">
+								<div class="panel-body">									
+									<div class="panel panel-default m-bot0">
+										<div class="panel-body tab-content">
+											<form jsf:id="form1" class="form-horizontal">
+												<div class="tab-pane active" id="profile-settings">
+													<h4>
+														<i class="fa fa-user fa-fw"></i> Profile settings
+													</h4>
+
+													<hr />
+
+													<div class="form-group">
+														<label class="col-md-3 control-label">Profile Pic</label>
+														<div class="col-md-7">
+															<div class="fileinput fileinput-new"
+																data-provides="fileinput">
+																<div class="fileinput-preview thumbnail"
+																	data-trigger="fileinput">
+																	<img src="images/user2.png" />
+																</div>
+																<div>
+																	<span class="btn btn-default btn-file"><span
+																		class="fileinput-new">Select image</span><span
+																		class="fileinput-exists">Change</span><input
+																		type="file" name="..." /></span> <a href="#"
+																		class="btn btn-default fileinput-exists"
+																		data-dismiss="fileinput">Remove</a>
+																</div>
+															</div>
+														</div>
+													</div>
+
+													<div class="form-group">
+														<label class="col-md-3 control-label">Primeiro
+															Nome</label>
+														<div class="col-md-7">
+															<input type="text" name="first-name"
+																jsf:value="#{vendedorBean.vendedor.primeiroNome}"
+																class="form-control" />
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-md-3 control-label">Sobrenome</label>
+														<div class="col-md-7">
+															<input type="text" name="last-name"
+																jsf:value="#{vendedorBean.vendedor.sobreNome}"
+																class="form-control" />
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-md-3 control-label">RG</label>
+														<div class="col-md-7">
+															<input type="text" name="rg"
+																jsf:value="#{vendedorBean.vendedor.rg}"
+																class="form-control" />
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-md-3 control-label">Endereço</label>
+														<div class="col-md-5">
+															<input type="text" name="endereco"
+																jsf:value="#{vendedorBean.vendedor.endereco}"
+																class="form-control" />
+														</div>
+														<div class="col-md-2">
+															<input type="number" name="numero" placeholder="N°"
+																jsf:value="#{vendedorBean.vendedor.numero}"
+																class="form-control" />
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-md-3 control-label">Telefone</label>
+														<div class="col-md-7">
+															<input type="text" name="telefone"
+																jsf:value="#{vendedorBean.vendedor.telefone}"
+																class="form-control" />
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-md-3 control-label">Sobre o
+															vendedor</label>
+														<div class="col-md-7">
+															<h:inputTextarea id="about-textarea"
+																value="#{vendedorBean.vendedor.sobre}" rows="6"
+																styleClass="form-control" />
+														</div>
+													</div>
+
+
+
+												</div>
+												<div class="tab-pane" id="change-password">
+													<h4>
+														<i class="fa fa-edit fa-fw"></i> Dados de acesso
+													</h4>
+													<hr />
+
+													<div class="form-group">
+														<label class="col-md-3 control-label">Nome de
+															Login</label>
+														<div class="col-md-7">
+															<input type="text" name="user-name"
+																value="#{vendedorBean.vendedor.login}"
+																class="form-control" />
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-md-3 control-label">Email
+															Address</label>
+														<div class="col-md-7">
+															<input type="text" name="email-address"
+																jsf:value="#{vendedorBean.vendedor.email}"
+																class="form-control" />
+														</div>
+													</div>
+													<hr />
+													<div class="form-group">
+														<label class="col-md-3 control-label">Senha</label>
+														<div class="col-md-7">
+															<input type="password" name="new-password-1"
+																class="form-control"
+																jsf:value="#{vendedorBean.vendedor.senha}" />
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-md-3 control-label"> Confirma
+															senha</label>
+														<div class="col-md-7">
+															<input type="password" name="new-password-2"
+																class="form-control"
+																jsf:value="#{vendedorBean.vendedor.senha}" />
+														</div>
+													</div>
+													<div class="form-group">
+																<div class="col-md-7 col-md-push-3">																																
+																		 <button type="submit" jsf:id="bt_conf_inc"  jsf:action="#{vendedorBean.salvar}"  class="btn btn-primary"  >Salvar <i class="fa fa-user-plus "></i></button>		     						
+																		 &nbsp;
+																		 <button type="submit" jsf:id="bt_conf_dele"   jsf:action="#{vendedorBean.deletar}" class="btn btn-default"  
+																		        jsf:rendered="#{vendedorBean.vendedor.id != 0}" >Deletar <i class="fa fa-user-times "></i></button>
+																		 &nbsp;
+																		 <button jsf:outcome="vendedor" class="btn btn-danger" >Cancelar <i class="fa fa-undo"></i></button>
+																	
+																</div>
+													</div>
+													<h:inputHidden value="#{vendedorBean.vendedor.id}" />
+
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				</section>
+			</div>
+
+
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

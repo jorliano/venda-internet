@@ -17,35 +17,66 @@ public class Vendedor implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO)	
 	private long id;
 	
-	@Column(name="nome")
-	private String Nome;
+	@Column(name="primeiroNome")
+	private String PrimeiroNome;
+	
+	@Column(name="sobreNome")
+	private String SobreNome;
+	
+	@Column(name="login")
+	private String Login;
 	
 	@Column(name="senha")
 	private String Senha;
 
-	@Column(name="cpf")
-	private String Cpf;
+	@Column(name="endereco")
+	private String Endereco;
+	
+	@Column(name="numero")
+	private Integer Numero;	
 	
 	@Column(name="rg")
 	private String Rg;
 
 	@Column(name="telefone")
 	private String Telefone;
+	
+	@Column(name="email")
+	private String Email;
 
+	@Column(name="sobre")
+	private String Sobre;
+	
 	public long getId() {
 		return id;
 	}
 
 	public void setId(long id) {
 		this.id = id;
+	}	
+
+	public String getPrimeiroNome() {
+		return PrimeiroNome;
 	}
 
-	public String getNome() {
-		return Nome;
+	public void setPrimeiroNome(String primeiroNome) {
+		PrimeiroNome = primeiroNome;
 	}
 
-	public void setNome(String nome) {
-		Nome = nome;
+	public String getSobreNome() {
+		return SobreNome;
+	}
+
+	public void setSobreNome(String sobreNome) {
+		SobreNome = sobreNome;
+	}
+
+	public String getLogin() {
+		return Login;
+	}
+
+	public void setLogin(String login) {
+		Login = login;
 	}
 
 	public String getSenha() {
@@ -54,15 +85,7 @@ public class Vendedor implements Serializable{
 
 	public void setSenha(String senha) {
 		Senha = senha;
-	}
-
-	public String getCpf() {
-		return Cpf;
-	}
-
-	public void setCpf(String cpf) {
-		Cpf = cpf;
-	}
+	}	
 
 	public String getRg() {
 		return Rg;
@@ -80,6 +103,41 @@ public class Vendedor implements Serializable{
 		Telefone = telefone;
 	}
 
+	public String getSobre() {
+		return Sobre;
+	}
+
+	public void setSobre(String sobre) {
+		Sobre = sobre;
+	}
+
+	public String getEmail() {
+		return Email;
+	}
+
+	public void setEmail(String email) {
+		Email = email;
+	}
+
+	public String getEndereco() {
+		return Endereco;
+	}
+
+	public void setEndereco(String endereco) {
+		Endereco = endereco;
+	}
+
+	public Integer getNumero() {
+		return Numero;
+	}
+
+	public void setNumero(Integer numero) {
+		Numero = numero;
+	}
+
+	
+    
+	
 	
 	
 }

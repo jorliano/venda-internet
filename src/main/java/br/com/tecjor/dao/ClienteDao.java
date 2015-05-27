@@ -40,7 +40,7 @@ public class ClienteDao {
 	
 	public List<Cliente> busca(String nome){
 		
-		Query query = manager.createQuery("select c from Cliente c where nome:name order by nome", Cliente.class);
+		Query query = manager.createQuery("select c from Cliente c where nome like %:name order by nome", Cliente.class);
 		query.setParameter("nome", nome); 
 	    
 		return query.getResultList();

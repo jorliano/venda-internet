@@ -26,7 +26,7 @@ public class LoginBean {
 	
 	
 	public String logar(){
-		System.out.println("nome "+estatus);
+		System.out.println("nome "+getEstatus());
 		
 		if(estatus != "teste"){
 			System.out.println("metodo chamado");
@@ -43,7 +43,7 @@ public class LoginBean {
 			Vendedor vendedor = autenticaLogin.autenticaLogVendedor(Login, Senha);
 			if(vendedor != null){
 				usuarioLogado.logarVendedor(vendedor);
-				usuarioLogado.setNomeLogado(vendedor.getNome());
+				usuarioLogado.setNomeLogado(vendedor.getPrimeiroNome());
 				return "sistema?faces-redirect=true";
 			}
 			
