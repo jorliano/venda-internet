@@ -1,5 +1,9 @@
 package br.com.tecjor.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
@@ -17,22 +21,37 @@ import com.jortec.model.Usuario;
 public class UsuarioBean {
 
 	Usuario usuario = new Usuario();	
-	//List lista = new ArrayList();
+	List<Usuario> lista = new ArrayList<Usuario>();
 	
+	@ManagedProperty("#{usuarioDao}")
+	private UsuarioDao dao;
 	
-	public void salvar(){
+	@PostConstruct
+	public void load() {
+		lista = dao.listar();
+	}
+	
+	public String salvar(){
+		if(usuario.getId() == 0){
+			 dao.salvar(usuario);
+			 Alerta.info("Usuario salvo com sucesso");
+		}else{
+			 dao.atualiza(usuario);
+			 Alerta.info("Dados atualizados com sucesso");
+		}
 		
-		Cliente cliente = new Cliente();
-		cliente.setNome("teste");
-		new ClienteDao().salvar(cliente);    
-	    Alerta.info("Cliente salvo com sucesso");
+		 return "usuario?faces-redirect=true";
 	  }
 	
-	public void cadastar(){
-		
+	public String edita(){
+		return "configuracao";
 	}
-	public void deletar(){
-		
+	
+	public String deletar(){
+		System.out.println("usuario deletado");
+		dao.deletar(usuario);
+		Alerta.info("Usuario deletado com sucesso");
+		return "usuario.xhtml?faces-redirect=true";
 	}
 	
 	public Usuario getUsuario() {
@@ -40,6 +59,17 @@ public class UsuarioBean {
 	}
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+	public void setDao(UsuarioDao dao) {
+		this.dao = dao;
+	}
+
+	public List<Usuario> getLista() {
+		return lista;
+	}
+
+	public void setLista(List<Usuario> lista) {
+		this.lista = lista;
 	}
 	
 }

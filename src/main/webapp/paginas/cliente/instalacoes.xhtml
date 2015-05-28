@@ -7,7 +7,7 @@
 
 
 <body>
-  <ui:composition template="sistema.xhtml">
+  <ui:composition template="/sistema.xhtml">
   <ui:define name="titulo"><i class="fa fa-angle-right"></i> cliente</ui:define>
   <ui:define name="conteudo">     
       <h:form id="formCli" prependId="false">    
@@ -39,13 +39,19 @@
               
                 <div class="col-xs-6">
                   <label>CPF : #{list.cpf}</label>
+                   <label class="pull-right">Vendedor : #{list.cpf}</label>
                   <br/>
                   <label>Bairro : #{list.bairro}</label>
                   <br/>
                   <label>Data e hora : #{list.plano}</label>
                   <br/>
-                  <h:commandButton value="Imprimir" styleClass="btn btn-default " />
-                  <h:commandButton value="Finalizar" styleClass="btn btn-default col-xs-offset-1" />
+                  <div class="pull-right">
+                      <button class="btn btn-info"><i class="fa fa-print"></i></button>
+                      &nbsp;
+                      <button class="btn btn-success"><i class="fa fa-check"></i></button>
+                      &nbsp;
+                      <button class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
+                  </div>                 
                 </div>                
               </div>           
           </h:column>

@@ -1,5 +1,7 @@
 package br.com.tecjor.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
@@ -16,6 +18,26 @@ public class UsuarioDao  {
 	@PersistenceContext
 	private EntityManager manager;
 	
+	
+	public void salvar(Usuario usuario) {
+		manager.persist(usuario);
+	}	
+	
+	public void atualiza(Usuario usuario) {
+		manager.merge(usuario);		
+	}	
+	
+	public void deletar(Usuario usuario){
+		manager.remove(manager.merge(usuario));
+	}
+	
+	public List<Usuario> listar(){
+		return manager.createQuery("select u from Usuario u order by nome", Usuario.class)
+				.getResultList();
+	}
+	
+	
+	
 	public Usuario buscaPor(String login,String senha) {
 		 
         try{
@@ -29,5 +51,7 @@ public class UsuarioDao  {
         	return null;
         }				       
 		
-	}	
+	}
+
+	
 }

@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"	
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+
+<body>
+	<ui:composition template="/sistema.xhtml">
+		<ui:define name="titulo">
+			<i class="fa fa-angle-right"></i> cadastro de vendedor</ui:define>
+		<ui:define name="conteudo">
+          <t:saveState />
+			<div class="main-content">
+				<section>
+				<div class="container-fluid container-padded">
+					<div class="row">
+						<div class="col-md-12 page-title">
+							<h2>Usuario</h2>
+							<hr />
+						</div>
+					</div>
+				</div>
+				<div class="container-fluid container-padded">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="panel panel-plain">
+								<div class="panel-body">									
+									<div class="panel panel-default m-bot0">
+										<div class="panel-body tab-content">
+											<h:form  class="form-horizontal">												
+													<h4>
+														<i class="fa fa-edit fa-fw"></i>  Dados de acesso
+													</h4>
+
+													<hr />
+
+													
+												<div class="tab-pane" id="change-password">													
+                                                    <div class="form-group">
+														<label class="col-md-3 control-label">Nome </label>
+														<div class="col-md-7">
+															<input type="text" jsf:value="#{usuarioBean.usuario.nome}"
+																class="form-control" />
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-md-3 control-label">Nome de
+															Login</label>
+														<div class="col-md-7">
+															<input type="text" name="user-name"
+																jsf:value="#{usuarioBean.usuario.login}"
+																class="form-control" />
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-md-3 control-label">Email
+															Address</label>
+														<div class="col-md-7">
+															<input type="text" name="email-address"
+																jsf:value="#{usuarioBean.usuario.email}"
+																class="form-control" />
+														</div>
+													</div>
+													<hr />
+													<div class="form-group">
+														<label class="col-md-3 control-label">Senha</label>
+														<div class="col-md-7">
+															<input type="password" name="new-password-1"
+																class="form-control"
+																jsf:value="#{usuarioBean.usuario.senha}" />
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-md-3 control-label"> Confirma
+															senha</label>
+														<div class="col-md-7">
+															<input type="password" name="new-password-2"
+																class="form-control"
+																jsf:value="#{usuarioBean.usuario.senha}" />
+														</div>
+													</div>
+													<div class="form-group">
+																<div class="col-md-7 col-md-push-3">																																
+																		 <button type="submit" jsf:id="bt_conf_inc"  jsf:action="#{usuarioBean.salvar}"  class="btn btn-primary"  >Salvar <i class="fa fa-user-plus "></i></button>		     						
+																		 &nbsp;
+																		 <button type="submit" jsf:id="bt_conf_dele"   jsf:action="#{usuarioBean.deletar}" class="btn btn-default"  
+																		        jsf:rendered="#{usuarioBean.usuario.id != 0}" >Deletar <i class="fa fa-user-times "></i></button>
+																		 &nbsp;
+																		 <button jsf:outcome="usuario" class="btn btn-danger" >Cancelar <i class="fa fa-undo"></i></button>
+																	   
+																</div>
+													</div>
+													<h:inputHidden value="#{usuarioBean.usuario.id}" />
+
+												</div>
+											</h:form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				</section>
+			</div>
+
+
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+
+<body>
+  <ui:composition template="/sistema.xhtml">
+  <ui:define name="titulo"><i class="fa fa-angle-right"></i> usuario</ui:define>
+  <ui:define name="conteudo">     
+     <t:saveState />
+      <h:form id="form" prependId="false">         	       
+        <h:dataTable id="tabela" var="list" value="#{usuarioBean.lista}" 
+            styleClass="table table-responsive  table-hover" rows="7">
+           <h:column >
+              <f:facet name="header">Id</f:facet>
+              #{list.id}              
+          </h:column>
+           <h:column >
+              <f:facet name="header">Nome</f:facet>
+              <h:commandLink action="#{usuarioBean.edita}" value="#{list.nome}">
+                 <f:setPropertyActionListener target="#{usuarioBean.usuario}" value="#{list}"></f:setPropertyActionListener>
+              </h:commandLink>                                                                          
+          </h:column>           
+          <h:column>
+              <f:facet name="header">Login</f:facet>
+              #{list.login}
+          </h:column>          
+          <h:column>
+             <f:facet name="header">Email</f:facet>
+             #{list.email}                                   
+          </h:column>           
+      </h:dataTable> 
+     <!-- final da tabela -->            
+	 
+		 
+		  <div class="row">	    
+	           <div class="col-xs-3">         
+	            <h:commandButton id="incluir" value="Incluir" action="configuracao?faces-redirect=true"  styleClass="btn btn-primary " />	           
+	           </div>
+				<div class="input-group col-sm-4 col-sm-offset-8   ">
+					<input type="text" jsf:value="#{usuarioBean.usuario.nome}" class="form-control"/>
+					<span class="input-group-btn">
+							<button type="submit" class="btn btn-primary" jsf:action="#{vendedorBean.busca()}"><i class="fa fa-search"></i>
+					     	</button>
+					</span>						
+        		</div>        	 																											
+		</div>				    
+        </h:form>   	        
+     
+    </ui:define> 
+   </ui:composition>
+</body> 
+</html>

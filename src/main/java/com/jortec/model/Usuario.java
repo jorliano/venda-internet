@@ -20,6 +20,9 @@ public class Usuario implements Serializable {
 	@Column(name= "nome")
 	private String Nome;
 	
+	@Column(name= "email")
+	private String Email;
+	
 	@Column(name= "login")
 	private String Login;
 	
@@ -56,6 +59,14 @@ public class Usuario implements Serializable {
 
 	public void setSenha(String senha) {
 		Senha = senha;
+	}
+
+	public String getEmail() {
+		return Email;
+	}
+
+	public void setEmail(String email) {
+		Email = email;
 	}
 	
 	

@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+
+<body>
+	<ui:composition template="/sistema.xhtml">
+		<ui:define name="titulo">
+			<i class="fa fa-angle-right"></i> perfil</ui:define>
+		<ui:define name="conteudo">
+
+			<div class="main-content">
+				<section>
+				<div class="container-fluid container-padded">
+					<div class="row">
+						<div class="col-md-12 page-title">
+							<h2>User profile</h2>
+							<hr />
+						</div>
+					</div>
+				</div>
+				<div class="container-fluid container-padded">
+					<div class="row">
+						<div class="col-sm-4 col-md-4">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="panel panel-default">
+										<div
+											class="panel-body panel-body-top-br panel-body-fw profile-bg">
+											<img src="images/21.jpg" class="thumbnail profile-img" />
+										</div>
+										<div class="list-group no-top-border">
+											<a href="javascript:;" class="list-group-item">
+												<p class="stat-title">Hi, my name is</p>
+												<h3 class="profile-data">Regina Hanson</h3>
+											</a> <a href="javascript:;" class="list-group-item">
+												<p class="stat-title">My email address is</p>
+												<h3 class="profile-data">regina.hanson@me.com</h3>
+											</a> <a href="javascript:;" class="list-group-item">
+												<p class="stat-title">My birthday is</p>
+												<h3 class="profile-data">2/3/1972</h3>
+											</a> <a href="javascript:;" class="list-group-item">
+												<p class="stat-title">My address is</p>
+												<h3 class="profile-data">4635 Paddington Ct</h3>
+											</a> <a href="javascript:;" class="list-group-item">
+												<p class="stat-title">My phone number is</p>
+												<h3 class="profile-data">(270)-302-7562</h3>
+											</a>
+										</div>
+										
+									</div>
+								</div>								
+							</div>
+						</div>
+						<div class="col-sm-8 col-md-8">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="panel panel-plain">
+										<div class="panel-body panel-body-fw">
+											<p class="panel-desc">About Regina</p>
+											<p>I have 10 years of experience designing for the web,
+												and specialize in the areas of user interface design,
+												interaction design, visual design and prototyping. I’ve
+												worked with notable startups including Pearl Street
+												Software.</p>
+											<p>It is a long established fact that a reader will be
+												distracted by the readable content of a page when looking at
+												its layout. The point of using Lorem Ipsum is that it has a
+												more-or-less normal distribution of letters, as opposed to
+												using 'Content here, content here', making it look like
+												readable English.</p>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="panel panel-default">
+										<div class="panel-body panel-body-primary panel-body-top-br">
+											<form>
+												<textarea class="form-control" rows="2"
+													placeholder="Sujestôes para melhorar a empresa ?"></textarea>
+													<hr/>
+												<button class="btn btn-primary pull-right">Enviar</button>	
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				</section>
+			</div>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

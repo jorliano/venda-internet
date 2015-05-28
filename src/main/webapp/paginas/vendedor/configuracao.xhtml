@@ -29,7 +29,7 @@
 								<div class="panel-body">									
 									<div class="panel panel-default m-bot0">
 										<div class="panel-body tab-content">
-											<form jsf:id="form1" class="form-horizontal">
+											<form jsf:id="form" class="form-horizontal">
 												<div class="tab-pane active" id="profile-settings">
 													<h4>
 														<i class="fa fa-user fa-fw"></i> Profile settings
@@ -128,7 +128,7 @@
 															Login</label>
 														<div class="col-md-7">
 															<input type="text" name="user-name"
-																value="#{vendedorBean.vendedor.login}"
+																jsf:value="#{vendedorBean.vendedor.login}"
 																class="form-control" />
 														</div>
 													</div>
@@ -163,8 +163,11 @@
 																<div class="col-md-7 col-md-push-3">																																
 																		 <button type="submit" jsf:id="bt_conf_inc"  jsf:action="#{vendedorBean.salvar}"  class="btn btn-primary"  >Salvar <i class="fa fa-user-plus "></i></button>		     						
 																		 &nbsp;
+																		 
 																		 <button type="submit" jsf:id="bt_conf_dele"   jsf:action="#{vendedorBean.deletar}" class="btn btn-default"  
-																		        jsf:rendered="#{vendedorBean.vendedor.id != 0}" >Deletar <i class="fa fa-user-times "></i></button>
+																		      >Deletar <i class="fa fa-user-times "></i></button>
+																																	 
+																		
 																		 &nbsp;
 																		 <button jsf:outcome="vendedor" class="btn btn-danger" >Cancelar <i class="fa fa-undo"></i></button>
 																	
