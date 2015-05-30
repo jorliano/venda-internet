@@ -16,6 +16,7 @@ import br.com.tecjor.util.Alerta;
 
 import com.jortec.model.Cliente;
 import com.jortec.model.Usuario;
+import com.jortec.model.Vendedor;
 
 @ManagedBean
 @RequestScoped
@@ -26,13 +27,17 @@ public class ClienteBean implements Serializable{
  @ManagedProperty("#{clienteDao}")
  private ClienteDao dao;
  
+ @ManagedProperty("#{usuarioLogado}")
+ private UsuarioLogado usuarioLogado;
+ 
 @PostConstruct 
 public void loade(){
 	 lista = dao.listar();
  }
 
   public String salvar(){
-	  if(cliente.getId() == 0 ){
+	  if(cliente.getId() == 0 ){		  
+		  //cliente.setVendedor(usuarioLogado.getVendedor());		 
 		  dao.salvar(cliente);   		  
 		  Alerta.info("Cliente salvo com sucesso");
 	  }	
@@ -47,9 +52,8 @@ public void loade(){
   
   public String deletar(){
 	dao.Deletar(cliente);    
-    Alerta.info("Cliente deletado com sucesso");
-    loade();
-    return "vendedor?faces-redirect=true";
+    Alerta.info("Cliente deletado com sucesso");   
+    return "cliente?faces-redirect=true";
   }
   
   public void busca(){
@@ -58,7 +62,7 @@ public void loade(){
 
   public String edita(){
 	  System.out.println("Noome do cliente"+cliente.getNome());
-	  return "configuracao";
+	  return "edita";
   }
 
 public Cliente getCliente() {
@@ -80,7 +84,9 @@ public void setLista(List<Cliente> lista) {
 public ClienteDao getDao() {
 	return dao;
 }	
-
+public void setUsuarioLogado(UsuarioLogado usuarioLogado) {
+	this.usuarioLogado = usuarioLogado;
+}
 	
   
   

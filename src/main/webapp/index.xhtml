@@ -36,27 +36,33 @@
 							class="ion ion-ios7-gear-outline"></i>
 					</button>
 					<a class="navbar-brand logo" href="#"> <img
-						src="images/logo.png" alt="App logo" width="175"/></a>
-				</div>				
+						src="images/logo.png" alt="App logo" width="175" /></a>
+				</div>
 			</div>
 		</nav>
 	</header>
 	<div class="container form-container">
 		<div class="row">
-		    <h:messages id="msgs"  showDetail="false" errorClass="alert alert-danger " warnClass="alert alert-warning" fatalClass="alert alert-danger" infoClass="alert alert-info" />
-			<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+			<h:messages id="msgs" showDetail="false"
+				errorClass="alert alert-danger " warnClass="alert alert-warning"
+				fatalClass="alert alert-danger" infoClass="alert alert-info" />
+			<div
+				class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
 				<div class="panel panel-default panel-more-shadow">
 					<div class="panel-body">
-						<div class="panel-desc">Login
-						  <div class="col-xs-8 pull-right">
-						     <h:selectOneMenu value="#{loginBean.estatus}"  styleClass="selectpicker form-control">						 
-							  <f:selectItem  itemValue="administrador" itemLabel="Administrador"/>
-							  <f:selectItem  itemValue="vendedor" itemLabel="Vendedor"/>						 
-							</h:selectOneMenu>	
-						  </div>
-						</div>
-						<hr />
 						<form jsf:id="form" role="form">
+							<div class="panel-desc">
+								Login
+								<div class="col-xs-8 pull-right">
+									<h:selectOneMenu value="#{loginBean.estatus}"
+										styleClass="selectpicker form-control">
+										<f:selectItem itemValue="administrador"
+											itemLabel="Administrador" />
+										<f:selectItem itemValue="vendedor" itemLabel="Vendedor" />
+									</h:selectOneMenu>
+								</div>
+							</div>
+							<hr />
 							<div class="form-group">
 								<input jsf:id="usuario" type="text"
 									jsf:value="#{loginBean.login}" class="form-control input-lg"
@@ -70,7 +76,7 @@
 
 							<button type="submit" class="btn btn-lg btn-primary btn-block"
 								jsf:action="#{loginBean.logar()}">Logar</button>
-                           
+
 						</form>
 					</div>
 				</div>

@@ -44,7 +44,7 @@ public class UsuarioBean {
 	  }
 	
 	public String edita(){
-		return "configuracao";
+		return "edita";
 	}
 	
 	public String deletar(){

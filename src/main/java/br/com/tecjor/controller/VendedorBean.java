@@ -30,7 +30,7 @@ public class VendedorBean implements Serializable{
 	}
 	
 	public String edita(){		
-		return "configuracao";
+		return "edita";
 	}
 	public String salvar(){
 		if(vendedor.getId() == 0){

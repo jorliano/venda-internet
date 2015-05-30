@@ -23,9 +23,10 @@ public class UsuarioLogado implements Serializable{
 		this.vendedor = vendedor;
 	}
 	
-	public void desloga() {
+	public String desloga() {
 		this.usuario = null;
 		this.vendedor = null;
+		return "/index.xhtml?faces-redirect=true";
 	}	
 		
 	public Usuario getUsuario() {

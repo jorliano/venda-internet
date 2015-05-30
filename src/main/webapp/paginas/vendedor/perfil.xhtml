@@ -17,7 +17,7 @@
 				<div class="container-fluid container-padded">
 					<div class="row">
 						<div class="col-md-12 page-title">
-							<h2>User profile</h2>
+							<h2>Perfil do vendedor</h2>
 							<hr />
 						</div>
 					</div>
@@ -34,20 +34,20 @@
 										</div>
 										<div class="list-group no-top-border">
 											<a href="javascript:;" class="list-group-item">
-												<p class="stat-title">Hi, my name is</p>
-												<h3 class="profile-data">Regina Hanson</h3>
+												<p class="stat-title">Oi, meu nome é</p>
+												<h3 class="profile-data">#{usuarioLogado.vendedor.primeiroNome}</h3>
 											</a> <a href="javascript:;" class="list-group-item">
-												<p class="stat-title">My email address is</p>
-												<h3 class="profile-data">regina.hanson@me.com</h3>
+												<p class="stat-title">Meu endereço de email é</p>
+												<h3 class="profile-data">#{usuarioLogado.vendedor.email}</h3>
 											</a> <a href="javascript:;" class="list-group-item">
-												<p class="stat-title">My birthday is</p>
-												<h3 class="profile-data">2/3/1972</h3>
+												<p class="stat-title">Meu aniversário é</p>
+												<h3 class="profile-data">#{usuarioLogado.vendedor.dataNasc}</h3>
 											</a> <a href="javascript:;" class="list-group-item">
-												<p class="stat-title">My address is</p>
-												<h3 class="profile-data">4635 Paddington Ct</h3>
+												<p class="stat-title">Meu endereço é</p>
+												<h3 class="profile-data">#{usuarioLogado.vendedor.endereco}</h3>
 											</a> <a href="javascript:;" class="list-group-item">
-												<p class="stat-title">My phone number is</p>
-												<h3 class="profile-data">(270)-302-7562</h3>
+												<p class="stat-title">Meu telefone é</p>
+												<h3 class="profile-data">#{usuarioLogado.vendedor.telefone}</h3>
 											</a>
 										</div>
 										
@@ -60,18 +60,9 @@
 								<div class="col-md-12">
 									<div class="panel panel-plain">
 										<div class="panel-body panel-body-fw">
-											<p class="panel-desc">About Regina</p>
-											<p>I have 10 years of experience designing for the web,
-												and specialize in the areas of user interface design,
-												interaction design, visual design and prototyping. I’ve
-												worked with notable startups including Pearl Street
-												Software.</p>
-											<p>It is a long established fact that a reader will be
-												distracted by the readable content of a page when looking at
-												its layout. The point of using Lorem Ipsum is that it has a
-												more-or-less normal distribution of letters, as opposed to
-												using 'Content here, content here', making it look like
-												readable English.</p>
+											<p class="panel-desc">Sobre #{usuarioLogado.vendedor.primeiroNome}</p>
+											<p>#{usuarioLogado.vendedor.sobre}</p>
+											
 										</div>
 									</div>
 								</div>

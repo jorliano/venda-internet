@@ -24,11 +24,11 @@ public  class VendedorDao {
 	}	
 	
 	public void deletar(Vendedor vendedor){
-		manager.remove(vendedor);
+		manager.remove(manager.merge(vendedor));
 	}
 	
 	public List<Vendedor> listar(){
-		return manager.createQuery("select v from Vendedor v order by primeiroNome", Vendedor.class)
+		return manager.createQuery("select v from Vendedor v", Vendedor.class)
 				.getResultList();
 	}
 	
@@ -47,7 +47,7 @@ public  class VendedorDao {
         try{
         	return manager
         			.createQuery("select v from Vendedor v "
-        			        + "where nome = :login and senha =:senha", Vendedor.class)
+        			        + "where login = :login and senha =:senha", Vendedor.class)
         			        .setParameter("login",login)
         			        .setParameter("senha", senha)
         			        .getSingleResult();

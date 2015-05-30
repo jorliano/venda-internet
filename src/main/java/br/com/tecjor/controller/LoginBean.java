@@ -16,7 +16,7 @@ public class LoginBean {
   
 	private String Login;
 	private String Senha;
-	private String estatus ="administrador";
+	private String estatus;
 	
 	@ManagedProperty("#{usuarioLogado}")
 	private UsuarioLogado usuarioLogado;
@@ -25,11 +25,9 @@ public class LoginBean {
 	private AutenticaLogin autenticaLogin;
 	
 	
-	public String logar(){
-		System.out.println("nome "+getEstatus());
+	public String logar(){		
 		
-		if(estatus != "teste"){
-			System.out.println("metodo chamado");
+		if(estatus.equals("administrador")){			
 			Usuario usuario = autenticaLogin.autenticaLogUsuario(Login, Senha);
 			
 			if(usuario != null){			
@@ -37,18 +35,17 @@ public class LoginBean {
 				usuarioLogado.setNomeLogado(usuario.getNome());
 				return "sistema?faces-redirect=true";
 			}
-			Alerta.error("Usuario ou Senha incorreto");
-		}else{
 			
+		}else{			
 			Vendedor vendedor = autenticaLogin.autenticaLogVendedor(Login, Senha);
-			if(vendedor != null){
+			if(vendedor != null){				
 				usuarioLogado.logarVendedor(vendedor);
 				usuarioLogado.setNomeLogado(vendedor.getPrimeiroNome());
 				return "sistema?faces-redirect=true";
 			}
 			
 		}			
-		   
+		Alerta.error("Usuario ou Senha incorreto");   
 		return null;
 	}
 	

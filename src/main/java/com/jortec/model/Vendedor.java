@@ -47,6 +47,9 @@ public class Vendedor implements Serializable{
 	@Column(name="sobre")
 	private String Sobre;
 	
+	@Column(name="dataNasc")
+	private String DataNasc;
+	
 	public long getId() {
 		return id;
 	}
@@ -133,6 +136,14 @@ public class Vendedor implements Serializable{
 
 	public void setNumero(Integer numero) {
 		Numero = numero;
+	}
+
+	public String getDataNasc() {
+		return DataNasc;
+	}
+
+	public void setDataNasc(String dataNasc) {
+		DataNasc = dataNasc;
 	}
 
 	
