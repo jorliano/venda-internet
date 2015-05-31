@@ -57,7 +57,7 @@
 				<div class="collapse navbar-collapse" id="top-navbar">
 					<ul class="nav navbar-nav navbar-right" style="margin-top: 2%">									
 						<h:form>
-						<li ><img src="images/21.jpg" class="user-settings-pic" /> #{usuarioLogado.nomeLogado} |   
+						<li ><img src="#{request.contextPath}#{usuarioLogado.vendedor.img}" class="user-settings-pic" /> #{usuarioLogado.nomeLogado} |   
 						<h:commandLink value="Sair" action="#{usuarioLogado.desloga}" /></li>
 						</h:form>																						
 					</ul>

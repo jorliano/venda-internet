@@ -54,6 +54,9 @@ public class Vendedor implements Serializable{
 	
 	@Column(name="dataNasc")
 	private String DataNasc;
+    
+	@Column(name="setImg")
+	public String Img;
 	
 	public long getId() {
 		return id;
@@ -149,6 +152,14 @@ public class Vendedor implements Serializable{
 
 	public void setDataNasc(String dataNasc) {
 		DataNasc = dataNasc;
+	}
+
+	public String getImg() {
+		return Img;
+	}
+
+	public void setImg(String img) {
+		Img = img;
 	}
 
 	

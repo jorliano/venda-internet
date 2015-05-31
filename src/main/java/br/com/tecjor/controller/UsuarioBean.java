@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 
 import br.com.jortec.model.Usuario;
 import br.com.tecjor.dao.UsuarioDao;
+import br.com.tecjor.servico.ImagemValidator;
 import br.com.tecjor.util.Alerta;
 
 @Controller
@@ -54,12 +55,15 @@ public class UsuarioBean implements Serializable{
 		return "edita";
 	}
 	
+	
 	public String deletar(){
 		System.out.println("usuario deletado");
 		dao.deletar(usuario);
 		alerta.info("Usuario deletado com sucesso");
 		return "usuario.xhtml?faces-redirect=true";
 	}
+	
+	
 	
 	public Usuario getUsuario() {
 		return usuario;

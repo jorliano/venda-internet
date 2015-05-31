@@ -30,7 +30,7 @@
 								<div class="panel-body">									
 									<div class="panel panel-default m-bot0">
 										<div class="panel-body tab-content">										
-											<form jsf:id="form" class="form-horizontal" jsf:prependId="false">
+											<form jsf:id="form" class="form-horizontal" jsf:prependId="false" enctype="multipart/form-data">
 												<div class="tab-pane active" id="profile-settings">
 													<h4>
 														<i class="fa fa-user fa-fw"></i> Profile settings
@@ -41,24 +41,22 @@
 													<div class="form-group">
 														<label class="col-md-3 control-label">Profile Pic</label>
 														<div class="col-md-7">
-															<div class="fileinput fileinput-new"
-																data-provides="fileinput">
-																<div class="fileinput-preview thumbnail"
-																	data-trigger="fileinput">
-																	<img src="images/user2.png" />
-																</div>
-																<div>
-																	<span class="btn btn-default btn-file"><span
-																		class="fileinput-new">Select image</span><span
-																		class="fileinput-exists">Change</span><input
-																		type="file" name="..." /></span> <a href="#"
-																		class="btn btn-default fileinput-exists"
-																		data-dismiss="fileinput">Remove</a>
-																</div>
+														     
+															<h:inputFile id="arquivo" value="#{vendedorBean.foto}" required="true" >
+															 
+															</h:inputFile>
+															<div class="fileinput-preview thumbnail">
+																	<img  src="#{request.contextPath}#{vendedorBean.vendedor.img}" style="height: 120px;width: 120px" />
+															</div>	
+															<h:commandButton  value="Carregar" action="#{vendedorBean.carregaFoto}">
+															    <f:ajax execute="@all" render="@all"/>															   
+															</h:commandButton>																												
 															</div>
-														</div>
-													</div>
-
+														</div>													                                                  												       
+												        
+												
+												       
+												    
 													<div class="form-group">
 														<label class="col-md-3 control-label">Primeiro
 															Nome</label>

@@ -4,12 +4,14 @@ import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.servlet.http.Part;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import br.com.jortec.model.Usuario;
 import br.com.jortec.model.Vendedor;
+import br.com.tecjor.servico.ImagemValidator;
 
 @Controller
 @Scope("session")
@@ -17,7 +19,7 @@ public class UsuarioLogado implements Serializable{
  
 	private Usuario usuario;
 	private Vendedor vendedor;
-	private String nomeLogado;
+	private String nomeLogado;   
 	
 	public void logarUsuario(Usuario usuario){
 		this.usuario = usuario;
@@ -32,6 +34,7 @@ public class UsuarioLogado implements Serializable{
 		return "/index.xhtml?faces-redirect=true";
 	}	
 		
+	
 	public Usuario getUsuario() {
 		return usuario;
 	}
@@ -45,4 +48,6 @@ public class UsuarioLogado implements Serializable{
 	public void setNomeLogado(String nomeLogado) {
 		this.nomeLogado = nomeLogado;
 	}
+	
+	
 }
