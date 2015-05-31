@@ -1,4 +1,4 @@
-package com.jortec.model;
+package br.com.jortec.model;
 
 import java.io.Serializable;
 
@@ -14,8 +14,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "cliente")
-public class Cliente implements Serializable{
+public class Cliente  implements Serializable                                                                                                                                                                                          {
 	
+	
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)	
 	private long id;

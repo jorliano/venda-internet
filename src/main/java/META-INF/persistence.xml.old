@@ -7,9 +7,9 @@
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		
 		<!-- mapiamento da classes -->
-		<class>com.jortec.model.Cliente</class>
-		<class>com.jortec.model.Usuario</class>
-		<class>com.jortec.model.Vendedor</class>
+		<class>br.com.jortec.model.Cliente</class>
+		<class>br.com.jortec.model.Usuario</class>
+		<class>br.com.jortec.model.Vendedor</class>
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/vendaweb" />
 			<property name="javax.persistence.jdbc.user" value="root" />

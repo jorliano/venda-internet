@@ -1,4 +1,4 @@
-package com.jortec.model;
+package br.com.jortec.model;
 
 import java.io.Serializable;
 
@@ -13,6 +13,11 @@ import javax.persistence.Table;
 @Table(name ="usuario")
 public class Usuario implements Serializable {
  
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -94231740030076117L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)	
 	private long id;

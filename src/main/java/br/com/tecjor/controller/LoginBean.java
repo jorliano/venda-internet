@@ -3,27 +3,34 @@ package br.com.tecjor.controller;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
+import javax.faces.context.Flash;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
+
+import br.com.jortec.model.Usuario;
+import br.com.jortec.model.Vendedor;
 import br.com.tecjor.servico.AutenticaLogin;
 import br.com.tecjor.util.Alerta;
 
-import com.jortec.model.Usuario;
-import com.jortec.model.Vendedor;
-
-@ManagedBean
-@RequestScoped
+@Controller
+@Scope("request")
 public class LoginBean {
   
 	private String Login;
 	private String Senha;
 	private String estatus;
 	
-	@ManagedProperty("#{usuarioLogado}")
-	private UsuarioLogado usuarioLogado;
+	@Autowired
+	UsuarioLogado usuarioLogado;
 	
-	@ManagedProperty("#{autenticaLogin}")
-	private AutenticaLogin autenticaLogin;
+	@Autowired
+	AutenticaLogin autenticaLogin;
 	
+	@Autowired
+	Alerta alerta;
 	
 	public String logar(){		
 		
@@ -45,19 +52,17 @@ public class LoginBean {
 			}
 			
 		}			
-		Alerta.error("Usuario ou Senha incorreto");   
+		alerta.error("Usuario ou Senha incorreto");   
 		return null;
 	}
-	
-	
-	
-	public void setAutenticaLogin(AutenticaLogin autenticaLogin) {
-		this.autenticaLogin = autenticaLogin;
+	public String proximaPagina(){	
+		//alerta.info("Seja Bem vindo "+usuarioLogado.getNomeLogado());
+		Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
+		flash.setKeepMessages(true);		
+		return null;
+		
 	}
 	
-	public void setUsuarioLogado(UsuarioLogado usuarioLogado) {
-		this.usuarioLogado = usuarioLogado;
-	}
 
 	public String getLogin() {
 		return Login;

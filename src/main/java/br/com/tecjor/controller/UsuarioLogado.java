@@ -5,11 +5,14 @@ import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import com.jortec.model.Usuario;
-import com.jortec.model.Vendedor;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
 
-@ManagedBean
-@SessionScoped
+import br.com.jortec.model.Usuario;
+import br.com.jortec.model.Vendedor;
+
+@Controller
+@Scope("session")
 public class UsuarioLogado implements Serializable{
  
 	private Usuario usuario;

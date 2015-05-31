@@ -11,48 +11,59 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Named;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
+
+import br.com.jortec.model.Cliente;
+import br.com.jortec.model.Usuario;
+import br.com.jortec.model.Vendedor;
 import br.com.tecjor.dao.ClienteDao;
 import br.com.tecjor.util.Alerta;
 
-import com.jortec.model.Cliente;
-import com.jortec.model.Usuario;
-import com.jortec.model.Vendedor;
 
-@ManagedBean
-@RequestScoped
+@Controller
+@Scope("request")
 public class ClienteBean implements Serializable{
- Cliente cliente = new Cliente();
- List<Cliente> lista = new ArrayList<Cliente>();
-  
- @ManagedProperty("#{clienteDao}")
- private ClienteDao dao;
  
- @ManagedProperty("#{usuarioLogado}")
- private UsuarioLogado usuarioLogado;
+	
+Cliente cliente = new Cliente();
+List<Cliente> lista = new ArrayList<Cliente>();
+  
+ @Autowired
+ ClienteDao dao;
+ 
+ @Autowired
+ UsuarioLogado usuarioLogado;
+ 
+ @Autowired
+ Alerta alerta;
  
 @PostConstruct 
 public void loade(){
-	 lista = dao.listar();
+	 lista = dao.listar();		 
+	 cliente.setVendedor(usuarioLogado.getVendedor());
  }
 
-  public String salvar(){
-	  if(cliente.getId() == 0 ){		  
-		  //cliente.setVendedor(usuarioLogado.getVendedor());		 
+  public void salvar(){  			 
+	  
+	  if(cliente.getId() == 0 ){			 
 		  dao.salvar(cliente);   		  
-		  Alerta.info("Cliente salvo com sucesso");
+		  alerta.info("Cliente salvo com sucesso");
+		  this.cliente = new Cliente();
 	  }	
 	  else{
+		  System.out.println("atualizando cliente");
 		  dao.atualiza(cliente);		  
-		  Alerta.info("Cliente atualizado com sucesso");
+		  alerta.info("Cliente atualizado com sucesso");
 		  
 	  }	
-	  loade();
-    return "cliente?faces-redirect=true";
+	  
   }
   
   public String deletar(){
 	dao.Deletar(cliente);    
-    Alerta.info("Cliente deletado com sucesso");   
+    alerta.info("Cliente deletado com sucesso");   
     return "cliente?faces-redirect=true";
   }
   
@@ -61,7 +72,7 @@ public void loade(){
   }
 
   public String edita(){
-	  System.out.println("Noome do cliente"+cliente.getNome());
+	  System.out.println("id do cliente"+cliente.getId());
 	  return "edita";
   }
 
@@ -78,15 +89,6 @@ public void setLista(List<Cliente> lista) {
 	this.lista = lista;
 }
 
- public void setDao(ClienteDao dao) {
-	this.dao = dao;
-} 
-public ClienteDao getDao() {
-	return dao;
-}	
-public void setUsuarioLogado(UsuarioLogado usuarioLogado) {
-	this.usuarioLogado = usuarioLogado;
-}
 	
   
   

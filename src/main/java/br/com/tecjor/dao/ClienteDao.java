@@ -9,7 +9,9 @@ import javax.persistence.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.jortec.model.Cliente;
+import br.com.jortec.model.Cliente;
+import br.com.jortec.model.Vendedor;
+import br.com.tecjor.controller.UsuarioLogado;
 
 @Transactional
 @Repository
@@ -18,8 +20,9 @@ public class ClienteDao {
 	@PersistenceContext
 	private EntityManager manager;
 	
-	public void salvar(Cliente cliente) {					
-			manager.persist(cliente);
+	public void salvar(Cliente cliente) {		        
+		
+			manager.persist(manager.merge(cliente));
 			System.out.println("persistiu");				
 	}
 	
@@ -33,7 +36,7 @@ public class ClienteDao {
 	}
 
 	public List<Cliente> listar(){
-		return manager.createQuery("select c from Cliente c order by nome", Cliente.class)
+		return manager.createQuery("select c from Cliente c ",Cliente.class)
 				.getResultList();
 		
 	}

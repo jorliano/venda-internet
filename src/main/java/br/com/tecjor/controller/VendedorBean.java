@@ -9,20 +9,31 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
+
+import br.com.jortec.model.Vendedor;
 import br.com.tecjor.dao.VendedorDao;
 import br.com.tecjor.util.Alerta;
 
-import com.jortec.model.Vendedor;
-
-@ManagedBean
-@RequestScoped
+@Controller
+@Scope("request")
 public class VendedorBean implements Serializable{
     
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3676344469132286835L;
+	
 	List<Vendedor> lista = new ArrayList<Vendedor>();
 	Vendedor vendedor = new Vendedor();	
 	
-	@ManagedProperty("#{vendedorDao}")	
-	private VendedorDao dao;
+	@Autowired
+	VendedorDao dao;
+	
+	@Autowired
+	Alerta alerta;
 	
 	@PostConstruct
 	public void load(){
@@ -32,29 +43,30 @@ public class VendedorBean implements Serializable{
 	public String edita(){		
 		return "edita";
 	}
-	public String salvar(){
+	public void salvar(){
 		if(vendedor.getId() == 0){
 		dao.salvar(vendedor);
-		Alerta.info("vendedor salvo com sucesso");
+		alerta.info("vendedor salvo com sucesso");
+		this.vendedor = new Vendedor();
 		}
 		else{
 			dao.atualiza(vendedor);
-			Alerta.info("dados atualizados com sucesso");
+			alerta.info("dados atualizados com sucesso");
 		}
-		return "vendedor?faces-redirect=true";
+		
 	}
 	
 	
 	public String deletar(){
 		
 		dao.deletar(vendedor);
-		Alerta.info("vendedor deletado com sucesso");
+		alerta.info("vendedor deletado com sucesso");
 		
 		return "vendedor?faces-redirect=true";
 	}
 	
 	public void busca(){
-		//lista = dao.listarPorNome(vendedor.getPrimeiroNome());
+		lista = dao.listarPorNome(vendedor.getPrimeiroNome());
 	}
 	
 	public void setVendedor(Vendedor vendedor) {
@@ -64,11 +76,7 @@ public class VendedorBean implements Serializable{
 	public Vendedor getVendedor() {
 		return vendedor;
 	}
-	public void setDao(VendedorDao dao) {
-		this.dao = dao;
-	}
-
-
+	
 	public List<Vendedor> getLista() {
 		return lista;
 	}

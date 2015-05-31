@@ -1,10 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"	
-	xmlns:t="http://myfaces.apache.org/tomahawk"
-	xmlns:jsf="http://xmlns.jcp.org/jsf">
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"		
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:t="http://myfaces.apache.org/tomahawk">
 
 
 <body>
@@ -12,7 +12,7 @@
 		<ui:define name="titulo">
 			<i class="fa fa-angle-right"></i> cadastro de vendedor</ui:define>
 		<ui:define name="conteudo">
-          <t:saveState />
+         <t:saveState value="#{usuarioBean.usuario}"/>
 			<div class="main-content">
 				<section>
 				<div class="container-fluid container-padded">
@@ -29,8 +29,8 @@
 							<div class="panel panel-plain">
 								<div class="panel-body">									
 									<div class="panel panel-default m-bot0">
-										<div class="panel-body tab-content">
-											<h:form  class="form-horizontal">												
+										<div class="panel-body tab-content">										
+											<h:form id="form" class="form-horizontal">												
 													<h4>
 														<i class="fa fa-edit fa-fw"></i>  Dados de acesso
 													</h4>
@@ -91,16 +91,19 @@
 													</div>
 													<div class="form-group">
 																<div class="col-md-7 col-md-push-3">																																
-																		 <button type="submit" jsf:id="bt_conf_inc"  jsf:action="#{usuarioBean.salvar}"  class="btn btn-primary"  >Salvar <i class="fa fa-user-plus "></i></button>		     						
+																		 <button type="submit" jsf:id="bt_conf_inc"  jsf:action="#{usuarioBean.salvar}"  class="btn btn-primary"  >Salvar <i class="fa fa-user-plus "></i>
+																		   <f:ajax execute="@form " render="@form :msg"/>
+																		 </button>		     						
 																		 &nbsp;
 																		 <button type="submit" jsf:id="bt_conf_dele"   jsf:action="#{usuarioBean.deletar}" class="btn btn-default"  
-																		         >Deletar <i class="fa fa-user-times "></i></button>
+																		   onclick="return confirm('Deseja realmente deletar esse administrador ?');"   >Deletar <i class="fa fa-user-times "></i></button>
 																		 &nbsp;
-																		 <button jsf:outcome="usuario" class="btn btn-danger" >Cancelar <i class="fa fa-undo"></i></button>
-																	   
+																		 <button jsf:outcome="usuario" class="btn btn-danger" >Voltar <i class="fa fa-undo"></i></button>
+																	   <h:inputHidden value="#{usuarioBean.usuario.id}" />
+																	   <h:inputHidden value="#{usuarioBean.usuario.login}" />
 																</div>
 													</div>
-													<h:inputHidden value="#{usuarioBean.usuario.id}" />
+													
 
 												</div>
 											</h:form>

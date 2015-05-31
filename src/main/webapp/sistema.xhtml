@@ -110,10 +110,11 @@
 												class="fa fa-angle-down"></i>
 										</div>
 									</div>
+									<h:messages id="msg"  style="width: 55%;position: absolute;margin-left: 45%;margin-top: -7%"  showDetail="false" errorClass="alert alert-danger " warnClass="alert alert-warning" fatalClass="alert alert-danger" infoClass="alert alert-info" />	
 									<div >
 									 <h5>sistema <ui:insert name="titulo"></ui:insert></h5>
 									</div>
-									<h:messages id="msgs"  style="width: 48%;position: absolute;margin-left: 25%;margin-top: -5%"  showDetail="false" errorClass="alert alert-danger " warnClass="alert alert-warning" fatalClass="alert alert-danger" infoClass="alert alert-info" />
+									
 								</div>
 							</div>
 						</div>
@@ -224,10 +225,20 @@
 			</div>
 		</div>
 	</footer>
+	
+	
 	<!-- jQuery -->
 	<script
 		src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+   
+    <script type="text/javascript">
+	 //fechar alertas			       
+      $(".alert").fadeOut(4000); 
 
+       $('#topo').click(function(){
+    	    $('html, body').animate({scrollTop: 0},'slow');
+    	});
+   </script> 
 	<!-- Bootstrap -->
 	<script type="text/javascript"
 		src="#{request.contextPath}/js/bootstrap.min.js"></script>
@@ -259,18 +270,9 @@
 	<script src="js/lib/jqvmap/jquery.vmap.js"></script>
 	<script src="js/lib/jqvmap/maps/jquery.vmap.world.js"></script>
 	<script src="js/lib/jqvmap/data/jquery.vmap.sampledata.js"></script>
+     
+	
 
-
-	<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-45950338-1', 'creligent.com');
-  ga('send', 'pageview');
-
-</script>
-
+	
 </body>
 </html>

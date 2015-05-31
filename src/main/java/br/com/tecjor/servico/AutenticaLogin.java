@@ -3,22 +3,24 @@ package br.com.tecjor.servico;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
+import br.com.jortec.model.Usuario;
+import br.com.jortec.model.Vendedor;
 import br.com.tecjor.dao.UsuarioDao;
 import br.com.tecjor.dao.VendedorDao;
 
-import com.jortec.model.Usuario;
-import com.jortec.model.Vendedor;
-
-@ManagedBean
+@Service
+@Scope("request")
 public class AutenticaLogin {
   
-	@ManagedProperty("#{usuarioDao}")
-	private UsuarioDao usuarioDao;
+	@Autowired
+	UsuarioDao usuarioDao;
 	
-	@ManagedProperty("#{vendedorDao}")
-	private VendedorDao vendedorDao;
+	@Autowired
+	VendedorDao vendedorDao;
 	
 	public Usuario autenticaLogUsuario(String login,String senha){			
 		Usuario usuario = usuarioDao.buscaPor(login, senha);			
@@ -30,12 +32,6 @@ public class AutenticaLogin {
 		return vendedor;
 	}
 	
-	public void setVendedorDao(VendedorDao vendedorDao) {
-		this.vendedorDao = vendedorDao;
-	}
 	
-	public void setUsuarioDao(UsuarioDao usuarioDao) {
-		this.usuarioDao = usuarioDao;
-	}
 	
 }

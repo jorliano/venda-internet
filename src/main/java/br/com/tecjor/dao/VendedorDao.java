@@ -9,8 +9,8 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.jortec.model.Cliente;
-import com.jortec.model.Vendedor;
+import br.com.jortec.model.Cliente;
+import br.com.jortec.model.Vendedor;
 
 @Transactional
 @Repository
@@ -32,16 +32,7 @@ public  class VendedorDao {
 				.getResultList();
 	}
 	
-	/*public List<Vendedor> listarPorNome(String nome){
-		try{
-		  return manager
-				.createQuery("select v from Vendedor v where  primeiroNome =:nome",Vendedor.class)
-				    .setParameter("nome", nome) .getResultList();
-		}catch(NoResultException e){
-			return null;
-		}
-	}*/
-	
+		
 	public Vendedor buscaPor(String login,String senha) {
 		 
         try{
@@ -59,5 +50,17 @@ public  class VendedorDao {
 	public void atualiza(Vendedor vendedor) {
 		manager.merge(vendedor);
 		
+	}
+
+	public List<Vendedor> listarPorNome(String nome) {
+		try{
+        	return manager
+        			.createQuery("select v from Vendedor v "
+        			        + "where primeiroNome like %:nome", Vendedor.class)
+        			        .setParameter("nome",nome)        			        
+        			        .getResultList();
+        }catch(NoResultException e){
+        	return null;
+        }			
 	}
 }

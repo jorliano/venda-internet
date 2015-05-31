@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.jortec.model.Usuario;
+import br.com.jortec.model.Usuario;
 
 @Transactional
 @Repository
