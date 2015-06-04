@@ -55,12 +55,15 @@
 				  <div class="row-fluid">
 				    <div class="col-xs-6">
 				          <label for="cidade" class=" control-label">Plano</label>
-				          <input type="text" jsf:value="#{clienteBean.cliente.plano}" 
-					            class="form-control" />
+				           <h:selectOneMenu label="Plano" value="#{clienteBean.cliente.plano}" styleClass="form-control" required="true">
+		                      <f:selectItem itemLabel="Selecione o plano" noSelectionOption="true"></f:selectItem>
+		                      <f:selectItems value="#{sistemaBean.lista}"  var="list" 
+		                                  itemValue="#{list.plano}"  itemLabel="#{list.plano}"/>		                     
+		                  </h:selectOneMenu>     
 				    </div>
 				    <div class="col-xs-6">	
-				    <label class=" control-label">Data Cadastro</label>				    
-				       <input type="text" jsf:value="#{clienteBean.cliente.dataCadastro}" disabled="true"  class="form-control" />
+				    <label class=" control-label">Bairro</label>				    
+				       <input type="text" jsf:value="#{clienteBean.cliente.bairro}"  class="form-control" />
 				    </div>			    				   				    
 				  </div>				  
 				  <div class="row-fluid">

@@ -28,6 +28,11 @@
     </listener-class>
   </listener>
   
+ <context-param>  
+   <param-name>javax.faces.DATETIMECONVERTER_DEFAULT_TIMEZONE_IS_SYSTEM_TIMEZONE</param-name>  
+   <param-value>true</param-value>  
+ </context-param>     
+
   <context-param>
     <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
     <param-value>messages</param-value>
@@ -35,4 +40,5 @@
   <welcome-file-list>
     <welcome-file>index.xhtml</welcome-file>
   </welcome-file-list>
+  
 </web-app>

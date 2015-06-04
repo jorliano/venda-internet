@@ -87,7 +87,7 @@ public class ImagemValidator {
 	           FileOutputStream outPut = new FileOutputStream(new File(fileSavePath+"/imagens/vendedor/"+nomeImagem));
 	           outPut.write(conteudoArquivo);
 	           input.close();
-	           outPut.flush();
+	           //outPut.flush();
 	           outPut.close();
 	       
     	   }

@@ -2,6 +2,7 @@ package br.com.tecjor.controller;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -29,6 +30,7 @@ public class ClienteBean implements Serializable{
 	
 Cliente cliente = new Cliente();
 List<Cliente> lista = new ArrayList<Cliente>();
+List<Cliente> listaDoVendedor = new ArrayList<Cliente>();
   
  @Autowired
  ClienteDao dao;
@@ -41,13 +43,15 @@ List<Cliente> lista = new ArrayList<Cliente>();
  
 @PostConstruct 
 public void loade(){
-	 lista = dao.listar();		 
-	 cliente.setVendedor(usuarioLogado.getVendedor());
+	 lista = dao.listar();	
+	 listaDoVendedor = dao.listarPorVendedor(usuarioLogado.getVendedor().getId());
+	 cliente.setVendedor(usuarioLogado.getVendedor()); 	 
  }
 
   public void salvar(){  			 
 	  
-	  if(cliente.getId() == 0 ){			 
+	  if(cliente.getId() == 0 ){	
+		  cliente.setDataCadastro(new Date());
 		  dao.salvar(cliente);   		  
 		  alerta.info("Cliente salvo com sucesso");
 		  this.cliente = new Cliente();
@@ -68,7 +72,7 @@ public void loade(){
   }
   
   public void busca(){
-	lista = dao.busca(cliente.getNome());        
+	lista = dao.buscaDoVendedorPorNome(cliente.getNome(), usuarioLogado.getVendedor().getId());      
   }
 
   public String edita(){
@@ -87,6 +91,14 @@ public List<Cliente> getLista() {
 }
 public void setLista(List<Cliente> lista) {
 	this.lista = lista;
+}
+
+public List<Cliente> getListaDoVendedor() {
+	return listaDoVendedor;
+}
+
+public void setListaDoVendedor(List<Cliente> listaDoVendedor) {
+	this.listaDoVendedor = listaDoVendedor;
 }
 
 	

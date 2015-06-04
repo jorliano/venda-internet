@@ -58,6 +58,8 @@ public class Vendedor implements Serializable{
 	@Column(name="setImg")
 	public String Img;
 	
+	@Column(name="foto")
+	
 	public long getId() {
 		return id;
 	}

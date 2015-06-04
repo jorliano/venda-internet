@@ -15,8 +15,8 @@
        <t:saveState value="#{clienteBean.cliente}"></t:saveState>
           
       <h:form id="form" prependId="false">                       	       
-        <h:dataTable id="tabelaCli" var="list" value="#{clienteBean.lista}" 
-            styleClass="table table-responsive  table-hover" rows="7">
+        <h:dataTable id="tabelaCli" var="list" value="#{clienteBean.listaDoVendedor}" 
+            styleClass="table table-responsive  table-hover" rows="10">
            <h:column >
               <f:facet name="header">Id</f:facet>
               #{list.id}              
@@ -55,6 +55,7 @@
 					<input type="text" jsf:value="#{clienteBean.cliente.nome}" class="form-control"/>
 					<span class="input-group-btn">
 							<button type="submit" class="btn btn-primary" jsf:action="#{clienteBean.busca}"><i class="fa fa-search"></i>
+							<f:ajax execute="@form" render="@form :tabelaCli"></f:ajax>
 					     	</button>
 					</span>						
         		</div>        	 																											

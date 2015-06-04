@@ -1,6 +1,7 @@
 package br.com.jortec.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -60,7 +61,7 @@ public class Cliente  implements Serializable                                   
 	private String Estatus;	
 	
 	@Column(name= "dataCadastro")
-	private String DataCadastro;
+	private Date DataCadastro;
 
 	public long getId() {
 		return id;
@@ -148,13 +149,13 @@ public class Cliente  implements Serializable                                   
 
 	public void setPlano(String plano) {
 		Plano = plano;
-	}
+	}	
 
-	public String getDataCadastro() {
+	public Date getDataCadastro() {
 		return DataCadastro;
 	}
 
-	public void setDataCadastro(String dataCadastro) {
+	public void setDataCadastro(Date dataCadastro) {
 		DataCadastro = dataCadastro;
 	}
 

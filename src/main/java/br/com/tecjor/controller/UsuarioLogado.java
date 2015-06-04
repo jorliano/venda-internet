@@ -34,6 +34,11 @@ public class UsuarioLogado implements Serializable{
 		return "/index.xhtml?faces-redirect=true";
 	}	
 		
+	public boolean isLogado(){
+		if(usuario != null || vendedor != null)
+			return true;
+		return false;
+	}
 	
 	public Usuario getUsuario() {
 		return usuario;

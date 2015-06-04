@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,17 +36,28 @@ public class ClienteDao {
 		manager.remove(manager.merge(cliente));
 	}
 
-	public List<Cliente> listar(){
-		return manager.createQuery("select c from Cliente c ",Cliente.class)
-				.getResultList();
+	public List<Cliente> listar(){	
 		
+		String consulta = "select c from Cliente c join  c.vendedor order by dataCadastro";		
+		TypedQuery<Cliente> query = manager.createQuery(consulta, Cliente.class);		
+		return query.getResultList();
 	}
 	
-	public List<Cliente> busca(String nome){
+
+	public List<Cliente> listarPorVendedor(long id){	
 		
-		Query query = manager.createQuery("select c from Cliente c where nome like %:name order by nome", Cliente.class);
-		query.setParameter("nome", nome); 
-	    
+		String consulta = "select c from Cliente c  where c.vendedor.id=:id order by dataCadastro";		
+		TypedQuery<Cliente> query = manager.createQuery(consulta, Cliente.class);	
+		query.setParameter("id", id);		
+		return query.getResultList();
+	}
+	
+	public List<Cliente> buscaDoVendedorPorNome(String nome,long id){
+		
+		String consulta = "select c from Cliente c  where c.vendedor.id=:id and c.nome like :nome order by dataCadastro";		
+		TypedQuery<Cliente> query = manager.createQuery(consulta, Cliente.class);	
+		query.setParameter("id", id);		
+		query.setParameter("nome", "%"+nome+"%");		
 		return query.getResultList();
 	}
 
