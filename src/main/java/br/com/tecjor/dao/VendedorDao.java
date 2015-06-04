@@ -56,8 +56,8 @@ public  class VendedorDao {
 		try{
         	return manager
         			.createQuery("select v from Vendedor v "
-        			        + "where primeiroNome like %:nome", Vendedor.class)
-        			        .setParameter("nome",nome)        			        
+        			        + "where primeiroNome like :nome", Vendedor.class)
+        			        .setParameter("nome",nome+"%")        			        
         			        .getResultList();
         }catch(NoResultException e){
         	return null;

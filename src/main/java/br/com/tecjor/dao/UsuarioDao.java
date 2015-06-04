@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.jortec.model.Usuario;
+import br.com.jortec.model.Usuario;
 
 @Transactional
 @Repository
@@ -53,5 +54,15 @@ public class UsuarioDao  {
 		
 	}
 
-	
+	public List<Usuario> listarPorNome(String nome) {
+		try{
+        	return manager
+        			.createQuery("select v from Usuario v "
+        			        + "where nome like :nome", Usuario.class)
+        			        .setParameter("nome",nome+"%")        			        
+        			        .getResultList();
+        }catch(NoResultException e){
+        	return null;
+        }			
+	}
 }

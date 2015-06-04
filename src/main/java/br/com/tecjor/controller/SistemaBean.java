@@ -58,8 +58,9 @@ public class SistemaBean implements Serializable{
 		return null;
 	}
 
-	public List<Sistema> getLista() {
+	public List<Sistema> getLista() {		
 		return lista;
+		
 	}
 
 	public void setLista(List<Sistema> lista) {

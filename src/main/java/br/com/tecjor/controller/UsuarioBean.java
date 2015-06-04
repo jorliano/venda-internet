@@ -53,8 +53,7 @@ public class UsuarioBean implements Serializable{
 	
 	public String edita(){
 		return "edita";
-	}
-	
+	}	
 	
 	public String deletar(){
 		System.out.println("usuario deletado");
@@ -63,7 +62,9 @@ public class UsuarioBean implements Serializable{
 		return "usuario.xhtml?faces-redirect=true";
 	}
 	
-	
+	public void busca(){
+		lista = dao.listarPorNome(usuario.getNome());
+	}
 	
 	public Usuario getUsuario() {
 		return usuario;

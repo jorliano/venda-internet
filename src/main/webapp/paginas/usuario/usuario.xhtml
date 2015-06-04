@@ -42,9 +42,10 @@
 	            <h:commandButton id="incluir" value="Incluir" action="cadastro?faces-redirect=true"  styleClass="btn btn-primary " />	           
 	           </div>
 				<div class="input-group col-sm-4 col-sm-offset-8   ">
-					<input type="text" jsf:value="#{usuarioBean.usuario.nome}" class="form-control"/>
+					<input type="text" jsf:value="#{usuarioBean.usuario.nome}" class="form-control" placeholder="Busca pelo nome"/>
 					<span class="input-group-btn">
-							<button type="submit" class="btn btn-primary" jsf:action="#{vendedorBean.busca()}"><i class="fa fa-search"></i>
+							<button type="submit" class="btn btn-primary" jsf:action="#{usuarioBean.busca}"><i class="fa fa-search"></i>
+					     	   <f:ajax execute="@form" render="@form"/>
 					     	</button>
 					</span>						
         		</div>        	 																											

@@ -36,17 +36,26 @@ public class ClienteDao {
 		manager.remove(manager.merge(cliente));
 	}
 
+	//Para instalação adm
 	public List<Cliente> listar(){	
 		
-		String consulta = "select c from Cliente c join  c.vendedor order by dataCadastro";		
-		TypedQuery<Cliente> query = manager.createQuery(consulta, Cliente.class);		
+		String consulta = "select c from Cliente c join  c.vendedor where estatus = 'pendente' order by dataCadastro ";		
+		TypedQuery<Cliente> query = manager.createQuery(consulta, Cliente.class);			
 		return query.getResultList();
 	}
-	
+    public List<Cliente> buscaDoInstalacoPorNome(String nome){
+		
+		String consulta = "select c from Cliente c  where  estatus = 'pendente' and nome like :nome order by dataCadastro ";		
+		TypedQuery<Cliente> query = manager.createQuery(consulta, Cliente.class);			
+		query.setParameter("nome", nome+"%");		
+		return query.getResultList();
+	}
 
+
+	//Para vendedor
 	public List<Cliente> listarPorVendedor(long id){	
 		
-		String consulta = "select c from Cliente c  where c.vendedor.id=:id order by dataCadastro";		
+		String consulta = "select c from Cliente c  where c.vendedor.id=:id  and estatus = 'pendente' order by dataCadastro desc";		
 		TypedQuery<Cliente> query = manager.createQuery(consulta, Cliente.class);	
 		query.setParameter("id", id);		
 		return query.getResultList();
@@ -54,10 +63,10 @@ public class ClienteDao {
 	
 	public List<Cliente> buscaDoVendedorPorNome(String nome,long id){
 		
-		String consulta = "select c from Cliente c  where c.vendedor.id=:id and c.nome like :nome order by dataCadastro";		
+		String consulta = "select c from Cliente c  where c.vendedor.id=:id and estatus = 'pendente' and nome like :nome order by dataCadastro desc";		
 		TypedQuery<Cliente> query = manager.createQuery(consulta, Cliente.class);	
 		query.setParameter("id", id);		
-		query.setParameter("nome", "%"+nome+"%");		
+		query.setParameter("nome", nome+"%");		
 		return query.getResultList();
 	}
 

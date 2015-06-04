@@ -14,28 +14,34 @@
      <t:saveState value="#{vendedorBean.vendedor}"></t:saveState>
       <h:form id="form" prependId="false">         	       
         <h:dataTable id="tabela" var="list" value="#{vendedorBean.lista}" 
-            styleClass="table table-responsive  table-hover" rows="10">
-           <h:column >
-              <f:facet name="header">Id</f:facet>
-              #{list.id}              
+            styleClass="table table-responsive  table-hover" rows="7">
+           <f:facet name="header">
+		       <h3 > Lista de vendedores</h3>
+		   </f:facet>
+           <h:column >             
+              <img src="#{request.contextPath}/imagens/vendedor/bg-user-icon.png" class=" img-circle " height="100px" width="100px" />             
           </h:column>
            <h:column >
-              <f:facet name="header">Nome</f:facet>
-              <h:commandLink action="#{vendedorBean.edita}" value="#{list.primeiroNome}">
+           <div class="col-xs-6" style="font-size: 19px;">
+              Nome: #{list.primeiroNome}                                                                                      
+              <br/>
+              SobreNome: #{list.sobreNome}              
+              <br/>
+              Login: #{list.login}
+           </div>
+           <div class="col-xs-6" style="font-size: 19px;">
+              Telefone: #{list.telefone}
+              <br/>
+              Email: #{list.email}  
+             
+               
+           </div>                     
+           <div class="pull-right">
+            <br/>
+             <h:commandLink action="#{vendedorBean.edita}" value="editar" styleClass="fa fa-edit">
                  <f:setPropertyActionListener target="#{vendedorBean.vendedor}" value="#{list}"></f:setPropertyActionListener>
-              </h:commandLink>                                                                          
-          </h:column>
-           <h:column >
-              <f:facet name="header">Sobre Nome</f:facet>
-              #{list.sobreNome}              
-          </h:column>
-          <h:column>
-              <f:facet name="header">Login</f:facet>
-              #{list.login}
-          </h:column>          
-          <h:column>
-             <f:facet name="header">Telefone</f:facet>
-             #{list.telefone}                                   
+              </h:commandLink> 
+           </div>                                 
           </h:column>           
       </h:dataTable> 
      <!-- final da tabela -->            
@@ -46,9 +52,10 @@
 	            <h:commandButton id="incluir" value="Incluir" action="cadastro?faces-redirect=true"  styleClass="btn btn-primary " />	            
 	           </div>
 				<div class="input-group col-sm-4 col-sm-offset-8   ">
-					<input type="text" jsf:value="#{vendedorBean.vendedor.primeiroNome}" class="form-control"/>
+					<input type="text" jsf:value="#{vendedorBean.vendedor.primeiroNome}" class="form-control" placeholder="Busca pelo nome"/>
 					<span class="input-group-btn">
-							<button type="submit" class="btn btn-primary" jsf:action="#{vendedorBean.busca()}"><i class="fa fa-search"></i>
+							<button type="submit" class="btn btn-primary" jsf:action="#{vendedorBean.busca}"><i class="fa fa-search"></i>
+					     	  <f:ajax execute="@form" render="@form"/>
 					     	</button>
 					</span>						
         		</div>        	 																											

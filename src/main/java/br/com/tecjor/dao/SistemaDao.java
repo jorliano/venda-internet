@@ -32,7 +32,7 @@ public class SistemaDao {
 	}
 	
 	public List<Sistema> listar(){
-		return manager.createQuery("select s from Sistema s order by valor", Sistema.class)
+		return manager.createQuery("select s from Sistema s order by valor asc", Sistema.class)
 				.getResultList();
 	}
 	

@@ -52,6 +52,7 @@ public void loade(){
 	  
 	  if(cliente.getId() == 0 ){	
 		  cliente.setDataCadastro(new Date());
+		  cliente.setEstatus("pendente");
 		  dao.salvar(cliente);   		  
 		  alerta.info("Cliente salvo com sucesso");
 		  this.cliente = new Cliente();
@@ -63,22 +64,40 @@ public void loade(){
 		  
 	  }	
 	  
-  }
+  } 
   
   public String deletar(){
+	
 	dao.Deletar(cliente);    
     alerta.info("Cliente deletado com sucesso");   
     return "cliente?faces-redirect=true";
   }
-  
   public void busca(){
-	lista = dao.buscaDoVendedorPorNome(cliente.getNome(), usuarioLogado.getVendedor().getId());      
+		lista = dao.buscaDoVendedorPorNome(cliente.getNome(), usuarioLogado.getVendedor().getId());      
   }
 
   public String edita(){
-	  System.out.println("id do cliente"+cliente.getId());
-	  return "edita";
+	 return "edita";
   }
+	  
+  //instalação com restrições do adm
+  public String cancelar(){
+		cliente.setEstatus("cancelado");  
+		dao.atualiza(cliente);
+		alerta.info("Instalação cancelado com sucesso");   
+		lista = dao.listar();	
+		return null;
+	  }
+  public String finalizado(){
+	  cliente.setEstatus("concluido");  
+	  dao.atualiza(cliente);
+	  lista = dao.listar();	
+	  alerta.info("Instalação concluida do sucesso"); 
+	  return null;
+  } 
+  public void buscaIntalacao(){
+		lista = dao.buscaDoInstalacoPorNome(cliente.getNome());      
+ }
 
 public Cliente getCliente() {
 	return cliente;
