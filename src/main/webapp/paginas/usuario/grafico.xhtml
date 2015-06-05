@@ -4,33 +4,30 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
 	xmlns:jsf="http://xmlns.jcp.org/jsf">
-<head>
+<h:head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
 
-</head>
+</h:head>
 
 <body>    
     <ui:composition template="/sistema.xhtml">
 		<ui:define name="Titulo"><i class="fa fa-angle-right"></i> Grafico </ui:define>
 		<ui:define name="conteudo">
-        <form jsf:id="form">
-       
-		   
-		       
-		     	<button type="button" Class="btn btn-primary"  onclick="grafico()"  >Mostrar Grafico 1</button>
+        <h:form >     		   		       
+		     	<button type="submit" Class="btn btn-primary"  jsf:action="#{graficoBean.barGrafico}" >Mostrar Grafico
+		     	  
+		     	</button>     	
 		     	
-		     	
-		       <div class="col-xs-3">
-			     <h:selectOneMenu  styleClass="form-control">
-			          <f:selectItem itemLabel="Selecione o Ano" noSelectionOption="true"/>	
-			          <f:selectItem itemLabel="2015"/>	
-			          <f:selectItem itemLabel="2016"/>	
-			          <f:selectItem itemLabel="2017"/>
-			          <f:selectItem itemLabel="2018"/>
-			          <f:selectItem itemLabel="2019"/>			         
-			     </h:selectOneMenu>
+		      <div class="col-xs-4">
+			     <h:selectOneMenu  styleClass="form-control" value="#{graficoBean.nome}">						
+						<f:selectItem itemLabel="Primeiro tremestre" itemValue="primeiroTrimestre"/>
+						<f:selectItem itemLabel="Segundo  tremestre" itemValue="segundoTrimestre"/>
+						<f:selectItem itemLabel="Terceiro tremestre" itemValue="terceiroTrimestre"/>
+						<f:selectItem itemLabel="Quarto tremestre" itemValue="quartoTrimestre"/>											
+					</h:selectOneMenu>
 		       </div>
 		       
 			     <div class="col-xs-12" style="margin-top: 18px;">
@@ -38,28 +35,23 @@
 					<!-- Default panel contents -->
 					<div class="panel-heading"><i class="fa fa-chart fa-2x"/> Registro das Instalaçẽs
 					<div class="panel-body" style="margin-right: 10px;">	
-					   	<canvas id="GraficoBarra"  ></canvas>
+					   	<p:chart id="bar" type="bar" model="#{graficoBean.animatedModel2}" styleClass="block" responsive="true" />	
 					</div>
 		          </div>
 		          </div>
 		        </div>                                                      
 	     
-       </form>   
+       </h:form>   
        <form jsf:id="form1">
-               <button type="button" Class="btn btn-primary"  onclick="graficoChart()"  >Mostrar Grafico 2</button>
+               <button type="button" Class="btn btn-primary"  onclick="load()" >Mostrar Grafico 2</button>
 		     	
-		       <div class="col-xs-3">
-			     <h:selectOneMenu  styleClass="form-control">
-			          <f:selectItem itemLabel="Selecione o Mes"></f:selectItem>			         
-			     </h:selectOneMenu>
-		       </div>
-		       
+		      
 			     <div class="col-xs-12" style="margin-top: 18px;">
 	              <div class="panel panel-default " >
 					<!-- Default panel contents -->
 					<div class="panel-heading"><i class="fa fa-chart fa-2x"/>Total de vendas de cada Vendedor
 					<div class="panel-body" style="margin-right: 10px;">	
-					   	<canvas id="GraficoChart"  ></canvas>
+					   	 <p:chart type="pie" model="#{graficoBean.pieModel1}" styleClass="block" responsive="true"/>
 					</div>
 		          </div>
 		          </div>
@@ -68,89 +60,7 @@
        
        </form>     
    
-   <script type="text/javascript">                                        
-
-                var options = {
-                    responsive:true
-                };
-
-                var data = {
-                    labels: ["dia 1", "dia 2", "dia 3", "dia 4", "dia 5"],
-                    datasets: [
-                        {
-                            label: "Concluidas",
-                            fillColor: "rgba(255,69,0,0.8)",
-                            strokeColor: "rgba(140,23,23,5.8)",
-                            highlightFill: "rgba(220,220,220,0.75)",
-                            highlightStroke: "rgba(220,220,220,1)",
-                            data: ["10","20","30","40","50"]
-                        },
-
-                        {
-                            label: "Pendentes",
-	                        fillColor: "rgba(151,187,205,0.5)",
-	                        strokeColor: "rgba(151,187,205,0.8)",
-	                        highlightFill: "rgba(151,187,205,0.75)",
-	                        highlightStroke: "rgba(151,187,205,1)",
-	                        data: ["14","5","15","8","30"]
-                        },
-                        {
-                            label: "Canceladas",
-                            fillColor: "rgba(220,220,220,0.5)",
-                            strokeColor: "rgba(220,220,220,0.8)",
-                            highlightFill: "rgba(220,220,220,0.75)",
-                            highlightStroke: "rgba(220,220,220,1)",
-                            data: ["3","27","8","12","35"]
-                           
-                        }
-                    ]
-                };                
-
-                function grafico (){
-                    var ctx = document.getElementById("GraficoBarra").getContext("2d");
-                    var BarChart = new Chart(ctx).Bar(data, options);
-                }           
-            </script>            
-           
-           
-            <script type="text/javascript">
-
-	           var options3 = {
-	                    responsive:true     
-	                                
-	           };
-	           
-               var data3 = [
-                        {
-                            value: 10,
-                            color:"#F7464A",
-                            highlight: "#FF5A5E",
-                            label: "vendedor 1"
-                        },
-                        {
-                            value: 22,
-                            color: "#46BFBD",
-                            highlight: "#5AD3D1",
-                            label: "vendedor 2"
-                        },
-                        {
-                            value: 30,
-                            color: "#FDB45C",
-                            highlight: "#FFC870",
-                            label: "vendedor 3"
-                        }
-                    ]
-
-                  function graficoChart(){
-                      var c = document.getElementById("GraficoChart").getContext("2d");
-                      var DoughnutChart = new Chart(c).Doughnut(data3,options3);
-                  }                   
-                     
-            </script>
-        
-			    
-    <script type="text/javascript" src="#{request.contextPath}/js/Chart.min.js">
-	</script>
+   
     </ui:define>
     </ui:composition>
 </body>

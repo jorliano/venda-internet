@@ -4,15 +4,12 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.jortec.model.Cliente;
-import br.com.jortec.model.Vendedor;
-import br.com.tecjor.controller.UsuarioLogado;
 
 @Transactional
 @Repository

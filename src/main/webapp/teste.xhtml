@@ -1,38 +1,36 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:jsf="http://xmlns.jcp.org/jsf"> 
+<!DOCTYPE html>
 
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
 <h:head>
-<!-- Bootstrap -->
-<link href="#{request.contextPath}/css/bootstrap.css" rel="stylesheet"
-	type="text/css" />
-</h:head> 
-<body> 
-  <h:message id="msg" for="nome" errorClass="alert alert-danger "/>
-  <h:form prependId="false">    
-    <div class="col-xs-6">
-				         <label for="nome" class=" control-label">Nome</label>				    
-					     <input type="text"  jsf:value="#{clienteBean.cliente.nome}" required="true" maxlength="50"
-						        class="form-control" jsf:id="nome" jsf:label="Nome " autofocus="true" >
-						         <f:validateLength minimum="5"/>
-						        </input>
-				    </div>	
- <h:commandButton value="click" action="#{usuarioBean.salvar()}" />				    
-  </h:form>
-  
-  <!-- jQuery -->
-	<script
-		src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
    
-		
-		<script type="text/javascript">
-	 //fechar alertas	
-	      
-      $("#msg").fadeOut(4000); 
-	 
-   </script>  
-</body> 
+
+</h:head>
+
+<body>    
+   
+        <h:form >  		   		       		     	
+		     	<p:calendar id="german" value="#{clienteBean.cliente.dataCadastro}" locale="de" navigator="true" pattern="yyyy-MMM-dd" />
+		     	
+		      
+		       
+			     <div class="col-xs-12" style="margin-top: 18px;">
+	              <div class="panel panel-default " >
+					<!-- Default panel contents -->
+					<div class="panel-heading"><i class="fa fa-chart fa-2x"/> Registro das Instalaçẽs
+					<div class="panel-body" style="margin-right: 10px;">	
+					   	 <p:chart type="bar" model="#{graficoBean.animatedModel2}" style="width:400px;" />	
+					</div>
+		          </div>
+		          </div>
+		        </div>                                                      
+	     
+       </h:form>   
+       
+</body>
+
 </html>
