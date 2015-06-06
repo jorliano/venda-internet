@@ -38,7 +38,7 @@ public  class VendedorDao {
         try{
         	return manager
         			.createQuery("select v from Vendedor v "
-        			        + "where login = :login and senha =:senha", Vendedor.class)
+        			        + "where login = :login and senha =:senha and estatus='ativo'", Vendedor.class)
         			        .setParameter("login",login)
         			        .setParameter("senha", senha)
         			        .getSingleResult();

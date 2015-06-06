@@ -36,7 +36,7 @@ public class ClienteDao {
 	//Para instalação adm
 	public List<Cliente> listar(){	
 		
-		String consulta = "select c from Cliente c join  c.vendedor where estatus = 'pendente' order by dataCadastro ";		
+		String consulta = "select c from Cliente c  where estatus = 'pendente' order by dataCadastro ";		
 		TypedQuery<Cliente> query = manager.createQuery(consulta, Cliente.class);			
 		return query.getResultList();
 	}

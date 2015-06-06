@@ -30,7 +30,7 @@
 								<div class="panel-body">									
 									<div class="panel panel-default m-bot0">
 										<div class="panel-body tab-content">										
-											<h:form id="form" class="form-horizontal">												
+											<h:form id="form" class="form-horizontal" prependId="false">												
 													<h4>
 														<i class="fa fa-edit fa-fw"></i>  Dados de acesso
 													</h4>
@@ -116,15 +116,7 @@
 				</div>
 				</section>
 			</div>
-             <script type="text/javascript">
-				 //fechar alertas			       
-			      $(".alert").fadeOut(4000); 
-			
-			       $('#topo').click(function(){
-			    	    $('html, body').animate({scrollTop: 0},'slow');
-			    	});
-			   </script> 
-
+            
 		</ui:define>
 	</ui:composition>
 </body>

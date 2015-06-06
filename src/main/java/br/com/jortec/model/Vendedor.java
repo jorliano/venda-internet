@@ -58,7 +58,11 @@ public class Vendedor implements Serializable{
 	@Column(name="setImg")
 	public String Img;
 	
-	@Column(name="foto")
+	@Column(name="estatus")
+	private String Estatus;
+	
+	@Column(name="dataNascimento")
+	private String DataNascimento;
 	
 	public long getId() {
 		return id;
@@ -164,6 +168,22 @@ public class Vendedor implements Serializable{
 		Img = img;
 	}
 
+	public String getEstatus() {
+		return Estatus;
+	}
+
+	public void setEstatus(String estatus) {
+		Estatus = estatus;
+	}
+
+	public String getDataNascimento() {
+		return DataNascimento;
+	}
+
+	public void setDataNascimento(String dataNascimento) {
+		DataNascimento = dataNascimento;
+	}
+    
 	
     
 	

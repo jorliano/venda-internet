@@ -14,12 +14,13 @@
      <t:saveState value="#{vendedorBean.vendedor}"></t:saveState>
       <h:form id="form" prependId="false">         	       
         <h:dataTable id="tabela" var="list" value="#{vendedorBean.lista}" 
-            styleClass="table table-responsive  table-hover" rows="7">
+            styleClass="table table-responsive  table-hover" rows="5">
            <f:facet name="header">
 		       <h3 > Lista de vendedores</h3>
 		   </f:facet>
            <h:column >             
               <img src="#{request.contextPath}/imagens/vendedor/bg-user-icon.png" class=" img-circle " height="100px" width="100px" />             
+              <h5><span >#{list.estatus}</span></h5>
           </h:column>
            <h:column >
            <div class="col-xs-6" style="font-size: 19px;">
@@ -33,7 +34,8 @@
               Telefone: #{list.telefone}
               <br/>
               Email: #{list.email}  
-             
+              <br/>
+              Aniversário: #{list.dataNascimento}
                
            </div>                     
            <div class="pull-right">
@@ -54,14 +56,24 @@
 				<div class="input-group col-sm-4 col-sm-offset-8   ">
 					<input type="text" jsf:value="#{vendedorBean.vendedor.primeiroNome}" class="form-control" placeholder="Busca pelo nome"/>
 					<span class="input-group-btn">
-							<button type="submit" class="btn btn-primary" jsf:action="#{vendedorBean.busca}"><i class="fa fa-search"></i>
+							<button type="submit" jsf:id="topo" class="btn btn-primary" jsf:action="#{vendedorBean.busca}"><i class="fa fa-search"></i>
 					     	  <f:ajax execute="@form" render="@form"/>
 					     	</button>
 					</span>						
         		</div>        	 																											
 		</div>				    
         </h:form>   	        
-     
+        
+         <!-- jQuery -->
+			 <script
+				src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		   
+		     <script type="text/javascript">			 
+		
+		       $('#topo').click(function(){
+		    	    $('html, body').animate({scrollTop: 0},'slow');
+		    	});
+		    </script> 
     </ui:define> 
    </ui:composition>
 </body> 

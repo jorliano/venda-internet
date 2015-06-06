@@ -82,14 +82,16 @@ public void loade(){
 	  
   //instalação com restrições do adm
   public String cancelar(){
-		cliente.setEstatus("cancelado");  
+		cliente.setEstatus("cancelado"); 
+        cliente.setDataCadastro(new Date());
 		dao.atualiza(cliente);
 		alerta.info("Instalação cancelado com sucesso");   
 		lista = dao.listar();	
 		return null;
 	  }
   public String finalizado(){
-	  cliente.setEstatus("concluido");  
+	  cliente.setEstatus("concluido"); 
+	  cliente.setDataCadastro(new Date());
 	  dao.atualiza(cliente);
 	  lista = dao.listar();	
 	  alerta.info("Instalação concluida do sucesso"); 

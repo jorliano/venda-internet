@@ -18,6 +18,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import br.com.jortec.model.Cliente;
+import br.com.jortec.model.Vendedor;
 import br.com.tecjor.dao.GraficoDao;
  
 @Controller
@@ -35,7 +36,11 @@ public class GraficoBean implements Serializable {
 	int[] cancelado =  new int [3];
 	int[] pendente =  new int [3];
 	
-	
+	//variaveis do piGrafico
+		private List<Cliente> listaCliMes = new ArrayList<Cliente>();
+		private List<Vendedor> listaVen = new ArrayList<Vendedor>();
+		private int mes = 1;
+		int[] quant =  new int [20];
 	
 	private PieChartModel pieModel1;
     private BarChartModel animatedModel2;
@@ -44,11 +49,21 @@ public class GraficoBean implements Serializable {
     GraficoDao dao;
     
     @PostConstruct    
+    public void load(){
+    	createAnimatedModel();
+    	pieGrafico();
+    	lista = dao.listarPrimeiroTrimestre();
+    	
+    }
     public void barGrafico(){
-    	createAnimatedModels();
+    	createAnimatedModel();
     	lista = dao.listarPrimeiroTrimestre();
     }
-    
+    public void pieGrafico(){    	
+    	listaCliMes = dao.listaMes(mes);
+    	listaVen = dao.listaVendedor();
+    	createPieModel1();
+    }
     
     public BarChartModel getAnimatedModel2() {
         return animatedModel2;
@@ -57,12 +72,10 @@ public class GraficoBean implements Serializable {
         return pieModel1;
     }
  
-    private void createAnimatedModels() {                  
-    	
-    	createPieModel1();
+    private void createAnimatedModel() {                 	    	
     	
         animatedModel2 = initBarModel();
-        animatedModel2.setTitle("Bar Charts");
+        animatedModel2.setTitle("Ano 2015");
         animatedModel2.setAnimate(true);
         animatedModel2.setLegendPosition("ne");
         Axis yAxis = animatedModel2.getAxis(AxisType.Y);
@@ -105,14 +118,17 @@ public class GraficoBean implements Serializable {
      
     private void createPieModel1() {
         pieModel1 = new PieChartModel();
-         
-        pieModel1.set("Brand 1", 540);
-        pieModel1.set("Brand 2", 325);
-        pieModel1.set("Brand 3", 702);
-        pieModel1.set("Brand 4", 421);
-         
-        pieModel1.setTitle("Simple Pie");
-        pieModel1.setLegendPosition("w");
+        carregaDadosGraficoPie();
+        
+        for (int i = 0; i < listaVen.size(); i++) {
+        	pieModel1.set(listaVen.get(i).getPrimeiroNome()+" "+quant[i], quant[i]);
+		}        
+                
+        pieModel1.setTitle("Ano 2015");
+        pieModel1.setLegendPosition("e");        
+        pieModel1.setFill(false);
+        pieModel1.setShowDataLabels(true);
+        pieModel1.setDiameter(150);
     }
     
     public String[] trimestre(String nome){
@@ -293,6 +309,16 @@ public class GraficoBean implements Serializable {
 		}
   }
     
+    //dados grafico Pie
+    public void carregaDadosGraficoPie(){
+    	for (int i = 0; i < listaVen.size(); i++) {
+			for (int j = 0; j < listaCliMes.size(); j++) {				
+				if(listaVen.get(i).getId() == listaCliMes.get(j).getVendedor().getId()){
+					quant[i] = quant[i]+1;					
+				}
+			}
+		}
+    }
     
     
 	public String getNome() {
@@ -301,6 +327,12 @@ public class GraficoBean implements Serializable {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	public int getMes() {
+		return mes;
+	}
+	public void setMes(int mes) {
+		this.mes = mes;
 	}
 
 	

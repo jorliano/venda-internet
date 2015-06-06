@@ -5,66 +5,66 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:jsf="http://xmlns.jcp.org/jsf">
 <h:head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content="" />
-<meta name="author" content="" />
-<title>Vendaweb - por Jorliano</title>
-<link href="favicon1.ico" rel="icon" type="image/x-icon" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
+	<title>Vendaweb - por Jorliano</title>
+	<link href="favicon1.ico" rel="icon" type="image/x-icon" />
 
-<!-- Bootstrap -->
-<link href="#{request.contextPath}/css/bootstrap.css" rel="stylesheet"
-	type="text/css" />
-<!--fonte de icones externa -->
-<link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/1.5.2/css/ionicons.min.css" />
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/1.5.2/css/ionicons.css" />
+	<!-- Bootstrap -->
+	<link href="#{request.contextPath}/css/bootstrap.css" rel="stylesheet"
+		type="text/css" />
+	<!--fonte de icones externa -->
+	<link rel="stylesheet"
+		href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/1.5.2/css/ionicons.min.css" />
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/1.5.2/css/ionicons.css" />
 
+	<link href="#{request.contextPath}/css/stiloPainel.css" rel="stylesheet" type="text/css"/>
+	<link href="#{request.contextPath}/css/ionicons.min.css"
+		rel="stylesheet" type="text/css" />
+	<link href="#{request.contextPath}/css/daterranger.css"
+		rel="stylesheet" type="text/css" />
+	<link href="#{request.contextPath}/css/stilo.css" rel="stylesheet"
+		type="text/css" />
 
-<link href="#{request.contextPath}/css/ionicons.min.css"
-	rel="stylesheet" type="text/css" />
-<link href="#{request.contextPath}/css/daterranger.css" rel="stylesheet"
-	type="text/css" />
-<link href="#{request.contextPath}/css/stilo.css" rel="stylesheet"
-	type="text/css" />
-
-<link rel="stylesheet" href="css/lib/jqvmap/jqvmap.css" />
-<link rel="stylesheet" href="css/lib/tabdrop/tabdrop.css" />
+	<link rel="stylesheet" href="css/lib/jqvmap/jqvmap.css" />
+	<link rel="stylesheet" href="css/lib/tabdrop/tabdrop.css" />
 
 </h:head>
 <h:body>
-	<header>
-		<nav class="navbar navbar-default navbar-transparent">
-			<div class="container" id="nav-container">
-				<div class="navbar-header">
-					<button class="navbar-toggle navbar-toggle-settings"
-						data-target="#top-navbar" data-toggle="collapse" type="button">
-						<span class="sr-only">Toggle navigation</span> <i
-							class="fa fa-wrench"></i>
-					</button>
-					<a class="navbar-brand logo" href="#"> <img
-						src="images/logo.png" alt="App logo" width="175" /></a>
-					<div class="navbar-side-menu-toggle">
-						<button class="toggle-btn" type="button">
-							<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-								class="icon-bar"></span>
-						</button>
-					</div>
-				</div>
-				<div class="collapse navbar-collapse" id="top-navbar">
-					<ul class="nav navbar-nav navbar-right" style="margin-top: 2%">									
-						<h:form>
-						<li ><img src="#{request.contextPath}#{usuarioLogado.vendedor.img}" class="user-settings-pic" /> #{usuarioLogado.nomeLogado} |   
-						<h:commandLink value="Sair" action="#{usuarioLogado.desloga}" /></li>
-						</h:form>																						
-					</ul>
-				</div>
+	<header> <nav class="navbar navbar-default navbar-transparent">
+	<div class="container" id="nav-container">
+		<div class="navbar-header">
+			<button class="navbar-toggle navbar-toggle-settings"
+				data-target="#top-navbar" data-toggle="collapse" type="button">
+				<span class="sr-only">Toggle navigation</span> <i
+					class="fa fa-wrench"></i>
+			</button>
+			<a class="navbar-brand logo" href="#"> <img src="images/logo.png"
+				alt="App logo" width="175" /></a>
+			<div class="navbar-side-menu-toggle">
+				<button class="toggle-btn" type="button">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
 			</div>
-		</nav>
-	</header>
+		</div>
+		<div class="collapse navbar-collapse" id="top-navbar">
+			<ul class="nav navbar-nav navbar-right" style="margin-top: 2%">
+				<h:form>
+					<li><img
+						src="#{request.contextPath}#{usuarioLogado.vendedor.img}"
+						class="user-settings-pic" /> #{usuarioLogado.nomeLogado} | <h:commandLink
+							value="Sair" action="#{usuarioLogado.desloga}" /></li>
+				</h:form>
+			</ul>
+		</div>
+	</div>
+	</nav> </header>
 	<div class="container" id="content-container">
 		<div class="content-wrapper">
 			<div class="row">
@@ -72,31 +72,40 @@
 					<div class="left-side-wrapper">
 						<div class="left-side sticky-left-side">
 							<div class="left-side-inner">
-								<ul class="nav nav-pills nav-stacked custom-nav " >
-									<li ><a href="/venda-internet/sistema.xhtml"  >  <i	class="fa fa-tachometer"></i><span>Sistema</span></a></li>
-									<li ><a href="/venda-internet/paginas/vendedor/instalacoes.xhtml" ><i class="fa fa-sitemap"></i><span>Instalaçôes</span></a>									
-									</li>	
+								<ul class="nav nav-pills nav-stacked custom-nav ">
+									<li><a href="/venda-internet/sistema.xhtml"> <i
+											class="fa fa-tachometer"></i><span>Sistema</span></a></li>
+									<li><a
+										href="/venda-internet/paginas/vendedor/instalacoes.xhtml"><i
+											class="fa fa-sitemap"></i><span>Instalaçôes</span></a></li>
 									<li class="nav-header">Area do Vendedor</li>
-									<li ><a href="/venda-internet/paginas/cliente/cliente.xhtml" >
-									    <i class="fa fa-sitemap"></i><span>MInhas Instalaçôes</span></a>									
-									</li>
-									<li ><a href="/venda-internet/paginas/vendedor/perfil.xhtml"  ><i class="fa fa-user"></i><span>Perfil</span></a></li>
-									<li ><a href="/venda-internet/paginas/vendedor/perfil.xhtml"><i
+									<li><a
+										href="/venda-internet/paginas/cliente/cliente.xhtml"> <i
+											class="fa fa-sitemap"></i><span>MInhas Instalaçôes</span></a></li>
+									<li><a
+										href="/venda-internet/paginas/vendedor/perfil.xhtml"><i
+											class="fa fa-user"></i><span>Perfil</span></a></li>
+									<li><a
+										href="/venda-internet/paginas/vendedor/perfil.xhtml"><i
 											class="fa fa-sitemap"></i><span>Pensar</span></a></li>
 
 
 									<li class="nav-header">Area do adiministrador</li>
-									<li ><a href="/venda-internet/paginas/cliente/instalacoes.xhtml"><i
+									<li><a
+										href="/venda-internet/paginas/cliente/instalacoes.xhtml"><i
 											class="fa fa-sitemap"></i><span>Intalaçoes</span></a></li>
-									<li ><a href="/venda-internet/paginas/vendedor/vendedor.xhtml"><i
+									<li><a
+										href="/venda-internet/paginas/vendedor/vendedor.xhtml"><i
 											class="fa fa-users"></i><span>Add Vendedor</span></a></li>
-									<li ><a href="/venda-internet/paginas/usuario/usuario.xhtml"><i
-											class="fa fa-user-secret"></i><span>Add Usuario</span></a></li>
-									<li ><a href="/venda-internet/paginas/usuario/grafico.xhtml"><i
-											class="fa fa-bar-chart"></i><span>Grafico</span></a></li>		
+									<li><a
+										href="/venda-internet/paginas/usuario/usuario.xhtml"><i
+											class="fa fa-user-secret"></i><span>Add Administrador</span></a></li>
+									<li><a
+										href="/venda-internet/paginas/usuario/grafico.xhtml"><i
+											class="fa fa-bar-chart"></i><span>Grafico</span></a></li>
 
 									<li class="nav-header">Configurações</li>
-									<li ><a href="/venda-internet/configuracao.xhtml"><i
+									<li><a href="/venda-internet/configuracao.xhtml"><i
 											class="fa fa-wrench"></i><span>Sistema</span></a></li>
 								</ul>
 							</div>
@@ -112,94 +121,124 @@
 												class="fa fa-angle-down"></i>
 										</div>
 									</div>
-									<h:messages id="msg"  style="width: 55%;position: absolute;margin-left: 45%;margin-top: -7%"  showDetail="false" errorClass="alert alert-danger " warnClass="alert alert-warning" fatalClass="alert alert-danger" infoClass="alert alert-info" />	
-									<div >
-									 <h5>sistema <ui:insert name="titulo"></ui:insert></h5>
+									<h:messages id="msg"
+										style="width: 55%;position: absolute;margin-left: 45%;margin-top: -7%"
+										showDetail="false" errorClass="alert alert-danger "
+										warnClass="alert alert-warning"
+										fatalClass="alert alert-danger" infoClass="alert alert-info" />
+									<div>
+										<h5>
+											sistema
+											<ui:insert name="titulo"></ui:insert>
+										</h5>
 									</div>
-									
+
 								</div>
 							</div>
 						</div>
-						
+
 						<div class="main-content">
 							<section>
-								<div class="container-fluid container-padded">
-								   <ui:insert name="conteudo">								     
-									 <div class="row">
-										<div class="col-xs-6 ">
-											<div class="panel panel-default">
-												<div class="panel-body panel-body-gray panel-body-top-br">
-													<div class="stat">
-														<p class="stat-title">
-															<i class="ion ion-person-stalker"></i> Total Users
-														</p>
-														<h3 class="stat-value">623,201</h3>
+							<div class="container-fluid container-padded">
+								<ui:insert name="conteudo">
+									<div class="col-lg-3 col-md-6 ">
+										<div class="panel panel-primary ">
+											<div class="panel-heading">
+												<div class="row">
+													<div class="col-xs-3">
+														<i class="fa fa-sitemap fa-5x"></i>
+													</div>
+													<div class="col-xs-9 text-right">
+														<div class="huge">10</div>
+														<div>Instalações</div>
 													</div>
 												</div>
-												<hr class="small" />
-												<div class="panel-body text-center">
-													<span class="label label-success-transparent"><i
-														class="fa fa-caret-up"></i> 10%</span> <span id="sparkline1"></span>
-												</div>
 											</div>
+											<a href="/venda-internet/paginas/cliente/instalacoes.xhtml">
+												<div class="panel-footer">
+													<span class="pull-left">Veja Detalhes</span> <span
+														class="pull-right"><i
+														class="glyphicon glyphicon-circle-arrow-right"></i></span>
+													<div class="clearfix"></div>
+												</div>
+											</a>
 										</div>
-										<div class="col-xs-6 ">
-											<div class="panel panel-default">
-												<div class="panel-body panel-body-gray panel-body-top-br">
-													<div class="stat">
-														<p class="stat-title">
-															<i class="ion ion-person"></i> New Users
-														</p>
-														<h3 class="stat-value">3,875</h3>
+									</div>
+									<div class="col-lg-3 col-md-6 wow fadeInUp">
+										<div class="panel panel-green">
+											<div class="panel-heading">
+												<div class="row">
+													<div class="col-xs-3">
+														<i class="fa fa-user-secret fa-5x"></i>
+													</div>
+													<div class="col-xs-9 text-right">
+														<div class="huge">15</div>
+														<div>Administradores</div>
 													</div>
 												</div>
-												<hr class="small" />
-												<div class="panel-body text-center">
-													<span class="label label-success-transparent"><i
-														class="fa fa-caret-up"></i> 8%</span> <span id="sparkline2"></span>
-												</div>
 											</div>
+											<a href="/venda-internet/paginas/usuario/usuario.xhtml">
+												<div class="panel-footer">
+													<span class="pull-left">Veja Detalhes</span> <span
+														class="pull-right"><i
+														class="glyphicon glyphicon-circle-arrow-right"></i></span>
+													<div class="clearfix"></div>
+												</div>
+											</a>
 										</div>
-										<div class="col-xs-6 ">
-											<div class="panel panel-default">
-												<div class="panel-body panel-body-gray panel-body-top-br">
-													<div class="stat">
-														<p class="stat-title">
-															<i class="fa fa-money"></i> Total Sales
-														</p>
-														<h3 class="stat-value">$ 145,231</h3>
+									</div>
+									<div class="col-lg-3 col-md-6 wow fadeInDown">
+										<div class="panel panel-yellow">
+											<div class="panel-heading">
+												<div class="row">
+													<div class="col-xs-3">
+														<i class="fa fa-users fa-5x"></i>
+													</div>
+													<div class="col-xs-9 text-right">
+														<div class="huge">25</div>
+														<div>Vendedores</div>
 													</div>
 												</div>
-												<hr class="small" />
-												<div class="panel-body text-center">
-													<span class="label label-danger-transparent"><i
-														class="fa fa-caret-down"></i> 5%</span> <span id="sparkline3"></span>
-												</div>
 											</div>
+											<a href="/venda-internet/paginas/vendedor/vendedor.xhtml">
+												<div class="panel-footer">
+													<span class="pull-left">Veja Detalhes</span> <span
+														class="pull-right"><i
+														class="glyphicon glyphicon-circle-arrow-right"></i></span>
+													<div class="clearfix"></div>
+												</div>
+											</a>
 										</div>
-										<div class="col-xs-6 ">
-											<div class="panel panel-default">
-												<div class="panel-body panel-body-gray panel-body-top-br">
-													<div class="stat">
-														<p class="stat-title">
-															<i class="fa fa-download"></i> Downloads
-														</p>
-														<h3 class="stat-value">2,897</h3>
+									</div>
+									<div class="col-lg-3 col-md-6 wow fadeInLeft">
+										<div class="panel panel-red">
+											<div class="panel-heading">
+												<div class="row">
+													<div class="col-xs-3">
+														<i class="fa fa-bar-chart fa-5x"></i>
+													</div>
+													<div class="col-xs-9 text-right">	
+													   <div class="huge">2</div>													
+														<div>Grafico</div>
 													</div>
 												</div>
-												<hr class="small" />
-												<div class="panel-body text-center">
-													<span class="label label-success-transparent"><i
-														class="fa fa-caret-up"></i> 18%</span> <span id="sparkline4"></span>
-												</div>
 											</div>
+											<a href="/venda-internet/paginas/usuario/grafico.xhtml">
+												<div class="panel-footer">
+													<span class="pull-left">Veja Detalhes</span> <span
+														class="pull-right"><i
+														class="glyphicon glyphicon-circle-arrow-right"></i></span>
+													<div class="clearfix"></div>
+												</div>
+											</a>
 										</div>
-										</div>								 
-								   </ui:insert>
-									
-								  </div>					
-								  
-								
+									</div>
+									<!-- /.row -->
+								</ui:insert>
+
+							</div>
+
+
 							</section>
 						</div>
 					</div>
@@ -208,33 +247,38 @@
 		</div>
 	</div>
 	<footer>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<ul class="list-inline">
-						<li><a href="#">About Us</a></li>
-						<li><a href="#">FAQs</a></li>
-						<li><a href="#">Support</a></li>
-						<li><a href="#">Blog</a></li>
-					</ul>
-					<ul class="list-inline">
-						<li><small> Proctor by Creligent</small></li>
-						<li><small><a href="#">Privacy</a></small></li>
-						<li><small><a href="#">Security</a></small></li>
-						<li><small><a href="#">Terms of use</a></small></li>
-					</ul>
-				</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<ul class="list-inline">
+					<li><a href="#">About Us</a></li>
+					<li><a href="#">FAQs</a></li>
+					<li><a href="#">Support</a></li>
+					<li><a href="#">Blog</a></li>
+				</ul>
+				<ul class="list-inline">
+					<li><small> Proctor by Creligent</small></li>
+					<li><small><a href="#">Privacy</a></small></li>
+					<li><small><a href="#">Security</a></small></li>
+					<li><small><a href="#">Terms of use</a></small></li>
+				</ul>
 			</div>
 		</div>
+	</div>
 	</footer>
-	
-	
-	
+
+    <ui:insert name="javascript">
+       <!-- jQuery -->
+			 <script
+				src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    </ui:insert>
+
 	<!-- Bootstrap -->
 	<script type="text/javascript"
 		src="#{request.contextPath}/js/bootstrap.min.js"></script>
 
-
+    
+		   
 	<script type="text/javascript"
 		src="#{request.contextPath}/js/slimscroll.min.js"></script>
 	<script type="text/javascript"
@@ -261,9 +305,9 @@
 	<script src="js/lib/jqvmap/jquery.vmap.js"></script>
 	<script src="js/lib/jqvmap/maps/jquery.vmap.world.js"></script>
 	<script src="js/lib/jqvmap/data/jquery.vmap.sampledata.js"></script>
-     
-	
 
-	
+
+
+
 </h:body>
 </html>
