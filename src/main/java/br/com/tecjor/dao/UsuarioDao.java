@@ -65,4 +65,17 @@ public class UsuarioDao  {
         	return null;
         }			
 	}
+
+	public Usuario buscaPorId(long id) {
+		try{
+        	return manager
+        			.createQuery("select u from Usuario u "
+        			        + "where id=:id", Usuario.class)
+        			        .setParameter("id",id)
+        			      
+        			        .getSingleResult();
+        }catch(NoResultException e){
+        	return null;
+        }	
+	}
 }

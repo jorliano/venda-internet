@@ -100,6 +100,21 @@ $(function() {
                 }
             }		
     });	
+     /* password*/
+     $( ".confirmsenha" ).blur(function() {    	     	 
+    		 if ( $.trim( $('.confirmsenha').val() ) == $.trim( $('.senha').val() )){ 
+                         
+               
+    			 $(this).parent().find('span').html('').fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(500);
+                 $(this).removeClass('invalid').addClass('valid');
+                
+            }else{
+            	//alert( "pq");
+            	 $(this).parent().find('.confirmsenha').removeClass('valid').addClass('invalid');                
+                 $(this).parent().find('span').html(passwordMsg).fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(500);
+            };
+     }); 
+     
     /* numerico value defoco
      $( ".numerico" ).blur(function() {		
 		
@@ -254,27 +269,7 @@ $(function() {
                 }
             } 
     });	
-
-
-    	
-            /* password 
-            if ( $(this).hasClass('password') && $(this).parent().parent().find('.password').hasClass('password')){ 
-                
-                if ($.trim( $(this).val() ) != $.trim( $(this).parent().parent().find('.password').val() )){
-                    $(this).parent().find('.password').removeClass('valid').addClass('invalid');
-                    $(this).parent().find('.password').focus();
-                    $(this).parent().find('span').html(passwordMsg).fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(500);
-                    valid = false;
-                    return false;
-                }
-                else{ 
-                    $(this).parent().find('span').html('').fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(500);
-                    $(this).nextAll('.password').removeClass('invalid').addClass('valid');
-                    $(this).parent().find('.password').removeClass('invalid').addClass('valid');
-                    $(this).parent().parent().find('.password').removeClass('invalid').addClass('valid');
-                    $(this).parent().find('span').fadeOut(500);
-                }
-            }*/
+    
  });
 		
 	    

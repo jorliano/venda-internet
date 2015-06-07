@@ -38,88 +38,25 @@
 													<hr />											                                                   
 				             
 													
-													<div class="form-group">														
-														<label class="col-md-3 control-label"  for="nome">Nome </label>
-														<div class="col-md-7">															  			    
-														   <input type="text" jsf:value="#{clienteBean.cliente.nome}" required="true" maxlength="50"
-															    class="form-control required maxlenght" jsf:id="nome" jsf:label="Nome " autofocus="true" />
-														   <span>Campo obrigatorio com no maximo 50 caracter</span> 
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="col-md-3 control-label" for="endereco">Endereço</label>
-														<div class="col-md-5">
-															<input type="text" jsf:value="#{clienteBean.cliente.rua}" maxlength="50" required="true"
-													          class="form-control required maxlenght" jsf:id="endereco" />
-													          <span>Campo obrigatorio com no maximo 50 caracter</span> 
-														</div>
-														<div class="col-md-2">															
-															 <input type="number" jsf:value="#{clienteBean.cliente.numero}" maxlength="4"
-					                                          class="form-control required" jsf:id="numero" required="true"/>
-					                                          <span>N°</span>	
-														</div>
-													</div>
 													<div class="form-group">
 														<label class="col-md-3 control-label" for="complemento">Complemento</label>
 														<div class="col-md-7">
-															<input type="text" jsf:value="#{clienteBean.cliente.complemento}" maxlength="40"
-					                                          class="form-control" jsf:id="complemento"/>
+															<input type="password" jsf:value="#{clienteBean.cliente.complemento}" maxlength="40"
+					                                          class="form-control confirmasenha" jsf:id="senha"/>
+					                                          <span>Campo obrigatorio </span> 
 														</div>
 													</div>													
 													<div class="form-group">
 														<label class="col-md-3 control-label" for="bairro">Bairro</label>
 														<div class="col-md-7">
-															 <input type="text" jsf:value="#{clienteBean.cliente.bairro}"  class="form-control required" 
-															    jsf:id="cidade" required="true" />
+															 <input type="password" jsf:value="#{clienteBean.cliente.bairro}"  class="form-control required senha " 
+															    jsf:id="confirmsenha" required="true" />
 				                                             <span>Campo obrigatorio </span> 
 														</div>
 													</div>
-													<div class="form-group">
-														<label class="col-md-3 control-label" for="cidade">Cidade</label>
-														<div class="col-md-7">
-															<input type="text" jsf:value="#{clienteBean.cliente.cidade}" maxlength="50"
-													            class="form-control required maxlenght" jsf:id="cidade" required="true"/>
-													            <span>Campo obrigatorio com no maximo 50 caracter</span> 
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="col-md-3 control-label" for="telefone">Telefone</label>
-														<div class="col-md-7">
-															  <input type="tel" jsf:value="#{clienteBean.cliente.telefone}" 
-															       class="form-control required telefone" jsf:id="telefone" required="true"/>
-															    <span>Campo obrigatorio </span>    
-														</div>
-													</div>
-													<div class="form-group">
-														<label class="col-md-3 control-label" for="cpf">CPF</label>
-														<div class="col-md-7">
-															  <input type="text" jsf:value="#{clienteBean.cliente.telefone}" 
-															       class="form-control cpf" jsf:id="cpf"/>
-															    <span>Campo obrigatorio </span>    
-														</div>
-													</div>
-                                                    <div class="form-group">
-														<label class="col-md-3 control-label">Plano</label>
-														<div class="col-md-7">
-															 <h:selectOneMenu label="Plano" value="#{clienteBean.cliente.plano}" styleClass="form-control required" required="true">
-											                      <f:selectItem itemLabel="Selecione o plano" noSelectionOption="true" ></f:selectItem>
-											                      <f:selectItems value="#{sistemaBean.lista}"  var="list" 
-											                                  itemValue="#{list.plano}"  itemLabel="#{list.plano}"/>		                     
-											                  </h:selectOneMenu>      
-											                  <span>Selecione um plano</span> 
-														</div>
-													</div>																																
+																																											
 													
-													<div class="form-group">
-																<div class="col-md-7 col-md-push-3">																																
-																		 <button jsf:id="bt_conf_incluir"  jsf:action="#{clienteBean.salvar}"  class="btn btn-primary"  >Incluir <i class="fa fa-user-plus "></i>
-																	        <f:ajax execute="@form " render="@form :msg" onevent="bt_lock"/>
-																	      </button>		     						
-																	      &nbsp;				      
-																	      <button jsf:outcome="cliente.xhtml" class="btn btn-danger" ">Voltar <i class="fa fa-undo"></i></button>
-																	
-																</div>
-													</div>										
+																						
 												</div>
 											</form>
 										</div>

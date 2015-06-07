@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 
 import br.com.jortec.model.Vendedor;
 import br.com.tecjor.dao.VendedorDao;
+import br.com.tecjor.servico.Email;
 import br.com.tecjor.servico.ImagemValidator;
 import br.com.tecjor.util.Alerta;
 
@@ -28,6 +29,7 @@ public class VendedorBean implements Serializable{
 	
 	List<Vendedor> lista = new ArrayList<Vendedor>();
 	Vendedor vendedor = new Vendedor();		
+	private String confirmeSenha;
 	private Part foto;
 	
 	@Autowired
@@ -38,6 +40,8 @@ public class VendedorBean implements Serializable{
 	
 	@Autowired
 	ImagemValidator img;
+	@Autowired
+	Email email;
 	
 	@PostConstruct
 	public void load(){
@@ -50,17 +54,38 @@ public class VendedorBean implements Serializable{
 	public void salvar() {
 		try {
 		if(vendedor.getId() == 0){	
-		  img.salvaImagem(vendedor.getPrimeiroNome()+lista.size()+1+".jpg");
-		  vendedor.setImg("/imagens/vendedor/"+vendedor.getPrimeiroNome()+lista.size()+1+".jpg");
-		  dao.salvar(vendedor);		
-		  alerta.info("vendedor salvo com sucesso");
-		  this.vendedor = new Vendedor();
+			if(vendedor.getSenha().equals(confirmeSenha)){
+				  img.salvaImagem(vendedor.getPrimeiroNome()+lista.size()+1+".jpg");
+				  vendedor.setImg("/imagens/vendedor/"+vendedor.getPrimeiroNome()+lista.size()+1+".jpg");
+				  dao.salvar(vendedor);		
+				  alerta.info("vendedor salvo com sucesso");
+				  this.vendedor = new Vendedor();
+			}else
+			{
+				Alerta.error("Senhas não conferi");
+			}
+		
 		}
-		else{		
-			img.salvaImagem(vendedor.getPrimeiroNome()+vendedor.getId()+".jpg");			
-			vendedor.setImg("/imagens/vendedor/"+vendedor.getPrimeiroNome()+vendedor.getId()+".jpg");
-			dao.atualiza(vendedor);
-			alerta.info("dados atualizados com sucesso");
+		else{	
+			Vendedor v = new Vendedor();
+			v = dao.buscaPor(vendedor.getLogin(), vendedor.getSenha());
+			  if(v!= null){
+				 if(v.getSenha().equals(vendedor.getSenha())){
+					 img.salvaImagem(vendedor.getPrimeiroNome()+vendedor.getId()+".jpg");			
+						vendedor.setImg("/imagens/vendedor/"+vendedor.getPrimeiroNome()+vendedor.getId()+".jpg");
+						vendedor.setSenha(confirmeSenha);
+						dao.atualiza(vendedor);
+						alerta.info("dados atualizados com sucesso");
+				 }
+				 else{
+					 Alerta.error("Senha antiga errada");
+				 }
+					 
+			 }else {
+				Alerta.error("Senha antiga errada");
+			}
+					
+			
 		}
 		} catch (IOException e) {
 			System.out.println("erro : "+e.getMessage()+e.getStackTrace());
@@ -92,6 +117,11 @@ public class VendedorBean implements Serializable{
 		lista = dao.listarPorNome(vendedor.getPrimeiroNome());
 	}
 	
+	public void enviarEmail(){
+		email.enviarEmail("testando a api", "tap");
+		Alerta.info("email enviado com sucesso");
+	}
+	
 	public void setVendedor(Vendedor vendedor) {
 		this.vendedor = vendedor;
 	}
@@ -115,6 +145,14 @@ public class VendedorBean implements Serializable{
 
 	public void setFoto(Part foto) {
 		this.foto = foto;
+	}
+
+	public String getConfirmeSenha() {
+		return confirmeSenha;
+	}
+
+	public void setConfirmeSenha(String confirmeSenha) {
+		this.confirmeSenha = confirmeSenha;
 	}
 	
 	

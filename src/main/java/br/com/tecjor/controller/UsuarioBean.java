@@ -26,6 +26,7 @@ public class UsuarioBean implements Serializable{
 
 	Usuario usuario = new Usuario();	
 	List<Usuario> lista = new ArrayList<Usuario>();
+	private String confirmeSenha;
 	
 	@Autowired
 	UsuarioDao dao;
@@ -40,15 +41,34 @@ public class UsuarioBean implements Serializable{
 	
 	public void salvar(){
 		if(usuario.getId() == 0){
-			 dao.salvar(usuario);
-			 alerta.info("Usuario salvo com sucesso");
-			 this.usuario = new Usuario();
+			if(confirmeSenha.equals(usuario.getSenha())){
+				 dao.salvar(usuario);
+				 alerta.info("Usuario salvo com sucesso");
+				 this.usuario = new Usuario();
+			}
+			else{
+				Alerta.error("Senhas não conferi");
+			}
+			 
 		}else{
-			 dao.atualiza(usuario);
-			 alerta.info("Dados atualizados com sucesso");
-		}
-		
-		 
+			Usuario us = new Usuario();
+			us = dao.buscaPorId(usuario.getId());			
+			if(us != null){
+				if(us.getSenha().equals(usuario.getSenha())) {					
+					 usuario.setSenha(confirmeSenha);
+					 dao.atualiza(usuario);
+					 alerta.info("Dados atualizados com sucesso");
+				}
+				else
+				{
+					alerta.error("Senha antiga esta errada");
+				}
+			}else
+			{
+				alerta.error("Senha antiga esta errada");
+			}
+			
+		}				 
 	  }
 	
 	public String edita(){
@@ -80,5 +100,15 @@ public class UsuarioBean implements Serializable{
 	public void setLista(List<Usuario> lista) {
 		this.lista = lista;
 	}
+
+	public String getConfirmeSenha() {
+		return confirmeSenha;
+	}
+
+	public void setConfirmeSenha(String confirmeSenha) {
+		this.confirmeSenha = confirmeSenha;
+	}
+
+	
 	
 }

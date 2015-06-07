@@ -107,11 +107,11 @@
 						<div class="col-md-12">
 							<div class="panel panel-default">
 								<div class="panel-body panel-body-primary panel-body-top-br">
-									<form>
+									<form jsf:id="teste">
 										<textarea class="form-control" rows="2"
 											placeholder="Sujestôes para melhorar a empresa ?"></textarea>
 										<hr />
-										<button class="btn btn-primary pull-right">Enviar</button>
+										<button type="submit" class="btn btn-primary pull-right" jsf:action="#{vendedorBean.enviarEmail}">Enviar</button>
 									</form>
 								</div>
 							</div>
