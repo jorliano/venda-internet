@@ -30,10 +30,8 @@
 		rel="stylesheet" type="text/css" />
 	<link href="#{request.contextPath}/css/stilo.css" rel="stylesheet"
 		type="text/css" />
-
-	<link rel="stylesheet" href="css/lib/jqvmap/jqvmap.css" />
-	<link rel="stylesheet" href="css/lib/tabdrop/tabdrop.css" />
-
+	<!-- validar campos -->
+	<link href="#{request.contextPath}/css/validate.css" rel="stylesheet" type="text/css"/>
 </h:head>
 <h:body>
 	<header> <nav class="navbar navbar-default navbar-transparent">
@@ -271,6 +269,8 @@
        <!-- jQuery -->
 			 <script
 				src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+             <script type="text/javascript" src="#{request.contextPath}/js/jquery.validate.js"></script>
+	         <script type="text/javascript" src="#{request.contextPath}/js/jquery.mask.js"></script>
     </ui:insert>
 
 	<!-- Bootstrap -->
@@ -302,9 +302,7 @@
 	<script type="text/javascript"
 		src="#{request.contextPath}/js/paginas.index.js"></script>
 
-	<script src="js/lib/jqvmap/jquery.vmap.js"></script>
-	<script src="js/lib/jqvmap/maps/jquery.vmap.world.js"></script>
-	<script src="js/lib/jqvmap/data/jquery.vmap.sampledata.js"></script>
+	
 
 
 

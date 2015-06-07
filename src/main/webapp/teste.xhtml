@@ -1,36 +1,67 @@
-<!DOCTYPE html>
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui"
 	xmlns:jsf="http://xmlns.jcp.org/jsf">
 <h:head>
-   
+	<!-- jQuery -->
+	<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+
+	
+	<script type="text/javascript" src="#{request.contextPath}/js/jquery.mask.js"></script>
+	<script type="text/javascript" src="#{request.contextPath}/js/jquery.validate.js"></script>
+
+	
+	<!-- Bootstrap -->
+	<link href="#{request.contextPath}/css/bootstrap.css" rel="stylesheet"
+		type="text/css" />	
+
+    <!-- validar campos -->
+	<link href="#{request.contextPath}/css/validate.css" rel="stylesheet" type="text/css"/>
 
 </h:head>
-
-<body>    
+<h:body>
+ 
+	<form jsf:id="html5Form"  class="validate" jsf:prependId="false">
+		
+		
+			    <p>
+                    <label>CPF:</label>
+                    <input type="text" name="cpf" jsf:id="cpf" class="form-control required " />
+                    <span>Campo requerido, informe um CPF válido</span>
+                </p>      
+                
+                <p>
+                    <label>CNPJ:</label>
+                    <input type="text" name="cnpj" id="cnpj" class="form-control required cnpj" />
+                    <span>Campo requerido, informe um CNPJ válido</span>
+                </p>  
+			
+		       <p>
+                    <label>Nome:</label>
+                    <input type="text" name="nome" id="nome" class="form-control required" minlength="5" />
+                    <span>Informe seu nome completo</span>
+                </p> 
+	</form>
    
-        <h:form >  		   		       		     	
-		     	<p:calendar id="german" value="#{clienteBean.cliente.dataCadastro}" locale="de" navigator="true" pattern="yyyy-MMM-dd" />
-		     	
-		      
-		       
-			     <div class="col-xs-12" style="margin-top: 18px;">
-	              <div class="panel panel-default " >
-					<!-- Default panel contents -->
-					<div class="panel-heading"><i class="fa fa-chart fa-2x"/> Registro das Instalaçẽs
-					<div class="panel-body" style="margin-right: 10px;">	
-					   	 <p:chart type="bar" model="#{graficoBean.animatedModel2}" style="width:400px;" />	
-					</div>
-		          </div>
-		          </div>
-		        </div>                                                      
-	     
-       </h:form>   
-       
-</body>
+   <script type="text/javascript">
+    $(function() {
+    	 /* mascaras */
+        
+        /* mascara data */
+        $('.data').mask('99/99/9999');
+        /* mascara cpf */
+        $('#cpf').mask('999.999.999-99');
+        /* mascara cnpj */
+        $('.cnpj').mask('99.999.999/9999-99');
+        /* mascara placa */        
+	});
 
+   </script>
+	
+
+</h:body>
 </html>

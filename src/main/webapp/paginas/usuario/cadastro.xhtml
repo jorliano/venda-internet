@@ -30,36 +30,37 @@
 								<div class="panel-body">									
 									<div class="panel panel-default m-bot0">
 										<div class="panel-body tab-content">
-											<h:form id="form" class="form-horizontal" prependId="false">												
+											<h:form id="form" class="form-horizontal validate" prependId="false">												
 													<h4>
 														<i class="fa fa-edit fa-fw"></i>  Dados de acesso
 													</h4>
 
-													<hr />
-
-													
+													<hr />                                             
 												<div class="tab-pane" id="change-password">													
                                                     <div class="form-group">                                                     
 														<label class="col-md-3 control-label"  for="nome">Nome </label>
 														<div class="col-md-7">
-															<input jsf:id="nome" type="text" jsf:value="#{usuarioBean.usuario.nome}"
-																class="form-control" required="true" jsf:label="Nome"/>
+															<input jsf:id="nome2" type="text" jsf:value="#{usuarioBean.usuario.nome}" minlength="4"
+																class="form-control required minlength" required="true" jsf:label="Nome2"/>														    
+														    <span>Campo obrigatorio com no minimo 4 caracteres</span>
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-md-3 control-label" for="login">Nome de Login</label>
 														<div class="col-md-7">
 															<input type="text" jsf:id="login" jsf:label="Login" jsf:value="#{usuarioBean.usuario.login}"
-																class="form-control" required="true" maxlength="20">															   
+																class="form-control required minlength" required="true" minlength="4" maxlength="20">															   
 															</input>	
+															<span>Campo obrigatorio com no min 4 e max 20 caracteres</span>
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-md-3 control-label" >Email Address</label>
 														<div class="col-md-7">
-															<input type="text" name="Email"
+															<input type="email" name="Email" jsf:id="email"
 																jsf:value="#{usuarioBean.usuario.email}"
-																class="form-control" required="true"/>
+																class="form-control required email" required="true"/>
+														   <span>Campo obrigatorio exemplo@com.br</span>	
 														</div>
 													</div>
 													<hr />
@@ -67,22 +68,23 @@
 														<label class="col-md-3 control-label">Senha</label>
 														<div class="col-md-7">
 															<input type="password" name="Senha" required="true"
-																class="form-control"
+																class="form-control required minlenght" minlenght="6"
 																jsf:value="#{usuarioBean.usuario.senha}" />
+															<span>Campo obrigatorio com no min 6 caracteres</span>	
 														</div>
 													</div>
 													<div class="form-group">
-														<label class="col-md-3 control-label"> Confirma
-															senha</label>
+														<label class="col-md-3 control-label"> Confirma</label>
 														<div class="col-md-7">
-															<input type="password" name="Confirma_senha"
-																class="form-control" required="true"
+															<input type="password" name="ConfirmeSenha" required="true"
+																class="form-control required minlenght" minlenght="6"
 																jsf:value="#{usuarioBean.usuario.senha}" />
+															<span>Campo obrigatorio com no min 6 caracteres</span>	
 														</div>
 													</div>
 													<div class="form-group">
 																<div class="col-md-7 col-md-push-3">																																
-																		 <button type="submit" jsf:id="bt_conf_inc"  jsf:action="#{usuarioBean.salvar}"  class="btn btn-primary"  >Salvar <i class="fa fa-user-plus "></i>
+																		 <button type="submit" jsf:id="bt_conf_inc"  jsf:action="#{usuarioBean.salvar}"  class="btn btn-primary bt_lock">Salvar <i class="fa fa-user-plus "></i>
 																		   <f:ajax execute="@form " render="@form :msg"/>
 																		 </button>		     						
 																		 &nbsp;																		 
@@ -92,6 +94,7 @@
 													</div>													
 
 												</div>
+												
 											</h:form>
 										</div>
 									</div>
@@ -102,8 +105,7 @@
 				</div>
 				</section>
 			</div>          
-            
-
+			
 		</ui:define>
 	</ui:composition>
 </body>
