@@ -27,27 +27,26 @@ $(function() {
     /* Telefone message */
     var foneMsg = "O telefone informado é inválido!";    
     
-     var validacao = false; 
-	
+    
+   
+      $('#topo').click(function(){
+   	    $('html, body').animate({scrollTop: 0},'slow');
+      });
+      
+    $(".alert").fadeOut(5000); 
        
     /* Aplicando Placeholder com texto do SPAN */
     $(this).find('input').each(function(){
         $(this).attr('placeholder',$(this).parent().find('span').html())
     });
     
-    $(".bt_lock").attr("disabled",true);  	
+    function bt_lock (){        	
+    	
+    	$('.validate span').hide();
+    };	
     
-    var cont =0;
-    	$(this).find('.required').each(function(){
-			if($(this).val() == ""){
-				cont++;
-			}			   	    	 
-       });
-    	$(function(){
-    		if (validacao == true && cont == 0){
-	    		 $(".bt_lock").attr("disabled",false);  	
-	    	} 
-    	});
+   
+    
 
      /*Requirido inputs defoco*/    
        $( ".required" ).blur(function() {
@@ -56,13 +55,13 @@ $(function() {
             if ( $(this).hasClass('required') && $.trim( $(this).val() ) == "" ){
                 $(this).removeClass('valid').addClass('invalid');                
                 $(this).parent().find('span').html(requiredMsg).fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(500);
-                validacao = false; 
+                 
             }
             else
             {
                 $(this).removeClass('invalid').addClass('valid');
                 $(this).parent().find('span').fadeOut(500);
-                validacao = true; 
+                 
             }					
     });	
     
@@ -74,12 +73,12 @@ $(function() {
                     $(this).removeClass('valid').addClass('invalid');
                     $(this).select();
                     $(this).parent().find('span').html(minMsg.replace(/X/g,$(this).attr('minlength'))).fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(500);
-                    validacao = false; 
+                     
                 }
                 else{
                     $(this).parent().find('span').fadeOut(500);
                     $(this).removeClass('invalid').addClass('valid');
-                    validacao = true; 
+                     
                 }
             }			
     });	
@@ -92,16 +91,16 @@ $(function() {
                     $(this).removeClass('valid').addClass('invalid');
                     $(this).select();
                     $(this).parent().find('span').html(maxMsg.replace(/X/g,$(this).attr('maxlength'))).fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(500);			
-                    validacao = false; 
+                     
                 }
                 else{
                     $(this).parent().find('span').html('').fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(500);
                     $(this).removeClass('invalid').addClass('valid');
-                    validacao = true; 
+                     
                 }
             }		
     });	
-    /* numerico value defoco*/
+    /* numerico value defoco
      $( ".numerico" ).blur(function() {		
 		
           	 if ( $(this).hasClass('numerico') ){
@@ -109,38 +108,38 @@ $(function() {
                 if (!nan.test($.trim( $(this).val() ))){
                     $(this).removeClass('valid').addClass('invalid');
                     $(this).parent().find('span').html(numericMsg).fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(500);
-                    $(this).select();
-                    validacao = false; 
+               p     $(this).select();
+                     
                 }
                 else{
                     $(this).parent().find('span').fadeOut(500);
                     $(this).removeClass('invalid').addClass('valid');
-                    validacao = true; 
+                     
                 }
             }
     });	
-   
+   */
    /* valida email*/
-     $( "email" ).blur(function() {		
+     $( ".email" ).blur(function() {		
 		if ( $(this).hasClass('email') ){
                 var er = new RegExp(/^[A-Za-z0-9_\-\.]+@[A-Za-z0-9_\-\.]{2,}\.[A-Za-z0-9]{2,}(\.[A-Za-z0-9])?/);
                 if (!er.test($.trim( $(this).val() ))){
                     $(this).removeClass('valid').addClass('invalid');
                     $(this).select();
                     $(this).parent().find('span').html(mailMsg).fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(500);
-                    validacao = false; 
+                     
                 }
                 else{
                     $(this).removeClass('invalid').addClass('valid');
                     $(this).parent().find('span').fadeOut(500);
-                    validacao = true; 
+                     
                 }
             } 
           	
     });	
 
    /* valida cpf*/
-     $( "cpf" ).blur(function() {		
+     $( ".cpf" ).blur(function() {		
 		
            if ( $(this).hasClass('cpf') ){
                 var cpf = $(this).val().replace('.','');
@@ -173,8 +172,7 @@ $(function() {
                     $(this).removeClass('valid').addClass('invalid');
                     $(this).select();
                     $(this).parent().find('span').html(cpfMsg).fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(500);
-                    valid = false;
-                    return false;
+                    
                 }
                 else{
                     $(this).removeClass('invalid').addClass('valid');
@@ -185,7 +183,7 @@ $(function() {
     });	
     
    /* valida cep*/
-     $( "cep" ).blur(function() {		
+     $( ".cep" ).blur(function() {		
 		
             if ( $(elm).hasClass('required') && $(elm).hasClass('cep') ){
 				var valcep = $.trim($(this).val().replace('-',''));
@@ -197,8 +195,7 @@ $(function() {
 					$(this).removeClass('valid').addClass('invalid');
 					$(this).select();
 					$(this).parent().find('span').html('Cep não encontrado, informe um CEP válido.').fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(500);
-					valid = false;
-					return false;								
+												
 				}else{
 					$(this).parent().find('span').fadeOut(500);
 					$(this).removeClass('invalid').addClass('valid');				
@@ -207,7 +204,7 @@ $(function() {
     });	
     
 /* valida data*/
-     $( "#data" ).blur(function() {		
+     $( ".data" ).blur(function() {		
 		
            if ( $(this).hasClass('data') ){
                 
@@ -217,8 +214,7 @@ $(function() {
                     $(this).removeClass('valid').addClass('invalid');
                     $(this).select();
                     $(this).parent().find('span').html(dataMsg).fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(500);
-                    valid = false;
-                    return false;   
+                      
                 }
                 var data        = sdata;
                 var dia         = data.substr(0,2);
@@ -231,30 +227,26 @@ $(function() {
                     $(this).removeClass('valid').addClass('invalid');
                     $(this).select();
                     $(this).parent().find('span').html(dataMsg).fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(500);
-                    valid = false;
-                    return false;            
+                              
                 }
                 if((mes==4||mes==6||mes==9||mes==11) && dia==31){
                     $(this).removeClass('valid').addClass('invalid');
                     $(this).select();
                     $(this).parent().find('span').html(dataMsg).fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(500);
-                    valid = false;
-                    return false;
+                    
                 }
                 if(mes==2 && (dia>29||(dia==29 && ano%4!=0))){
                     $(this).removeClass('valid').addClass('invalid');
                     $(this).select();
                     $(this).parent().find('span').html(dataMsg).fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(500);
-                    valid = false;
-                    return false;
+                    
                 }
                 if(ano < 1900)
                 {
                     $(this).removeClass('valid').addClass('invalid');
                     $(this).select();
                     $(this).parent().find('span').html(dataMsg).fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(500);
-                    valid = false;
-                    return false;
+                    
                 }                
                 else{
                     $(this).removeClass('invalid').addClass('valid');

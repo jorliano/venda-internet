@@ -16,33 +16,8 @@
     <ui:composition template="/sistema.xhtml">
 		<ui:define name="Titulo"><i class="fa fa-angle-right"></i> Grafico </ui:define>
 		<ui:define name="conteudo">
-        <h:form >     		   		       
-		     	<button type="submit" Class="btn btn-primary"  jsf:action="#{graficoBean.barGrafico}" >Mostrar Grafico
-		     	  <f:ajax execute="@form" render="@all"></f:ajax>
-		     	</button>     	
-		     	<div class="col-xs-4">
-			     <h:selectOneMenu  styleClass="form-control" value="#{graficoBean.nome}">						
-						<f:selectItem itemLabel="Primeiro tremestre" itemValue="primeiroTrimestre"/>
-						<f:selectItem itemLabel="Segundo  tremestre" itemValue="segundoTrimestre"/>
-						<f:selectItem itemLabel="Terceiro tremestre" itemValue="terceiroTrimestre"/>
-						<f:selectItem itemLabel="Quarto tremestre" itemValue="quartoTrimestre"/>											
-					</h:selectOneMenu>
-		        </div>
-		     
-		       
-			     <div class="col-xs-12" style="margin-top: 18px;">
-	              <div class="panel panel-default " >
-					<!-- Default panel contents -->
-					<div class="panel-heading"><i class="fa fa-chart fa-2x"/> Registro das Instalaçẽs
-					<div class="panel-body" style="margin-right: 10px;">	
-					   	<p:chart id="bar" type="bar" model="#{graficoBean.animatedModel2}" styleClass="block" responsive="true" />	
-					</div>
-		          </div>
-		          </div>
-		        </div>                                                      
-	     
-       </h:form>   
-       <form jsf:id="form1">
+        
+       <form jsf:id="form">
                <button type="submit" Class="btn btn-primary"  jsf:action="#{graficoBean.pieGrafico}" >Mostrar Grafico
                  <f:ajax execute="@form" render="@all"></f:ajax>
                </button>

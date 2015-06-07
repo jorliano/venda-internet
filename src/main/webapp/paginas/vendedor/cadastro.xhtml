@@ -29,7 +29,7 @@
 								<div class="panel-body">									
 									<div class="panel panel-default m-bot0">
 										<div class="panel-body tab-content">
-											<form jsf:id="form" class="form-horizontal" jsf:prependId="false" enctype="multipart/form-data">
+											<form jsf:id="form" class="form-horizontal validate" jsf:prependId="false" enctype="multipart/form-data">
 												<div class="tab-pane active" id="profile-settings">
 													<h4>
 														<i class="fa fa-user fa-fw"></i> Cadastro de vendedor
@@ -41,7 +41,7 @@
 														<label class="col-md-3 control-label">Profile Pic</label>
 														<div class="col-md-7">
 														    #{vendedorBean.vendedor.img}
-															<h:inputFile id="arquivo" value="#{vendedorBean.foto}" required="true" >
+															<h:inputFile id="arquivo" value="#{vendedorBean.foto}" >
 															 
 															</h:inputFile>
 															<div class="fileinput-preview thumbnail">
@@ -55,24 +55,26 @@
 				             
 													
 													<div class="form-group">
-														<label class="col-md-3 control-label">Primeiro
+														<label class="col-md-3 control-label" for="primeiroNome">Primeiro
 															Nome</label>
 														<div class="col-md-7">
-															<input type="text" name="first-name"
+															<input type="text" name="primeiroName" required="true"
 																jsf:value="#{vendedorBean.vendedor.primeiroNome}"
-																class="form-control" />
+																class="form-control required"/>
+																<span>Campo obrigatorio</span>
 														</div>
 													</div>
 													<div class="form-group">
-														<label class="col-md-3 control-label">Sobrenome</label>
+														<label class="col-md-3 control-label" for="sobreNome">Sobrenome</label>
 														<div class="col-md-7">
-															<input type="text" name="last-name"
+															<input type="text" name="sobreNome"
 																jsf:value="#{vendedorBean.vendedor.sobreNome}"
-																class="form-control" />
+																class="form-control required" required="true"/>
+														  <span>Campo obrigatorio</span>		
 														</div>
 													</div>
 													<div class="form-group">
-														<label class="col-md-3 control-label">RG</label>
+														<label class="col-md-3 control-label" for="rg">RG</label>
 														<div class="col-md-7">
 															<input type="text" name="rg"
 																jsf:value="#{vendedorBean.vendedor.rg}"
@@ -80,31 +82,44 @@
 														</div>
 													</div>
 													<div class="form-group">
-														<label class="col-md-3 control-label">Endereço</label>
+														<label class="col-md-3 control-label" for="endereco">Endereço</label>
 														<div class="col-md-5">
 															<input type="text" name="endereco"
 																jsf:value="#{vendedorBean.vendedor.endereco}"
-																class="form-control" />
+																class="form-control required" required="true" />
+																<span>Campo obrigatorio</span>
 														</div>
-														<div class="col-md-2">
+														<div class="col-md-2" for="numero">
 															<input type="number" name="numero" placeholder="N°"
 																jsf:value="#{vendedorBean.vendedor.numero}"
 																class="form-control" />
 														</div>
 													</div>
 													<div class="form-group">
-														<label class="col-md-3 control-label">Telefone</label>
+														<label class="col-md-3 control-label" for="telefone">Telefone</label>
 														<div class="col-md-7">
 															<input type="text" name="telefone"
 																jsf:value="#{vendedorBean.vendedor.telefone}"
-																class="form-control" />
+																class="form-control required telefone" required="true" />
+															<span>Campo obrigatorio</span>	
 														</div>
 													</div>
 													<div class="form-group">
-														<label class="col-md-3 control-label">Sobre o
+														<label class="col-md-3 control-label" for="data">Data Nascimento</label>
+														<div class="col-md-7">
+															<input type="text" name="data"
+																jsf:value="#{vendedorBean.vendedor.dataNascimento}"
+																class="form-control required telefone data" required="true" >
+																  <f:convertDateTime pattern="dd/MM/yyyy"/>
+																</input>
+															<span>Campo obrigatorio</span>	
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-md-3 control-label" for="sobre">Sobre o
 															vendedor</label>
 														<div class="col-md-7">
-															<h:inputTextarea id="about-textarea"
+															<h:inputTextarea id="sobre"
 																value="#{vendedorBean.vendedor.sobre}" rows="4"
 																styleClass="form-control" />
 														</div>
@@ -119,54 +134,59 @@
 													</h4>
 													<hr />
                                                     <div class="form-group">
-														<label class="col-md-3 control-label">Estatus</label>
+														<label class="col-md-3 control-label" for="estatus">Estatus</label>
 														<div class="col-md-7">
-															<h:selectOneMenu label="Estatus" value="#{vendedorBean.vendedor.estatus}" styleClass="form-control" required="true">
+															<h:selectOneMenu id="estatus" label="Estatus" value="#{vendedorBean.vendedor.estatus}" styleClass="form-control required" required="true">
 											                      <f:selectItem itemLabel="Ativo" itemValue="ativo"/>
-											                      <f:selectItem itemLabel="Inativo" itemValue="inativo"/>		                     
+											                      <f:selectItem itemLabel="Inativo" itemValue="inativo"/>	
+											                                           
 											                  </h:selectOneMenu> 
+											                  <span>Selecione uma opçao</span>	
 														</div>
 													</div>
 													<div class="form-group">
-														<label class="col-md-3 control-label">Nome de
+														<label class="col-md-3 control-label" for="login">Nome de
 															Login</label>
 														<div class="col-md-7">
-															<input type="text" name="user-name"
+															<input type="text" name="login"
 																jsf:value="#{vendedorBean.vendedor.login}"
-																class="form-control" />
+																class="form-control required minLenght" jsf:minlenght="4" required="true" />
+																<span>Campo obrigatorio minimo 4 caracter</span>	
 														</div>
 													</div>
 													<div class="form-group">
-														<label class="col-md-3 control-label">Email
+														<label class="col-md-3 control-label" for="email">Email
 															Address</label>
 														<div class="col-md-7">
-															<input type="text" name="email-address"
+															<input type="text" name="email"
 																jsf:value="#{vendedorBean.vendedor.email}"
-																class="form-control" />
+																class="form-control required email" required="true" />
+															<span>Campo obrigatorio exemplo@com.br</span>		
 														</div>
 													</div>
 													<hr />
 													<div class="form-group">
-														<label class="col-md-3 control-label">Senha</label>
+														<label class="col-md-3 control-label" for="senha">Senha</label>
 														<div class="col-md-7">
-															<input type="password" name="new-password-1"
-																class="form-control"
-																jsf:value="#{vendedorBean.vendedor.senha}" />
+															<input type="password" name="senha" class="form-control required"
+																jsf:value="#{vendedorBean.vendedor.senha}" required="true" />
+															<span>Campo obrigatorio</span>		
 														</div>
 													</div>
 													<div class="form-group">
-														<label class="col-md-3 control-label"> Confirma
+														<label class="col-md-3 control-label" for="confirmSenha"> Confirma
 															senha</label>
 														<div class="col-md-7">
-															<input type="password" name="new-password-2"
-																class="form-control"
+															<input type="password" name="confirmSenha"
+																class="form-control required" required="true"
 																jsf:value="#{vendedorBean.vendedor.senha}" />
+																<span>Campo obrigatorio</span>	
 														</div>
 													</div>
 													<div class="form-group">
 																<div class="col-md-7 col-md-push-3">																																
 																		 <button type="submit" jsf:id="topo"  jsf:action="#{vendedorBean.salvar}"  class="btn btn-primary"  >Salvar <i class="fa fa-user-plus "></i>
-																		    <f:ajax execute="@form " render="@form :msg"/>
+																		    <f:ajax execute="@form " render="@form :msg" onevent="bt_lock"/>
 																		 </button>	    																					 				
 																		 &nbsp;
 																		 <button jsf:outcome="vendedor" class="btn btn-danger" >Voltar <i class="fa fa-undo"></i></button>

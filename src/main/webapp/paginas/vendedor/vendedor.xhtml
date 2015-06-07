@@ -55,6 +55,7 @@
 	           </div>
 				<div class="input-group col-sm-4 col-sm-offset-8   ">
 					<input type="text" jsf:value="#{vendedorBean.vendedor.primeiroNome}" class="form-control" placeholder="Busca pelo nome"/>
+					<span class="hide">Busca por nome</span>
 					<span class="input-group-btn">
 							<button type="submit" jsf:id="topo" class="btn btn-primary" jsf:action="#{vendedorBean.busca}"><i class="fa fa-search"></i>
 					     	  <f:ajax execute="@form" render="@form"/>
@@ -64,16 +65,7 @@
 		</div>				    
         </h:form>   	        
         
-         <!-- jQuery -->
-			 <script
-				src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-		   
-		     <script type="text/javascript">			 
-		
-		       $('#topo').click(function(){
-		    	    $('html, body').animate({scrollTop: 0},'slow');
-		    	});
-		    </script> 
+        
     </ui:define> 
    </ui:composition>
 </body> 

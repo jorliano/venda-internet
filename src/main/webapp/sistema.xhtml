@@ -23,7 +23,8 @@
 	<link rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/1.5.2/css/ionicons.css" />
 
-	<link href="#{request.contextPath}/css/stiloPainel.css" rel="stylesheet" type="text/css"/>
+	<link href="#{request.contextPath}/css/stiloPainel.css"
+		rel="stylesheet" type="text/css" />
 	<link href="#{request.contextPath}/css/ionicons.min.css"
 		rel="stylesheet" type="text/css" />
 	<link href="#{request.contextPath}/css/daterranger.css"
@@ -31,7 +32,8 @@
 	<link href="#{request.contextPath}/css/stilo.css" rel="stylesheet"
 		type="text/css" />
 	<!-- validar campos -->
-	<link href="#{request.contextPath}/css/validate.css" rel="stylesheet" type="text/css"/>
+	<link href="#{request.contextPath}/css/validate.css" rel="stylesheet"
+		type="text/css" />
 </h:head>
 <h:body>
 	<header> <nav class="navbar navbar-default navbar-transparent">
@@ -98,10 +100,18 @@
 									<li><a
 										href="/venda-internet/paginas/usuario/usuario.xhtml"><i
 											class="fa fa-user-secret"></i><span>Add Administrador</span></a></li>
-									<li><a
-										href="/venda-internet/paginas/usuario/grafico.xhtml"><i
-											class="fa fa-bar-chart"></i><span>Grafico</span></a></li>
-
+									
+										<li class="menu-list "><a href=""><i
+												class="fa fa-pie-chart"></i> <span>Charts</span>
+												<i class="fa fa-angle-down pull-right"></i></a>
+											<ul class="sub-menu-list">
+												<li><a
+												href="/venda-internet/paginas/usuario/graficocliente.xhtml"><i
+													class="fa fa-bar-chart"></i>Cliente</a></li>
+												<li><a
+												href="/venda-internet/paginas/usuario/graficovendedor.xhtml"><i
+													class="fa fa-bar-chart"></i>Vendedor</a></li>
+											</ul></li>
 									<li class="nav-header">Configurações</li>
 									<li><a href="/venda-internet/configuracao.xhtml"><i
 											class="fa fa-wrench"></i><span>Sistema</span></a></li>
@@ -215,13 +225,13 @@
 													<div class="col-xs-3">
 														<i class="fa fa-bar-chart fa-5x"></i>
 													</div>
-													<div class="col-xs-9 text-right">	
-													   <div class="huge">2</div>													
+													<div class="col-xs-9 text-right">
+														<div class="huge">2</div>
 														<div>Grafico</div>
 													</div>
 												</div>
 											</div>
-											<a href="/venda-internet/paginas/usuario/grafico.xhtml">
+											<a href="/venda-internet/paginas/usuario/graficocliente.xhtml">
 												<div class="panel-footer">
 													<span class="pull-left">Veja Detalhes</span> <span
 														class="pull-right"><i
@@ -265,20 +275,22 @@
 	</div>
 	</footer>
 
-    <ui:insert name="javascript">
-       <!-- jQuery -->
-			 <script
-				src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-             <script type="text/javascript" src="#{request.contextPath}/js/jquery.validate.js"></script>
-	         <script type="text/javascript" src="#{request.contextPath}/js/jquery.mask.js"></script>
-    </ui:insert>
+	<ui:insert name="javascript">
+		<!-- jQuery -->
+		<script
+			src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script type="text/javascript"
+			src="#{request.contextPath}/js/jquery.validate.js"></script>
+		<script type="text/javascript"
+			src="#{request.contextPath}/js/jquery.mask.js"></script>
+		
+	</ui:insert>
 
 	<!-- Bootstrap -->
 	<script type="text/javascript"
 		src="#{request.contextPath}/js/bootstrap.min.js"></script>
+   
 
-    
-		   
 	<script type="text/javascript"
 		src="#{request.contextPath}/js/slimscroll.min.js"></script>
 	<script type="text/javascript"
@@ -302,7 +314,23 @@
 	<script type="text/javascript"
 		src="#{request.contextPath}/js/paginas.index.js"></script>
 
-	
+
+  <script >
+  $(document).ready(function() {  
+
+      
+      //mascaras
+          $(function(){  
+
+        	    $(".cpf").mask("999.999.999-99");   
+        	    $(".telefone").mask("(99) 9999-9999");
+        	    $(".cep").mask("99999-999");
+        	    $(".data").mask("99/99/9999");
+        	             
+		        
+		    });
+  });
+  </script>
 
 
 
