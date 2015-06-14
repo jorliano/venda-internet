@@ -1,4 +1,4 @@
-package br.com.tecjor.controller;
+package br.com.jortec.controller;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -11,9 +11,9 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import br.com.jortec.model.Usuario;
-import br.com.tecjor.dao.UsuarioDao;
-import br.com.tecjor.servico.ImagemValidator;
-import br.com.tecjor.util.Alerta;
+import br.com.jortec.dao.UsuarioDao;
+import br.com.jortec.servico.ImagemValidator;
+import br.com.jortec.util.Alerta;
 
 @Controller
 @Scope("request")

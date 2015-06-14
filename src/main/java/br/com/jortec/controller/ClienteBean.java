@@ -1,4 +1,4 @@
-package br.com.tecjor.controller;
+package br.com.jortec.controller;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -19,8 +19,9 @@ import org.springframework.stereotype.Controller;
 import br.com.jortec.model.Cliente;
 import br.com.jortec.model.Usuario;
 import br.com.jortec.model.Vendedor;
-import br.com.tecjor.dao.ClienteDao;
-import br.com.tecjor.util.Alerta;
+import br.com.jortec.dao.ClienteDao;
+import br.com.jortec.util.Alerta;
+
 
 
 @Controller

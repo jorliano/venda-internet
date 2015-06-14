@@ -1,4 +1,4 @@
-package br.com.tecjor.servico;
+package br.com.jortec.servico;
 
 import java.io.BufferedInputStream;
 import java.io.File;

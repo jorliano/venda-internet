@@ -1,4 +1,4 @@
-package br.com.tecjor.controller;
+package br.com.jortec.controller;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -13,10 +13,10 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import br.com.jortec.model.Vendedor;
-import br.com.tecjor.dao.VendedorDao;
-import br.com.tecjor.servico.Email;
-import br.com.tecjor.servico.ImagemValidator;
-import br.com.tecjor.util.Alerta;
+import br.com.jortec.dao.VendedorDao;
+import br.com.jortec.servico.Email;
+import br.com.jortec.servico.ImagemValidator;
+import br.com.jortec.util.Alerta;
 
 @Controller
 @Scope("request")

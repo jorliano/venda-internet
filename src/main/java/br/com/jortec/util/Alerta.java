@@ -1,4 +1,4 @@
-package br.com.tecjor.util;
+package br.com.jortec.util;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;

@@ -1,4 +1,4 @@
-package br.com.tecjor.controller;
+package br.com.jortec.controller;
 
  
 import java.io.Serializable;
@@ -19,7 +19,7 @@ import org.springframework.stereotype.Controller;
 
 import br.com.jortec.model.Cliente;
 import br.com.jortec.model.Vendedor;
-import br.com.tecjor.dao.GraficoDao;
+import br.com.jortec.dao.GraficoDao;
  
 @Controller
 @Scope("request")

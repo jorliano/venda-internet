@@ -1,4 +1,4 @@
-package br.com.tecjor.servico;
+package br.com.jortec.servico;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 
 import br.com.jortec.model.Usuario;
 import br.com.jortec.model.Vendedor;
-import br.com.tecjor.dao.UsuarioDao;
-import br.com.tecjor.dao.VendedorDao;
+import br.com.jortec.dao.UsuarioDao;
+import br.com.jortec.dao.VendedorDao;
 
 @Service
 @Scope("request")

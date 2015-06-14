@@ -1,4 +1,4 @@
-package br.com.tecjor.controller;
+package br.com.jortec.controller;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -12,11 +12,11 @@ import org.springframework.stereotype.Controller;
 
 import br.com.jortec.model.DadosdeEmail;
 import br.com.jortec.model.Sistema;
-import br.com.tecjor.dao.ClienteDao;
-import br.com.tecjor.dao.SistemaDao;
-import br.com.tecjor.dao.UsuarioDao;
-import br.com.tecjor.dao.VendedorDao;
-import br.com.tecjor.util.Alerta;
+import br.com.jortec.dao.ClienteDao;
+import br.com.jortec.dao.SistemaDao;
+import br.com.jortec.dao.UsuarioDao;
+import br.com.jortec.dao.VendedorDao;
+import br.com.jortec.util.Alerta;
 
 @Controller
 @Scope("request")

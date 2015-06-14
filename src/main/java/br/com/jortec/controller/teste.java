@@ -1,7 +1,7 @@
-package br.com.tecjor.controller;
+package br.com.jortec.controller;
 
 import br.com.jortec.model.Cliente;
-import br.com.tecjor.dao.ClienteDao;
+import br.com.jortec.dao.ClienteDao;
 
 
 

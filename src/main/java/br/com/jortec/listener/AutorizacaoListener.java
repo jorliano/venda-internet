@@ -7,7 +7,7 @@ import javax.faces.event.PhaseEvent;
 import javax.faces.event.PhaseId;
 import javax.faces.event.PhaseListener;
 
-import br.com.tecjor.controller.UsuarioLogado;
+import br.com.jortec.controller.UsuarioLogado;
 
 public class AutorizacaoListener implements PhaseListener{
 

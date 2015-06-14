@@ -1,4 +1,4 @@
-package br.com.tecjor.servico;
+package br.com.jortec.servico;
 
 import java.util.Properties;
 
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.jortec.model.DadosdeEmail;
 import br.com.jortec.model.Sistema;
-import br.com.tecjor.dao.SistemaDao;
+import br.com.jortec.dao.SistemaDao;
 
 @Service
 public class Email

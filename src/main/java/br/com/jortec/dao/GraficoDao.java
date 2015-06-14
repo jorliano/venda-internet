@@ -1,4 +1,4 @@
-package br.com.tecjor.dao;
+package br.com.jortec.dao;
 
 import java.util.List;
 

@@ -1,8 +1,5 @@
-package br.com.tecjor.controller;
+package br.com.jortec.controller;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.context.Flash;
 
@@ -12,8 +9,8 @@ import org.springframework.stereotype.Controller;
 
 import br.com.jortec.model.Usuario;
 import br.com.jortec.model.Vendedor;
-import br.com.tecjor.servico.AutenticaLogin;
-import br.com.tecjor.util.Alerta;
+import br.com.jortec.servico.AutenticaLogin;
+import br.com.jortec.util.Alerta;
 
 @Controller
 @Scope("request")
@@ -21,7 +18,7 @@ public class LoginBean {
   
 	private String Login;
 	private String Senha;
-	private String estatus;
+	private String estatus ="administrador";
 	
 	@Autowired
 	UsuarioLogado usuarioLogado;

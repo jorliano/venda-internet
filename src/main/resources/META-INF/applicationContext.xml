@@ -15,7 +15,7 @@
 
     <context:annotation-config/>
 	<!-- Informa o pacote onde o Spring ira buscar as classes anotadas (@Controller, @Service...)  -->
-	<context:component-scan base-package="br.com.tecjor" />
+	<context:component-scan base-package="br.com.jortec" />
  
 	<!-- Diz ao Spring que ele deve usar a configuração das annotations -->
 	<tx:annotation-driven/>
@@ -24,7 +24,7 @@
 	  <property name="driverClassName" value="com.mysql.jdbc.Driver" />
 	  <property name="url" value="jdbc:mysql://localhost:3306/vendaweb" />
 	  <property name="username" value="root" />
-	  <property name="password" value="" />	  
+	  <property name="password" value="root" />	  
 	</bean>
 	
 	<bean id="entityManagerFactory" 
