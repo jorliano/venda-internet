@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 import javax.faces.context.FacesContext;
 import javax.servlet.http.Part;
@@ -14,6 +15,8 @@ import javax.servlet.http.Part;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
+
+import br.com.jortec.model.Vendedor;
 
 @Service
 @Scope("session")
@@ -45,7 +48,7 @@ public class ImagemValidator {
 	                        fileSavePath = fileSavePath.substring(0,fileSavePath.indexOf("/imagens"));
 	                        realSavePath = fileSavePath+"/imagens/"+caminho;	                        
 	                      
-	                        System.out.println(fileSavePath);
+	                        System.out.println(realSavePath);
 	                        
 	                        try {
 	                        	System.out.println(foto.getSize());
@@ -78,22 +81,78 @@ public class ImagemValidator {
 	        }
 	        return arquivoSalvo;
 	    }
-       public void salvaImagem(String nomeImagem) throws IOException{    	   
-    	   if(realSavePath != null){
-	    	   InputStream input = new BufferedInputStream(new FileInputStream(realSavePath));           	      
-	           byte[] conteudoArquivo = new byte[input.available()];
-	           input.read(conteudoArquivo);	
-	       	
-	           FileOutputStream outPut = new FileOutputStream(new File(fileSavePath+"/imagens/vendedor/"+nomeImagem));
-	           outPut.write(conteudoArquivo);
-	           input.close();
-	           //outPut.flush();
-	           outPut.close();
-	       
-    	   }
-    	   System.out.println(fileSavePath+"/imagens/vendedor/"+nomeImagem);
+	    public void caregarImagems(List<Vendedor> lista){
+	    	   
+	    	   InputStream input;
+			try {
+				
+				for (int i = 0; i < lista.size(); i++) {
+					if(lista.get(i).getUrl() != null){
+					 FileOutputStream outPut = new FileOutputStream("/home/jorliano/Downloads/wildfly-8.2.0.Final/standalone/deployments/venda-internet.war"+lista.get(i).getUrl());
+	                 outPut.write(lista.get(i).getImg());                 
+	                 outPut.flush();
+	                 outPut.close();
+	                 System.out.println("/home/jorliano/Downloads/wildfly-8.2.0.Final/standalone/deployments/venda-internet.war"+lista.get(i).getUrl());
+					}
+				}	 								
+				
+			}
+			catch (FileNotFoundException e) {			
+				e.printStackTrace();
+			}   
+			catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}        	      		          
+	    	   
+	       }
+	   
+       public byte[] salvaImagem(){ 	       	       	  
+		try {
+			
+			InputStream  input = new BufferedInputStream(new FileInputStream(realSavePath));
+			byte[] conteudoArquivo = new byte[input.available()];
+			input.read(conteudoArquivo);
+			input.close();
+			
+			System.out.println("imagem salva");
+			return conteudoArquivo;
+		}
+		catch (FileNotFoundException e) {			
+			e.printStackTrace();
+		}   
+		catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+          
+          return null; 	
+          
+    	   
        }
-	    
+       public void caregarImagem(Vendedor v){
+    	   
+    	   InputStream input;
+		try {		
+			
+				if(v.getUrl() != null){
+				 FileOutputStream outPut = new FileOutputStream("/home/jorliano/Downloads/wildfly-8.2.0.Final/standalone/deployments/venda-internet.war"+v.getUrl());
+                 outPut.write(v.getImg());                 
+                 outPut.flush();
+                 outPut.close();                
+				}
+				 								
+			
+		}
+		catch (FileNotFoundException e) {			
+			e.printStackTrace();
+		}   
+		catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}        	      		          
+    	   
+       }
 	    private boolean verificaTipoArquivo(String nomeArquivo) {
 	        if (nomeArquivo.length() > 0) {
 	            String[] tipoParts = nomeArquivo.split("\\.");

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import br.com.jortec.model.Usuario;
 import br.com.jortec.model.Vendedor;
 import br.com.jortec.servico.AutenticaLogin;
+import br.com.jortec.servico.ImagemValidator;
 import br.com.jortec.util.Alerta;
 
 @Controller
@@ -29,6 +30,9 @@ public class LoginBean {
 	@Autowired
 	Alerta alerta;
 	
+	@Autowired
+	ImagemValidator img;
+	
 	public String logar(){		
 		
 		if(estatus.equals("administrador")){			
@@ -42,7 +46,8 @@ public class LoginBean {
 			
 		}else{			
 			Vendedor vendedor = autenticaLogin.autenticaLogVendedor(Login, Senha);
-			if(vendedor != null){				
+			if(vendedor != null){		
+				img.caregarImagem(vendedor);
 				usuarioLogado.logarVendedor(vendedor);
 				usuarioLogado.setNomeLogado(vendedor.getPrimeiroNome());
 				return "sistema?faces-redirect=true";

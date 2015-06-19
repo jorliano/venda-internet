@@ -29,8 +29,8 @@
 								<div class="panel-body">									
 									<div class="panel panel-default m-bot0">
 										<div class="panel-body tab-content">
-											<form jsf:id="form" class="form-horizontal validate" jsf:prependId="false" enctype="multipart/form-data">
-												<div class="tab-pane active" id="profile-settings">
+											<div class="tab-pane active" id="profile-settings">
+												 <form jsf:id="form" class="form-horizontal validate" jsf:prependId="false" enctype="multipart/form-data">
 													<h4>
 														<i class="fa fa-user fa-fw"></i> Cadastro de vendedor
 													</h4>
@@ -38,22 +38,23 @@
 													<hr />
 
 													<div class="form-group">
-														<label class="col-md-3 control-label">Profile Pic</label>
+														<label class="col-md-3 control-label">Imagem</label>
 														<div class="col-md-7">
 														    #{vendedorBean.vendedor.img}
 															<h:inputFile id="arquivo" value="#{vendedorBean.foto}" >
-															 
+															   <f:ajax execute="@all" render="@form" listener="#{vendedorBean.carregaFoto}"/>	
 															</h:inputFile>
 															<div class="fileinput-preview thumbnail">
-																	<img  src="#{vendedorBean.vendedor.img}" style="height: 120px;width: 120px" />
+																	<img  src="#{request.contextPath}#{vendedorBean.vendedor.url}" style="height: 120px;width: 120px" />
 															</div>	
-															<h:commandButton  value="Carregar" action="#{vendedorBean.carregaFoto}">
-															    <f:ajax execute="@all" render="@all"/>															   
-															</h:commandButton>																												
+															<button  jsf:id="bt" value="Carregar" class="btn btn-info">Mudar
+															    <f:ajax execute="@all" render="@form"/>															   
+															</button>																												
 															</div>
 														</div>	                                                    
 				             
-													
+												</form>
+												<form jsf:id="form2" class="form-horizontal validate" jsf:prependId="false" >	
 													<div class="form-group">
 														<label class="col-md-3 control-label" for="primeiroNome">Primeiro
 															Nome</label>
@@ -109,9 +110,7 @@
 														<div class="col-md-7">
 															<input type="text" name="data"
 																jsf:value="#{vendedorBean.vendedor.dataNascimento}"
-																class="form-control required telefone data" required="true" >
-																  <f:convertDateTime pattern="dd/MM/yyyy"/>
-																</input>
+																class="form-control required telefone data" required="true" />
 															<span>Campo obrigatorio</span>	
 														</div>
 													</div>
@@ -125,10 +124,7 @@
 														</div>
 													</div>
 
-
-
-												</div>
-												<div class="tab-pane" id="change-password">
+												
 													<h4>
 														<i class="fa fa-edit fa-fw"></i> Dados de acesso
 													</h4>
@@ -150,8 +146,8 @@
 														<div class="col-md-7">
 															<input type="text" name="login"
 																jsf:value="#{vendedorBean.vendedor.login}"
-																class="form-control required minLenght" jsf:minlenght="4" required="true" />
-																<span>Campo obrigatorio minimo 4 caracter</span>	
+																class="form-control " />
+																	
 														</div>
 													</div>
 													<div class="form-group">
@@ -182,21 +178,21 @@
 																jsf:value="#{vendedorBean.confirmeSenha}" />
 																<span>Campo obrigatorio</span>	
 														</div>
-													</div>
-													<div class="form-group">
+													</div>													
+													   <div class="form-group">
 																<div class="col-md-7 col-md-push-3">																																
 																		 <button type="submit" jsf:id="topo"  jsf:action="#{vendedorBean.salvar}"  class="btn btn-primary"  >Salvar <i class="fa fa-user-plus "></i>
 																		    <f:ajax execute="@form " render="@form :msg" onevent="bt_lock"/>
-																		 </button>	    																					 				
+																		 </button>																					 																																		 																		
 																		 &nbsp;
 																		 <button jsf:outcome="vendedor" class="btn btn-danger" >Voltar <i class="fa fa-undo"></i></button>
-																	
+																																		
 																</div>
 													</div>
-													<h:inputHidden value="#{vendedorBean.vendedor.id}" />
-
-												</div>
-											</form>
+													
+													
+                                                </form>
+											</div>																		
 										</div>
 									</div>
 								</div>

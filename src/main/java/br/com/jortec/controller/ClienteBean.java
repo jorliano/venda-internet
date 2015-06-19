@@ -44,9 +44,11 @@ List<Cliente> listaDoVendedor = new ArrayList<Cliente>();
  
 @PostConstruct 
 public void loade(){
-	 lista = dao.listar();	
-	 listaDoVendedor = dao.listarPorVendedor(usuarioLogado.getVendedor().getId());
-	 cliente.setVendedor(usuarioLogado.getVendedor()); 	 
+	 lista = dao.listar();		 
+	 if(usuarioLogado.getVendedor() != null){
+		 listaDoVendedor = dao.listarPorVendedor(usuarioLogado.getVendedor().getId());
+		 cliente.setVendedor(usuarioLogado.getVendedor()); 	
+	 }
  }
 
   public void salvar(){  			 

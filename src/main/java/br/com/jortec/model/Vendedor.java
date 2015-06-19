@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 @Entity
@@ -55,8 +56,11 @@ public class Vendedor implements Serializable{
 	@Column(name="dataNasc")
 	private String DataNasc;
     
-	@Column(name="setImg")
-	public String Img;
+	@Column(name="url")
+	private String Url;
+	
+	@Lob	    
+	private byte[] img;
 	
 	@Column(name="estatus")
 	private String Estatus;
@@ -160,14 +164,15 @@ public class Vendedor implements Serializable{
 		DataNasc = dataNasc;
 	}
 
-	public String getImg() {
-		return Img;
+	public String getUrl() {
+		return Url;
 	}
 
-	public void setImg(String img) {
-		Img = img;
+	public void setUrl(String url) {
+		Url = url;
 	}
 
+	
 	public String getEstatus() {
 		return Estatus;
 	}
@@ -182,6 +187,14 @@ public class Vendedor implements Serializable{
 
 	public void setDataNascimento(String dataNascimento) {
 		DataNascimento = dataNascimento;
+	}
+
+	public byte[] getImg() {
+		return img;
+	}
+
+	public void setImg(byte[] img) {
+		this.img = img;
 	}
     
 	

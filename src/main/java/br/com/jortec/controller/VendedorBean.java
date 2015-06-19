@@ -46,17 +46,22 @@ public class VendedorBean implements Serializable{
 	@PostConstruct
 	public void load(){
 		lista = dao.listar();
+		
+		if(!lista.isEmpty())
+			img.caregarImagems(lista);
 	}
 	
 	public String edita(){		
 		return "edita";
 	}
 	public void salvar() {
-		try {
+		
 		if(vendedor.getId() == 0){	
 			if(vendedor.getSenha().equals(confirmeSenha)){
-				  img.salvaImagem(vendedor.getPrimeiroNome()+lista.size()+1+".jpg");
-				  vendedor.setImg("/imagens/vendedor/"+vendedor.getPrimeiroNome()+lista.size()+1+".jpg");
+				
+				
+				  vendedor.setImg(img.salvaImagem());
+				  vendedor.setUrl("/imagens/"+vendedor.getPrimeiroNome()+vendedor.getSobre()+".jpg");
 				  dao.salvar(vendedor);		
 				  alerta.info("vendedor salvo com sucesso");
 				  this.vendedor = new Vendedor();
@@ -68,27 +73,28 @@ public class VendedorBean implements Serializable{
 		}
 		else{	
 			Vendedor v = new Vendedor();
-			v = dao.buscaPor(vendedor.getLogin(), vendedor.getSenha());
-			  if(v!= null){
-				 if(v.getSenha().equals(vendedor.getSenha())){
-					 img.salvaImagem(vendedor.getPrimeiroNome()+vendedor.getId()+".jpg");			
-						vendedor.setImg("/imagens/vendedor/"+vendedor.getPrimeiroNome()+vendedor.getId()+".jpg");
-						vendedor.setSenha(confirmeSenha);
+			//v = dao.buscaPor(vendedor.getLogin(), vendedor.getSenha());
+			 // if(v!= null){
+				// if(v.getSenha().equals(vendedor.getSenha())){
+					 if(img.salvaImagem() != null){
+						 System.out.println("tem imagem");
+					    vendedor.setImg(img.salvaImagem());
+					    vendedor.setUrl("/imagens/"+vendedor.getPrimeiroNome()+vendedor.getSobre()+".jpg");
+					 }  
+						
+						//vendedor.setSenha(confirmeSenha);
 						dao.atualiza(vendedor);
 						alerta.info("dados atualizados com sucesso");
-				 }
-				 else{
-					 Alerta.error("Senha antiga errada");
-				 }
+				// }
+				// else{
+				//	 Alerta.error("Senha antiga errada");
+				// }
 					 
-			 }else {
-				Alerta.error("Senha antiga errada");
-			}
+			// }else {
+			//	Alerta.error("Senha antiga errada");
+		//	}
 					
 			
-		}
-		} catch (IOException e) {
-			System.out.println("erro : "+e.getMessage()+e.getStackTrace());
 		}
 		
 	}
@@ -104,10 +110,9 @@ public class VendedorBean implements Serializable{
 	
 	public void carregaFoto() throws IOException{
 		
-		if(foto != null){
-			System.out.println("arquivo nulo");
-		img.Upload(foto, "vendedor.jpg");
-		vendedor.setImg("/imagens/vendedor.jpg");
+		if(foto != null){			
+		  img.Upload(foto, "vendedor.jpg");
+		  vendedor.setUrl("/imagens/vendedor.jpg");
 		
 		}
 		

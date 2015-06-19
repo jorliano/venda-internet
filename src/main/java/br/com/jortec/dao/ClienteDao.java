@@ -3,6 +3,7 @@ package br.com.jortec.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
@@ -51,11 +52,14 @@ public class ClienteDao {
 
 	//Para vendedor
 	public List<Cliente> listarPorVendedor(long id){	
-		
+	 try{	
 		String consulta = "select c from Cliente c  where c.vendedor.id=:id  and estatus = 'pendente' order by dataCadastro desc";		
 		TypedQuery<Cliente> query = manager.createQuery(consulta, Cliente.class);	
 		query.setParameter("id", id);		
 		return query.getResultList();
+	 }catch(NoResultException e){
+     	return null;
+     }		
 	}
 	
 	public List<Cliente> buscaDoVendedorPorNome(String nome,long id){
