@@ -27,10 +27,12 @@ public class Email
 	
 	  DadosdeEmail email = new DadosdeEmail();
 	
-      public void enviarEmail(String menssage ,String titulo){
+      public boolean enviarEmail(String menssage ,String titulo){
     	  
     	  email = dao.busca();
     	  
+    	  if(email != null)
+    	  {	  
     	    Properties props = new Properties();
           // Parâmetros de conexão com servidor Gmail 
 		 
@@ -39,16 +41,17 @@ public class Email
 			props.put("mail.smtp.host", "smtp.gmail.com");
 			props.put("mail.smtp.port", "587");
 
-          Session session = Session.getDefaultInstance(props,
+            Session session = Session.getDefaultInstance(props,
                       new javax.mail.Authenticator() {
                            protected PasswordAuthentication getPasswordAuthentication()
                            {
                                  return new PasswordAuthentication(email.getRemetente(), email.getSenha());
                            }
                       });
-
-          // Ativa Debug para sessão 
-          session.setDebug(true);
+             
+            System.out.println("Email : "+email.getRemetente()+" senha :"+email.getSenha());
+            // Ativa Debug para sessão 
+             session.setDebug(true);
 
           try {
 
@@ -63,12 +66,15 @@ public class Email
                 message.setText(menssage);
                 //Método para enviar a mensagem criada
                 Transport.send(message);
-
+                return true;
                
            } catch (MessagingException e) {
-                throw new RuntimeException(e);
+        	   return false;                           
           }
-		
-    	}
+    	 }
+    	  else{
+    		  return false;
+    	  }	  
+     }
 }
 

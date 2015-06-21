@@ -107,11 +107,13 @@
 						<div class="col-md-12">
 							<div class="panel panel-default">
 								<div class="panel-body panel-body-primary panel-body-top-br">
-									<form jsf:id="teste">
-										<textarea class="form-control" rows="2"
+									<form jsf:id="form1" class="validate" jsf:prependId="false">
+										<textarea jsf:id="conteudo" class="form-control" rows="2" jsf:value="#{vendedorBean.conteudoEmail}"
 											placeholder="Sujestôes para melhorar a empresa ?"></textarea>
 										<hr />
-										<button type="submit" class="btn btn-primary pull-right" jsf:action="#{vendedorBean.enviarEmail}">Enviar</button>
+										<button jsf:id="topo" type="submit" class="btn btn-primary pull-right" jsf:action="#{vendedorBean.enviarEmail}">Enviar
+										 <f:ajax execute="@form" render="@form :msg"></f:ajax>
+										</button>
 									</form>
 								</div>
 							</div>

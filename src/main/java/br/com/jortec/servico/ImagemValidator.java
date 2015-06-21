@@ -87,7 +87,8 @@ public class ImagemValidator {
 			try {
 				
 				for (int i = 0; i < lista.size(); i++) {
-					if(lista.get(i).getUrl() != null){
+					if(lista.get(i).getImg() != null){
+						
 					 FileOutputStream outPut = new FileOutputStream("/home/jorliano/Downloads/wildfly-8.2.0.Final/standalone/deployments/venda-internet.war"+lista.get(i).getUrl());
 	                 outPut.write(lista.get(i).getImg());                 
 	                 outPut.flush();
@@ -109,14 +110,18 @@ public class ImagemValidator {
 	   
        public byte[] salvaImagem(){ 	       	       	  
 		try {
-			
-			InputStream  input = new BufferedInputStream(new FileInputStream(realSavePath));
-			byte[] conteudoArquivo = new byte[input.available()];
-			input.read(conteudoArquivo);
-			input.close();
-			
-			System.out.println("imagem salva");
-			return conteudoArquivo;
+			if(realSavePath != null){
+
+				InputStream  input = new BufferedInputStream(new FileInputStream(realSavePath));
+				byte[] conteudoArquivo = new byte[input.available()];
+				input.read(conteudoArquivo);
+				input.close();
+				
+				System.out.println("imagem salva");
+				return conteudoArquivo;
+			}else{
+				return null;
+			}
 		}
 		catch (FileNotFoundException e) {			
 			e.printStackTrace();

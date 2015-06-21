@@ -46,6 +46,19 @@ public  class VendedorDao {
         	return null;
         }				       
 	}
+	
+	public Vendedor buscaPorId(long id) {
+		 
+        try{
+        	return manager
+        			.createQuery("select v from Vendedor v "
+        			        + "where  id =:id", Vendedor.class)
+        			        .setParameter("id",id)        			        
+        			        .getSingleResult();
+        }catch(NoResultException e){
+        	return null;
+        }				       
+	}
 
 	public void atualiza(Vendedor vendedor) {
 		manager.merge(vendedor);

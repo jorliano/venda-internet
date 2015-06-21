@@ -20,6 +20,7 @@ import br.com.jortec.model.Cliente;
 import br.com.jortec.model.Usuario;
 import br.com.jortec.model.Vendedor;
 import br.com.jortec.dao.ClienteDao;
+import br.com.jortec.servico.ImprimirInstalacao;
 import br.com.jortec.util.Alerta;
 
 
@@ -32,12 +33,15 @@ public class ClienteBean implements Serializable{
 Cliente cliente = new Cliente();
 List<Cliente> lista = new ArrayList<Cliente>();
 List<Cliente> listaDoVendedor = new ArrayList<Cliente>();
-  
+
  @Autowired
  ClienteDao dao;
  
  @Autowired
  UsuarioLogado usuarioLogado;
+ 
+ @Autowired
+ ImprimirInstalacao print;
  
  @Autowired
  Alerta alerta;
@@ -104,6 +108,13 @@ public void loade(){
 		lista = dao.buscaDoInstalacoPorNome(cliente.getNome());      
  }
 
+  public void imprimir(){
+	  
+	  
+	  print.imprime(cliente);
+	  
+  }
+    
 public Cliente getCliente() {
 	return cliente;
 }

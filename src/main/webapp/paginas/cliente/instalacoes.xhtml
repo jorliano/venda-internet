@@ -53,8 +53,14 @@
                   <label>Plano : #{list.plano}</label>
                   <br/>
                   <div class="pull-right">
-                      <button jsf:id="bt_imprimir" type="button" class="btn btn-info" data-toggle="modal" data-target=".bs-example-modal-lg"
-                      ><i class="fa fa-print"></i></button>
+                      <button jsf:id="bt_imprimir" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg"
+                      jsf:action="#{clienteBean.imprimir}">IP                        
+                      </button>
+                       &nbsp;
+                      <button jsf:id="bt_ip"  class="btn btn-info" jsf:action="#{clienteBean.imprimir}"
+                      data-toggle="tooltip" data-placement="top" title="Imprimir"><i class="fa fa-print"></i>
+                        <f:setPropertyActionListener target="#{clienteBean.cliente}" value="#{list}"/>                        
+                      </button>
                       &nbsp;
                       <button jsf:id="bt_salvar" type="submit" class="btn btn-success" jsf:action="#{clienteBean.finalizado}"
                         data-toggle="tooltip" data-placement="top" title="Finalizar"
@@ -100,45 +106,45 @@
 							       <div class="row-fluid">							        
 								        <div class="col-xs-3">
 								          <label>IP</label>
-								          <input type="text" class="form-control" placeholder="000.000.000.000"/>
+								          <input type="text" class="form-control" jsf:value="#{dados.ipPrint}" placeholder="000.000.000.000"/>
 								        </div>
 								        <div class="col-xs-3">
 								          <label>Mask</label>
-								          <input type="text" class="form-control" placeholder="000.000.000.000"/>
+								          <input type="text" class="form-control" jsf:value="#{dados.maskPrint}" placeholder="000.000.000.000"/>
 								        </div>
 								        <div class="col-xs-3">
 								          <label>Gatwey</label>
-								          <input type="text" class="form-control" placeholder="000.000.000.000"/>
+								          <input type="text" class="form-control" jsf:value="#{dados.gatweyPrint}" placeholder="000.000.000.000"/>
 								        </div>
 								        <div class="col-xs-3">
 								          <label>DNS</label>
-								          <input type="text" class="form-control" placeholder="000.000.000.000"/>
+								          <input type="text" jsf:value="#{dados.dnsPrint}" class="form-control" placeholder="000.000.000.000"/>
 								        </div>
 								      </div>					      
 								     	     
 								     <div class="pull-right" style="margin-top: 25px">
 								        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-								        <button type="button" class="btn btn-primary">Imprimir</button>
+								        <button type="submit" class="btn btn-primary" >OK</button>
 								     </div>
 							    </form>							  
 					    
 					     </div>
-					    <div role="tabpanel" class="tab-pane " id="PPPoE">	    					      							   
+					    <div role="tabpanel" class="tab-pane " >	    					      							   
 							     <form jsf:id="form3">
 							         <div class="row-fluid">
 								        <div class="col-xs-3">
 								          <label>Login</label>
-								          <input type="text" class="form-control" placeholder="usernome"/>
+								          <input type="text" jsf:value="#{dados.loginPrint}" class="form-control" placeholder="usernome"/>
 								        </div>
 								        <div class="col-xs-3">
 								          <label>Senha</label>
-								          <input type="text" class="form-control" placeholder="senha"/>
+								          <input type="text" jsf:value="#{dados.senhaPrint}" class="form-control" placeholder="senha"/>
 								        </div>						        
 								      </div>				      
 								     	     
 								     <div class="pull-right" style="margin-top: 25px">
 								        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-								        <button type="button" class="btn btn-primary">Imprimir</button>
+								        <button type="submit" class="btn btn-primary" >OK</button>
 								     </div>
 							    </form>
 							 
