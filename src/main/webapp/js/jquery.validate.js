@@ -26,7 +26,8 @@ $(function() {
     var passwordMsg = "Senhas não conferem!";
     /* Telefone message */
     var foneMsg = "O telefone informado é inválido!";    
-    
+    /* IP message*/
+    var ipMsg ="Os dados estão incoreto"
     
    
       $('#topo').click(function(){
@@ -65,6 +66,23 @@ $(function() {
             }					
     });	
     
+        /* valida ip*/
+       $( ".ip" ).blur(function() {	  		        
+                  var er = new RegExp(/^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$/);
+                  if (!er.test($.trim( $(this).val() ))){
+                      $(this).removeClass('valid').addClass('invalid');
+                      $(this).select();
+                      $(this).parent().find('span').html(ipMsg).fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(500);
+                       
+                  }
+                  else{
+                      $(this).removeClass('invalid').addClass('valid');
+                      $(this).parent().find('span').fadeOut(500);
+                       
+                  }
+            
+            	
+        });	
     /* minlength value defoco*/
      $( ".minlength" ).blur(function() {		
 		
@@ -115,6 +133,7 @@ $(function() {
             };
      }); 
      
+    
     /* numerico value defoco
      $( ".numerico" ).blur(function() {		
 		
@@ -152,6 +171,8 @@ $(function() {
             } 
           	
     });	
+     
+    
 
    /* valida cpf*/
      $( ".cpf" ).blur(function() {		

@@ -10,7 +10,7 @@
   <ui:composition template="/sistema.xhtml">
   <ui:define name="titulo"><i class="fa fa-angle-right"></i> cliente</ui:define>
   <ui:define name="conteudo">     
-      <h:form id="form" prependId="false" >    
+      <h:form id="form" prependId="false" styleClass="validate">    
          <div class="row">	  
 	          
 				<div class="input-group col-sm-6 col-sm-offset-6   ">
@@ -90,21 +90,25 @@
 					         
 							    <form jsf:id="form2">
 							       <div class="row-fluid">							        
-								        <div class="col-xs-3">
+								         <div class="col-xs-3">
 								          <label>IP</label>
-								          <input type="text" class="form-control" jsf:value="#{dados.ipPrint}" placeholder="000.000.000.000"/>
+								          <input type="text" class="form-control ip " jsf:value="#{dados.ipPrint}" />
+								          <span>255.255.255.255</span>
 								        </div>
 								        <div class="col-xs-3">
 								          <label>Mask</label>
-								          <input type="text" class="form-control" jsf:value="#{dados.maskPrint}" placeholder="000.000.000.000"/>
+								          <input type="text" class="form-control ip " jsf:value="#{dados.maskPrint}"/>
+								           <span>255.255.255.255</span>
 								        </div>
 								        <div class="col-xs-3">
 								          <label>Gatwey</label>
-								          <input type="text" class="form-control" jsf:value="#{dados.gatweyPrint}" placeholder="000.000.000.000"/>
+								          <input type="text" class="form-control ip" jsf:value="#{dados.gatweyPrint}" />
+								          <span>255.255.255.255</span>
 								        </div>
 								        <div class="col-xs-3">
 								          <label>DNS</label>
-								          <input type="text" jsf:value="#{dados.dnsPrint}" class="form-control" placeholder="000.000.000.000"/>
+								          <input type="text" jsf:value="#{dados.dnsPrint}" class="form-control ip"/>
+								          <span>255.255.255.255</span>
 								        </div>
 								      </div>					      
 								     	     

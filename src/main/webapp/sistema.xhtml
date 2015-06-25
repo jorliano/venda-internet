@@ -269,12 +269,9 @@
 
 	<ui:insert name="javascript">
 		<!-- jQuery -->
-		<script
-			src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-		<script type="text/javascript"
-			src="#{request.contextPath}/js/jquery.validate.js"></script>
-		<script type="text/javascript"
-			src="#{request.contextPath}/js/jquery.mask.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script type="text/javascript" 	src="#{request.contextPath}/js/jquery.validate.js"></script>
+		
 		
 	</ui:insert>
 
@@ -303,28 +300,20 @@
 		src="#{request.contextPath}/js/sparklines.js"></script>
 	<script type="text/javascript"
 		src="#{request.contextPath}/js/scripte.js"></script>
-	<script type="text/javascript"
-		src="#{request.contextPath}/js/paginas.index.js"></script>
+	
+   <script type="text/javascript" 	src="#{request.contextPath}/js/jquery.maskedinput.min.js"></script>
 
+  
+  <script>
+	jQuery(function($){
+		$(".cpf").mask("999.999.999-99");   
+  	    $(".telefone").mask("(99) 9999-9999");
+  	    $(".cep").mask("99999-999");
+  	    $(".data").mask("99/99/9999");
+  	    $(".ip").mask("999.999.999.999");
+    });
 
-  <script >
-  $(document).ready(function() {  
-
-      
-      //mascaras
-          $(function(){  
-
-        	    $(".cpf").mask("999.999.999-99");   
-        	    $(".telefone").mask("(99) 9999-9999");
-        	    $(".cep").mask("99999-999");
-        	    $(".data").mask("99/99/9999");
-        	             
-		        
-		    });
-  });
-  </script>
-
-
+</script>
 
 
 </h:body>
