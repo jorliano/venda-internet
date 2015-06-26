@@ -1,6 +1,8 @@
 package br.com.jortec.controller;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -16,10 +18,18 @@ import br.com.jortec.servico.ImagemValidator;
 @Controller
 @Scope("session")
 public class UsuarioLogado implements Serializable{
- 
+    private List permissao = new ArrayList();
 	private Usuario usuario;
 	private Vendedor vendedor;
 	private String nomeLogado;   
+	
+	public UsuarioLogado(){
+		permissao.add("/paginas/cliente/cliente.xhtml");
+		permissao.add("/paginas/vendedor/instalacoes.xhtml");
+		permissao.add("/paginas/vendedor/cadastro.xhtml");
+		permissao.add("/paginas/vendedor/edita.xhtml");
+		permissao.add("/paginas/vendedor/perfil.xhtml");
+	}
 	
 	public void logarUsuario(Usuario usuario){
 		this.usuario = usuario;
@@ -40,6 +50,12 @@ public class UsuarioLogado implements Serializable{
 		return false;
 	}
 	
+	public boolean permissao(String pagina){
+		 if(permissao.contains(pagina))
+			 return true;
+		 
+		return false;
+	}
 	public Usuario getUsuario() {
 		return usuario;
 	}

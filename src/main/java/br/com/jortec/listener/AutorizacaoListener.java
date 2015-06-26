@@ -27,9 +27,18 @@ public class AutorizacaoListener implements PhaseListener{
 	
 	    if(!usuarioLogado.isLogado()){
 	    	NavigationHandler handler = ctx.getApplication().getNavigationHandler();
-	    	handler.handleNavigation(ctx, null, "/index?faces-redirect=true");
+	    	handler.handleNavigation(ctx, null, "/index?faces-redirect=true");	    	
 	    	
-	    	System.out.println("não estou logado");
+	    	ctx.renderResponse();
+	    }
+	    if(usuarioLogado.getUsuario() == null && usuarioLogado.getVendedor() != null && !usuarioLogado.permissao(paginaAcessada)){
+	    	NavigationHandler handler = ctx.getApplication().getNavigationHandler();
+	    	handler.handleNavigation(ctx, null, "/paginas/vendedor/instalacoes?faces-redirect=true");    		    	
+	    	ctx.renderResponse();
+	    }
+	    if(usuarioLogado.getVendedor() == null && usuarioLogado.getUsuario() != null && usuarioLogado.permissao(paginaAcessada)){
+	    	NavigationHandler handler = ctx.getApplication().getNavigationHandler();
+	    	handler.handleNavigation(ctx, null, "/paginas/vendedor/login?faces-redirect=true");    		    	
 	    	ctx.renderResponse();
 	    }
 	}

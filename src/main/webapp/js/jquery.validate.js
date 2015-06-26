@@ -30,9 +30,10 @@ $(function() {
     var ipMsg ="Os dados estão incoreto"
     
    
-      $('#topo').click(function(){
+      $('.topo').click(function(){
    	    $('html, body').animate({scrollTop: 0},'slow');
       });
+     
       
     $(".alert").fadeOut(5000); 
        
@@ -68,7 +69,7 @@ $(function() {
     
         /* valida ip*/
        $( ".ip" ).blur(function() {	  		        
-                  var er = new RegExp(/^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$/);
+                  var er = new RegExp(/^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/);
                   if (!er.test($.trim( $(this).val() ))){
                       $(this).removeClass('valid').addClass('invalid');
                       $(this).select();

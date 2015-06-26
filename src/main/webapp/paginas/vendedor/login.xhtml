@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+
+<body>
+	<ui:composition template="/sistema.xhtml">
+		<ui:define name="titulo">
+			<i class="fa fa-angle-right"></i> login</ui:define>
+		<ui:define name="conteudo">
+           <div class="row">			
+			<div
+				class="col-xs-12 col-sm-6 col-sm-offset-3 ">
+				<div class="panel panel-default panel-more-shadow">
+					<div class="panel-body">
+						<form jsf:id="form" role="form">
+							<div class="panel-desc">
+								Login
+								<div class="col-xs-8 pull-right">
+									<h3>Vendedor</h3>
+								</div>
+							</div>
+							<hr />
+							<div class="form-group">
+								<input jsf:id="usuario" type="text"
+									jsf:value="#{loginBean.login}" class="form-control input-lg"
+									placeholder="Login" autofocus="autofocus" />
+							</div>
+							<div class="form-group">
+								<input jsf:id="senha" type="password"
+									jsf:value="#{loginBean.senha}" class="form-control input-lg"
+									placeholder="Senha" />
+							</div>
+
+							<button type="submit" class="btn btn-lg btn-primary btn-block"
+								jsf:action="#{loginBean.logar()}">Logar</button>
+
+						</form>
+					</div>
+				</div>
+			</div>
+		 </div>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

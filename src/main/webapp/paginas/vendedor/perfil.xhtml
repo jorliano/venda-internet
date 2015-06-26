@@ -50,6 +50,9 @@
 											</a> <a href="javascript:;" class="list-group-item">
 												<p class="stat-title">Meu telefone é</p>
 												<h3 class="profile-data">#{usuarioLogado.vendedor.telefone}</h3>
+											</a><a href="javascript:;" class="list-group-item">
+												<p class="stat-title">Meu login é</p>
+												<h3 class="profile-data">#{usuarioLogado.vendedor.login}</h3>
 											</a>
 										</div>
 
@@ -65,13 +68,11 @@
 											<p class="panel-desc">Sobre
 												#{usuarioLogado.vendedor.primeiroNome}</p>
 												
-											<div class="panel panel-default" style="height: 95px;">
+											<div class="panel panel-default" style="height: 88px;">
 											   <div class="panel-bory" >											   
 											     <p>#{usuarioLogado.vendedor.sobre}</p>
 											   </div>
-											</div>	
-											
-
+											</div>										
 										</div>
 									</div>
 								</div>
@@ -111,7 +112,7 @@
 										<textarea jsf:id="conteudo" class="form-control" rows="2" jsf:value="#{vendedorBean.conteudoEmail}"
 											placeholder="Sujestôes para melhorar a empresa ?"></textarea>
 										<hr />
-										<button jsf:id="topo" type="submit" class="btn btn-primary pull-right" jsf:action="#{vendedorBean.enviarEmail}">Enviar
+										<button jsf:id="topo" type="submit" class="btn btn-primary pull-right topo" jsf:action="#{vendedorBean.enviarEmail}">Enviar
 										 <f:ajax execute="@form" render="@form :msg"></f:ajax>
 										</button>
 									</form>

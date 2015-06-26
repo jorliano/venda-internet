@@ -26,13 +26,14 @@ import br.com.jortec.util.Alerta;
 
 
 @Controller
-@Scope("request")
+@Scope("view")
 public class ClienteBean implements Serializable{
  
 	
 Cliente cliente = new Cliente();
 List<Cliente> lista = new ArrayList<Cliente>();
 List<Cliente> listaDoVendedor = new ArrayList<Cliente>();
+private int paginaAtual =0;
 
  @Autowired
  ClienteDao dao;
@@ -48,10 +49,12 @@ List<Cliente> listaDoVendedor = new ArrayList<Cliente>();
  
 @PostConstruct 
 public void loade(){
-	 lista = dao.listar();		 
+	 lista = dao.paginacao(0);		 
 	 if(usuarioLogado.getVendedor() != null){
 		 listaDoVendedor = dao.listarPorVendedor(usuarioLogado.getVendedor().getId());
 		 cliente.setVendedor(usuarioLogado.getVendedor()); 	
+		 
+		 
 	 }
  }
 
@@ -80,11 +83,34 @@ public void loade(){
     return "cliente?faces-redirect=true";
   }
   public void busca(){
-		lista = dao.buscaDoVendedorPorNome(cliente.getNome(), usuarioLogado.getVendedor().getId());      
+		lista = dao.buscaDoVendedorPorNome(cliente.getNome(), usuarioLogado.getVendedor().getId());  
+		paginaAtual = 0;
   }
 
   public String edita(){
-	 return "edita";
+	 return "edita?faces-redirect=true";
+  }
+  //Paginação das instalações
+  public void anterior(){
+	  if(paginaAtual >= 7){
+		  paginaAtual = paginaAtual -7;
+		  lista = dao.paginacao(paginaAtual);
+	  }
+  }
+  public void proximo(){	 
+	  
+	  if(paginaAtual >= 7 && lista.size() > paginaAtual){
+		  paginaAtual = paginaAtual + 7;
+		  lista = dao.paginacao(paginaAtual);
+	  
+	  }	  
+	  if(paginaAtual < 7){
+		 paginaAtual = 7;
+		 lista = dao.paginacao(paginaAtual);
+		 
+	  }	 
+	  
+	  
   }
 	  
   //instalação com restrições do adm

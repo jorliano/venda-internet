@@ -45,8 +45,18 @@ public class ClienteDao {
 		
 		String consulta = "select c from Cliente c  where  estatus = 'pendente' and nome like :nome order by dataCadastro ";		
 		TypedQuery<Cliente> query = manager.createQuery(consulta, Cliente.class);			
-		query.setParameter("nome", nome+"%");		
+		query.setParameter("nome", nome+"%");	
+		query.setMaxResults(7);	
 		return query.getResultList();
+	}
+   public List<Cliente> paginacao(int paginaAtual){
+		
+	   String consulta = "select c from Cliente c  where  estatus = 'pendente' order by dataCadastro ";		
+	   TypedQuery<Cliente> query = manager.createQuery(consulta, Cliente.class);			
+	       query.setMaxResults(7);	       
+	       query.setFirstResult(paginaAtual);   	   				
+		
+	  return query.getResultList();
 	}
 
 
@@ -55,7 +65,8 @@ public class ClienteDao {
 	 try{	
 		String consulta = "select c from Cliente c  where c.vendedor.id=:id  and estatus = 'pendente' order by dataCadastro desc";		
 		TypedQuery<Cliente> query = manager.createQuery(consulta, Cliente.class);	
-		query.setParameter("id", id);		
+		query.setParameter("id", id);	
+		query.setMaxResults(20);	
 		return query.getResultList();
 	 }catch(NoResultException e){
      	return null;
@@ -67,10 +78,16 @@ public class ClienteDao {
 		String consulta = "select c from Cliente c  where c.vendedor.id=:id and estatus = 'pendente' and nome like :nome order by dataCadastro desc";		
 		TypedQuery<Cliente> query = manager.createQuery(consulta, Cliente.class);	
 		query.setParameter("id", id);		
-		query.setParameter("nome", nome+"%");		
+		query.setParameter("nome", nome+"%");
+		query.setMaxResults(20);	
 		return query.getResultList();
 	}
-
+    
+	
+	
+	
+	
+    
 	
 
 }

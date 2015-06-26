@@ -1,5 +1,8 @@
 package br.com.jortec.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.faces.context.FacesContext;
 import javax.faces.context.Flash;
 
@@ -16,10 +19,10 @@ import br.com.jortec.util.Alerta;
 @Controller
 @Scope("request")
 public class LoginBean {
-  
+	
 	private String Login;
 	private String Senha;
-	private String estatus ="administrador";
+	private String estatus ="vendedor";
 	
 	@Autowired
 	UsuarioLogado usuarioLogado;

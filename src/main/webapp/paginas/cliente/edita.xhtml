@@ -119,13 +119,13 @@
 													</div>																																											
 													<div class="form-group">
 																<div class="col-md-7 col-md-push-3">																																
-																		 <button jsf:id="topo"  jsf:action="#{clienteBean.salvar}"  class="btn btn-primary"  >Salvar <i class="fa fa-user-plus "></i>
+																		 <button jsf:id="topo"  jsf:action="#{clienteBean.salvar}"  class="btn btn-primary topo"  >Salvar <i class="fa fa-user-plus "></i>
 																	        <f:ajax execute="@form " render="@form :msg" onevent="bt_lock"/>
 																	      </button>		     						
 																	      &nbsp;				      
 																	      <button jsf:outcome="cliente.xhtml" class="btn btn-danger" >Voltar <i class="fa fa-undo"></i></button>
 																	      &nbsp;
-																	      <button jsf:id="bt_conf_delite"  jsf:action="#{clienteBean.deletar}"  class="btn btn-default" 
+																	      <button jsf:id="bt_conf_delite"  jsf:action="#{clienteBean.deletar}"  class="btn btn-default topo" 
 																	        onclick="return confirm('Deseja realmente deletar essa instalação ?');"   >Deletar <i class="fa fa-user-times "></i></button>
 																</div>
 																

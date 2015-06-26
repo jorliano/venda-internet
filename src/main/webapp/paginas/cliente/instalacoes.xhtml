@@ -13,17 +13,20 @@
       <h:form id="form" prependId="false" styleClass="validate">    
          <div class="row">	  
 	          
-				<div class="input-group col-sm-6 col-sm-offset-6   ">
+				<div class="input-group col-sm-6 pull-right   ">
 					<input type="text"  class="form-control" jsf:value="#{clienteBean.cliente.nome}" 
 					placeholder="Busca por nome"/>
 					<span class="hide">Busca por nome</span>
 					<span class="input-group-btn">
-							<button type="submit" class="btn btn-primary" jsf:action="#{clienteBean.buscaIntalacao}">
+							<button  class="btn btn-primary" jsf:action="#{clienteBean.buscaIntalacao}">
 							<i class="fa fa-search"></i>
 					     	   <f:ajax execute="@form" render="@form"/>
 					     	</button>
-					</span>						
-        		</div>        	 																											
+					</span>					
+        		</div>    
+        		<div class="col-md-3">	           
+	             #{sistemaBean.clientes} Instalações
+	           </div>        	 																											
 		</div>			
 		<br/>  	       
         <h:dataTable id="tabelaCli" var="list" value="#{clienteBean.lista}" 
@@ -165,7 +168,17 @@
 			  </div>
 			</div>  	
 		<!-- Final do modal -->	
-			     		 	    
+		 <!-- Paginação -->
+		      <div class="row">
+					<div class="col-md-12">				
+						<button class="btn btn-default pull-left topo" jsf:action="#{clienteBean.anterior}" jsf:rendered="#{sistemaBean.clientes > 7}">Anterior
+						  <f:ajax render="@form"/>
+						</button> 
+						<button class="btn btn-default pull-right topo" jsf:action="#{clienteBean.proximo}" jsf:rendered="#{sistemaBean.clientes > 7}">Proximo
+						 <f:ajax render="@form"/>
+						</button>				 																															
+					</div>
+				</div>	      		 	    
         </h:form>                         
     
     </ui:define> 
