@@ -51,7 +51,8 @@
 																	<img  src="#{request.contextPath}#{vendedorBean.vendedor.url}" style="height: 120px;width: 120px" />
 															</div>	
 															<button  type="button" jsf:id="bt" value="Carregar" class="btn btn-info" data-toggle="modal" data-target=".modal"
-															  >Camera <i class="fa fa-camera"></i></button>																													
+															  data-whatever="@teste" >Camera <i class="fa fa-camera"></i>															    
+															  </button>																													
 															</div>
 														</div>                                                  				                                      
 												</form>
@@ -182,7 +183,7 @@
 													<div class="form-group">
 																<div class="col-md-7 col-md-push-3">																																
 																		 <button type="submit" jsf:id="topo"  jsf:action="#{vendedorBean.salvar}"  class="btn btn-primary topo"  >Salvar <i class="fa fa-user-plus "></i>
-																		    <f:ajax execute="@form " render="@all" onevent="bt_lock"/>
+																		    <f:ajax execute="@form " render="@form" onevent="bt_lock"/>
 																		 </button>	    																					 				
 																		 &nbsp;
 																		 <button type="submit" jsf:id="bt_conf_dele"   jsf:action="#{vendedorBean.deletar}" class="btn btn-default topo"  
@@ -206,8 +207,8 @@
 				<h:form prependId="false" >
             <!-- Large modal -->	
 			
-			<div class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-			  <div class="modal-dialog ">
+			<div class="modal fade " id="modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+			  <div class="modal-dialog " role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
 			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -220,12 +221,12 @@
 							   
 									<div class="col-md-7">		
 									   	<label class="col-md-3 control-label col-md-offset-3">WebCam</label>										    									  															   
-										<p:photoCam widgetVar="pc" listener="#{vendedorBean.oncapture}" update="imagem"/>										
+										<p:photoCam id="camera" widgetVar="pc" listener="#{vendedorBean.oncapture}" />										
 										<button  jsf:id="bts" onclick="PF('pc').capture()"  class="btn btn-info col-md-offset-3">Capiturar <i class="fa fa-camera"></i></button>
 																																									
 									</div>
-									<div class="col-md-4">		
-									    <label class="col-md-3 control-label col-md-offset-3">Imagem</label>										    									  															   
+									<div class="col-md-4">									   				  															   
+										
 										<div class="fileinput-preview thumbnail">
 											<img id="imagem" src="#{request.contextPath}#{vendedorBean.vendedor.url}" style="height: 120px;width: 120px" />
 										</div>										
@@ -243,12 +244,16 @@
 			     </div>
 			    </div>	  				
 		<!-- Final do modal -->	
+		
+		
         </h:form>
+        
 			  </section>
-			</div>           
-            
+			</div>                    
 
 		</ui:define>
 	</ui:composition>
+	
+	
 </body>
 </html>
