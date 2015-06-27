@@ -10,21 +10,25 @@ import java.io.InputStream;
 import java.util.List;
 
 import javax.faces.context.FacesContext;
+import javax.servlet.ServletContext;
 import javax.servlet.http.Part;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 
 import br.com.jortec.model.Vendedor;
+import br.com.jortec.util.Alerta;
 
 @Service
-@Scope("session")
+@Scope("view")
 public class ImagemValidator { 
 	
-	
+@Autowired
+Alerta alerta;
+
 	/*Ler arquivo part e gera um arquivo q serar salvo */	
-	 private final int limitTamanho = 2000000;
+	 private final int limitTamanho = 40000;
 	    private final String tipoArquivo = "jpeg|jpg|gif|png";	   
 	 String realSavePath;
 	 String fileSavePath ;
@@ -39,7 +43,7 @@ public class ImagemValidator {
 	                if (verificaTipoArquivo(nomeArquivo)) {
 	                    if (foto.getSize() > this.limitTamanho) {
 	                       System.out.println("tamanho grand");
-	                    	// Alerta.error("Tamanho muito grande");
+	                    	 alerta.error("Tamanho muito grande");
 	                    } else {
 	                    	
 	                        String nomeAtualArquivo = nomeArquivo;
@@ -88,12 +92,12 @@ public class ImagemValidator {
 				
 				for (int i = 0; i < lista.size(); i++) {
 					if(lista.get(i).getImg() != null){
+						ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
 						
-					 FileOutputStream outPut = new FileOutputStream("/home/jorliano/Downloads/wildfly-8.2.0.Final/standalone/deployments/venda-internet.war"+lista.get(i).getUrl());
-	                 outPut.write(lista.get(i).getImg());                 
-	                 outPut.flush();
-	                 outPut.close();
-	                 System.out.println("/home/jorliano/Downloads/wildfly-8.2.0.Final/standalone/deployments/venda-internet.war"+lista.get(i).getUrl());
+						 FileOutputStream outPut = new FileOutputStream(servletContext.getRealPath("") +lista.get(i).getUrl());
+		                 outPut.write(lista.get(i).getImg());                 
+		                 outPut.flush();
+		                 outPut.close();	                
 					}
 				}	 								
 				
@@ -115,24 +119,28 @@ public class ImagemValidator {
 				InputStream  input = new BufferedInputStream(new FileInputStream(realSavePath));
 				byte[] conteudoArquivo = new byte[input.available()];
 				input.read(conteudoArquivo);
-				input.close();
+				input.close();				
 				
-				System.out.println("imagem salva");
 				return conteudoArquivo;
-			}else{
-				return null;
-			}
+			}else {
+				 ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
+				 
+				 InputStream  input = new BufferedInputStream(new FileInputStream(servletContext.getRealPath("") + "/imagens/camera.jpg"));
+				 byte[] conteudoArquivo = new byte[input.available()];
+				 input.read(conteudoArquivo);
+				 input.close();				
+					
+				return conteudoArquivo;
+			} 			
+			
 		}
 		catch (FileNotFoundException e) {			
-			e.printStackTrace();
+			return null;
 		}   
 		catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-          
-          return null; 	
-          
+			return null;
+		}                          
     	   
        }
        public void caregarImagem(Vendedor v){
@@ -141,10 +149,14 @@ public class ImagemValidator {
 		try {		
 			
 				if(v.getUrl() != null){
-				 FileOutputStream outPut = new FileOutputStream("/home/jorliano/Downloads/wildfly-8.2.0.Final/standalone/deployments/venda-internet.war"+v.getUrl());
-                 outPut.write(v.getImg());                 
-                 outPut.flush();
-                 outPut.close();                
+					
+					 ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
+					     
+						
+					 FileOutputStream outPut = new FileOutputStream(servletContext.getRealPath("") + v.getUrl());				
+	                 outPut.write(v.getImg());                 
+	                 outPut.flush();
+	                 outPut.close();                
 				}
 				 								
 			
@@ -180,7 +192,7 @@ public class ImagemValidator {
 	        }
 	        return null;
 	    }
-
+	   
 	}
 
 

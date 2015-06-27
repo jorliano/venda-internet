@@ -8,6 +8,8 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.servlet.http.Part;
 
+import org.primefaces.event.CaptureEvent;
+import org.primefaces.model.CroppedImage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -32,6 +34,7 @@ public class VendedorBean implements Serializable {
 	private String confirmeSenha;
 	private Part foto;
 	private String conteudoEmail;
+	
 
 	@Autowired
 	VendedorDao dao;
@@ -67,7 +70,7 @@ public class VendedorBean implements Serializable {
 				if (img.salvaImagem() != null) {
 					vendedor.setImg(img.salvaImagem());
 					vendedor.setUrl("/imagens/" + vendedor.getPrimeiroNome()
-							+ vendedor.getSobre() + ".jpg");
+							+ vendedor.getSobreNome() + ".jpg");
 				} else {
 					vendedor.setUrl("/imagens/vendedor/padrao.png");
 				}
@@ -87,7 +90,7 @@ public class VendedorBean implements Serializable {
 			if (img.salvaImagem() != null) {
 				vendedor.setImg(img.salvaImagem());
 				vendedor.setUrl("/imagens/" + vendedor.getPrimeiroNome()
-						+ vendedor.getSobre() + ".jpg");
+						+ vendedor.getSobreNome() + ".jpg");
 			} else {				
 				vendedor.setImg(v.getImg());
 				vendedor.setUrl(v.getUrl());
@@ -130,6 +133,15 @@ public class VendedorBean implements Serializable {
 		}
 
 	}
+	//webcam
+	 public void oncapture(CaptureEvent captureEvent) {	        
+	        byte[] data = captureEvent.getData();
+	      
+	        vendedor.setImg(data);
+	        vendedor.setUrl("/imagens/camera.jpg");
+	        img.caregarImagem(vendedor);
+	        
+	 }      
 
 	public void busca() {
 		lista = dao.listarPorNome(vendedor.getPrimeiroNome());
@@ -186,5 +198,6 @@ public class VendedorBean implements Serializable {
 	public void setConteudoEmail(String conteudoEmail) {
 		this.conteudoEmail = conteudoEmail;
 	}
+
     
 }
