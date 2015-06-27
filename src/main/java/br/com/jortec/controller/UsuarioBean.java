@@ -54,11 +54,11 @@ public class UsuarioBean implements Serializable{
 		}else{
 			Usuario us = new Usuario();
 			us = dao.buscaPorId(usuario.getId());			
-			System.out.println(usuario.getSenha().length() +" e "+confirmeSenha.length());
+			System.out.println(us.getSenha()+" equals "+usuario.getSenha());
 			 if(usuario.getSenha().length() > 0 || confirmeSenha.length() > 0)
 			 {
 				 
-				if(us.getSenha().equals(usuario.getSenha())) {					
+				if(us.getSenha().equals(usuario.getSenha()) && confirmeSenha.length() > 0) {					
 					 usuario.setSenha(confirmeSenha);
 					 dao.atualiza(usuario);
 					 alerta.info("Dados atualizados com sucesso");
@@ -69,6 +69,7 @@ public class UsuarioBean implements Serializable{
 				}
 			}
 			else{
+				 usuario.setSenha(us.getSenha());
 				 dao.atualiza(usuario);
 				 alerta.info("Dados atualizados com sucesso");
 			}

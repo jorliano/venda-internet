@@ -9,7 +9,7 @@
 <body>
 	<ui:composition template="/sistema.xhtml">
 		<ui:define name="titulo">
-			<i class="fa fa-angle-right"></i> Agendar Instalação</ui:define>
+			<i class="fa fa-angle-right"></i> instalação <i class="fa fa-angle-right"></i> agendar </ui:define>
 		<ui:define name="conteudo">
 
 			<div class="main-content">
@@ -17,7 +17,7 @@
 				<div class="container-fluid container-padded">
 					<div class="row">
 						<div class="col-md-12 page-title">
-							<h2>Agendar Instalação</h2>
+							<h2>agendar instalação</h2>
 							<hr />
 						</div>
 					</div>
@@ -32,7 +32,7 @@
 											<form jsf:id="form" class="form-horizontal validate" jsf:prependId="false" >
 												<div class="tab-pane active" id="profile-settings">
 													<h4>
-														<i class="fa fa-user fa-fw"></i> Cadastro de vendedor
+														<i class="fa fa-user fa-fw"></i> Cadastro de Instalação
 													</h4>
 
 													<hr />											                                                   
@@ -42,7 +42,7 @@
 														<label class="col-md-3 control-label"  for="nome">Nome </label>
 														<div class="col-md-7">															  			    
 														   <input type="text" jsf:value="#{clienteBean.cliente.nome}" required="true" maxlength="50"
-															    class="form-control required maxlenght" jsf:id="nome" jsf:label="Nome " autofocus="true" />
+															    class="form-control required maxlenght" jsf:id="nome" jsf:label="Nome " />
 														   <span>Campo obrigatorio com no maximo 50 caracter</span> 
 														</div>
 													</div>
@@ -55,7 +55,7 @@
 														</div>
 														<div class="col-md-2">															
 															 <input type="number" jsf:value="#{clienteBean.cliente.numero}" maxlength="4"
-					                                          class="form-control required" jsf:id="numero" required="true"/>
+					                                          class="form-control required" jsf:id="numero" required="true" min="0"/>
 					                                          <span>N°</span>	
 														</div>
 													</div>
@@ -63,22 +63,23 @@
 														<label class="col-md-3 control-label" for="complemento">Complemento</label>
 														<div class="col-md-7">
 															<input type="text" jsf:value="#{clienteBean.cliente.complemento}" maxlength="40"
-					                                          class="form-control" jsf:id="complemento"/>
+					                                          class="form-control maxlenght" jsf:id="complemento"/>
+					                                          <span>maximo 40 caracter </span> 
 														</div>
 													</div>													
 													<div class="form-group">
 														<label class="col-md-3 control-label" for="bairro">Bairro</label>
 														<div class="col-md-7">
 															 <input type="text" jsf:value="#{clienteBean.cliente.bairro}"  class="form-control required" 
-															    jsf:id="bairro" required="true" />
-				                                             <span>Campo obrigatorio </span> 
+															    jsf:id="bairro" required="true"  maxlength="40"/>
+				                                             <span>Campo obrigatorio com maximo 40 caracter </span> 
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-md-3 control-label" for="cidade">Cidade</label>
 														<div class="col-md-7">
 															<input type="text" jsf:value="#{clienteBean.cliente.cidade}" maxlength="50"
-													            class="form-control required maxlenght" jsf:id="cidade" required="true"/>
+													            class="form-control required " jsf:id="cidade" required="true"/>
 													            <span>Campo obrigatorio com no maximo 50 caracter</span> 
 														</div>
 													</div>
@@ -86,7 +87,7 @@
 														<label class="col-md-3 control-label" for="telefone">Telefone</label>
 														<div class="col-md-7">
 															  <input type="tel" jsf:value="#{clienteBean.cliente.telefone}" 
-															       class="form-control required telefone" jsf:id="telefone" required="true"/>
+															       class="form-control quiredmask telefone" jsf:id="telefone" required="true"/>
 															    <span>Campo obrigatorio </span>    
 														</div>
 													</div>
@@ -102,7 +103,8 @@
 														<label class="col-md-3 control-label" for="referencia">Ponto de referencia</label>
 														<div class="col-md-7">
 															  <input type="text" jsf:value="#{clienteBean.cliente.referencia}" 
-															       class="form-control " jsf:id="referencia"/>															   
+															       class="form-control  maxlength" jsf:id="referencia" maxlength="40"/>		
+															  <span>maximo 40 caracter</span>     													   
 														</div>
 													</div>		
                                                     <div class="form-group">

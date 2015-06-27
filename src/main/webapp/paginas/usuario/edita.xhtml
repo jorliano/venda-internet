@@ -10,7 +10,7 @@
 <body>
 	<ui:composition template="/sistema.xhtml">
 		<ui:define name="titulo">
-			<i class="fa fa-angle-right"></i> cadastro de vendedor</ui:define>
+			<i class="fa fa-angle-right"></i>  administrador <i class="fa fa-angle-right"></i> edição </ui:define>
 		<ui:define name="conteudo">
          <t:saveState value="#{usuarioBean.usuario}"/>
 			<div class="main-content">
@@ -40,7 +40,7 @@
                                                     <div class="form-group">                                                     
 														<label class="col-md-3 control-label"  for="nome">Nome </label>
 														<div class="col-md-7">
-															<input jsf:id="nome2" type="text" jsf:value="#{usuarioBean.usuario.nome}" minlength="4" 
+															<input jsf:id="nome" type="text" jsf:value="#{usuarioBean.usuario.nome}" minlength="4" 
 																class="form-control required minlength" required="true" jsf:label="Nome">
 																 <f:validateLength minimum="4"/>
 																</input>														    
@@ -50,34 +50,34 @@
 													<div class="form-group">
 														<label class="col-md-3 control-label" for="login">Nome de Login</label>
 														<div class="col-md-7">
-															<input type="text" jsf:value="#{usuarioBean.usuario.login}"
+															<input type="text" jsf:value="#{usuarioBean.usuario.login}" name="login" lang="Login"
 																class="form-control " disabled="true">															   
 															</input>																
 														</div>
 													</div>
 													<div class="form-group">
-														<label class="col-md-3 control-label" >Email Address</label>
+														<label class="col-md-3 control-label" for="email" >Email Address</label>
 														<div class="col-md-7">
 															<input type="email" name="Email" jsf:id="email"
-																jsf:value="#{usuarioBean.usuario.email}"
+																jsf:value="#{usuarioBean.usuario.email}" lang="Email"
 																class="form-control required email" required="true"/>
 														   <span>Campo obrigatorio exemplo@com.br</span>	
 														</div>
 													</div>
 													<hr />
 													<div class="form-group">
-														<label class="col-md-3 control-label">Senha Antiga</label>
+														<label class="col-md-3 control-label" for="senha">Senha Antiga</label>
 														<div class="col-md-7">
-															<input type="password" name="Senha" class="form-control " 
-																jsf:value="#{usuarioBean.usuario.senha}" />
+															<input type="password" name="senha" class="form-control " 
+																jsf:value="#{usuarioBean.usuario.senha}" lang="Senha"/>
 															
 														</div>
 													</div>
 													<div class="form-group">
-														<label class="col-md-3 control-label"> Nova Senha</label>
+														<label class="col-md-3 control-label" for="confirm"> Nova Senha</label>
 														<div class="col-md-7">
-															<input type="password" name="ConfirmeSenha" class="form-control " 
-																jsf:value="#{usuarioBean.confirmeSenha}" />															
+															<input type="password" name="confirm" class="form-control " 
+																jsf:value="#{usuarioBean.confirmeSenha}" lang="Confirm senha" />															
 														</div>
 													</div>
 													<div class="form-group">
@@ -91,8 +91,7 @@
 																		 <button jsf:outcome="usuario" class="btn btn-danger" >Voltar <i class="fa fa-undo"></i></button>
 																	   
 																</div>
-													</div>
-													
+													</div>													
 
 												</div>
 											</h:form>

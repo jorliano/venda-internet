@@ -27,8 +27,8 @@ public class UsuarioLogado implements Serializable{
 	public UsuarioLogado(){
 		permissao.add("/paginas/cliente/cliente.xhtml");
 		permissao.add("/paginas/vendedor/instalacoes.xhtml");
-		permissao.add("/paginas/vendedor/cadastro.xhtml");
-		permissao.add("/paginas/vendedor/edita.xhtml");
+		permissao.add("/paginas/cliente/cadastro.xhtml");
+		permissao.add("/paginas/cliente/edita.xhtml");
 		permissao.add("/paginas/vendedor/perfil.xhtml");
 	}
 	

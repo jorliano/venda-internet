@@ -28,7 +28,7 @@ public class Cliente  implements Serializable                                   
 	@GeneratedValue(strategy=GenerationType.AUTO)	
 	private long id;
 	
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "id_vendedor")
 	private Vendedor vendedor;
 	

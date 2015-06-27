@@ -9,7 +9,7 @@
 <body>
 	<ui:composition template="/sistema.xhtml">
 		<ui:define name="titulo">
-			<i class="fa fa-angle-right"></i> cadastro de vendedor</ui:define>
+			<i class="fa fa-angle-right"></i>  vendedor <i class="fa fa-angle-right"></i> cadastro</ui:define>
 		<ui:define name="conteudo">
 
 			<div class="main-content">
@@ -47,8 +47,8 @@
 															<div class="fileinput-preview thumbnail">
 																	<img  src="#{request.contextPath}#{vendedorBean.vendedor.url}" style="height: 120px;width: 120px" />
 															</div>	
-															<button  jsf:id="bt" value="Carregar" class="btn btn-info">Mudar
-															    <f:ajax execute="@all" render="@form"/>															   
+															<button  jsf:id="bt" value="Carregar" class="btn btn-info">Camera
+															    															   
 															</button>																												
 															</div>
 														</div>	                                                    
@@ -61,8 +61,8 @@
 														<div class="col-md-7">
 															<input type="text" name="primeiroName" required="true"
 																jsf:value="#{vendedorBean.vendedor.primeiroNome}"
-																class="form-control required"/>
-																<span>Campo obrigatorio</span>
+																class="form-control required  " maxlength="20"/>
+																<span>Campo obrigatorio com maximo 20 caracter</span>
 														</div>
 													</div>
 													<div class="form-group">
@@ -70,8 +70,8 @@
 														<div class="col-md-7">
 															<input type="text" name="sobreNome"
 																jsf:value="#{vendedorBean.vendedor.sobreNome}"
-																class="form-control required" required="true"/>
-														  <span>Campo obrigatorio</span>		
+																class="form-control required " required="true" maxlength="30"/>
+														  <span>Campo obrigatorio com maximo 30 caracter</span>		
 														</div>
 													</div>
 													<div class="form-group">
@@ -79,7 +79,7 @@
 														<div class="col-md-7">
 															<input type="text" name="rg"
 																jsf:value="#{vendedorBean.vendedor.rg}"
-																class="form-control" />
+																class="form-control" maxlength="11"/>
 														</div>
 													</div>
 													<div class="form-group">
@@ -87,21 +87,21 @@
 														<div class="col-md-5">
 															<input type="text" name="endereco"
 																jsf:value="#{vendedorBean.vendedor.endereco}"
-																class="form-control required" required="true" />
-																<span>Campo obrigatorio</span>
+																class="form-control required " required="true" maxlength="50"/>
+																<span>Campo obrigatorio maximo 50 caracter</span>
 														</div>
 														<div class="col-md-2" for="numero">
-															<input type="number" name="numero" placeholder="N°"
-																jsf:value="#{vendedorBean.vendedor.numero}"
+															<input type="number" name="numero" placeholder="N°" 
+																jsf:value="#{vendedorBean.vendedor.numero}" min="0" max="9999"
 																class="form-control" />
 														</div>
 													</div>
 													<div class="form-group">
 														<label class="col-md-3 control-label" for="telefone">Telefone</label>
 														<div class="col-md-7">
-															<input type="text" name="telefone"
+															<input type="tel" name="telefone"
 																jsf:value="#{vendedorBean.vendedor.telefone}"
-																class="form-control required telefone" required="true" />
+																class="form-control quiredmask telefone" required="true" />
 															<span>Campo obrigatorio</span>	
 														</div>
 													</div>
@@ -110,7 +110,7 @@
 														<div class="col-md-7">
 															<input type="date" name="data"
 																jsf:value="#{vendedorBean.vendedor.dataNascimento}"
-																class="form-control required telefone data" required="true" />
+																class="form-control quiredmask data" required="true" />
 															<span>Campo obrigatorio</span>	
 														</div>
 													</div>
@@ -146,7 +146,8 @@
 														<div class="col-md-7">
 															<input type="text" name="login"
 																jsf:value="#{vendedorBean.vendedor.login}"
-																class="form-control " />
+																class="form-control required" maxlength="20" required="true"/>
+																<span>Campo obrigatorio com maximo 20 caracter</span>
 																	
 														</div>
 													</div>
@@ -165,7 +166,9 @@
 														<label class="col-md-3 control-label" for="senha">Senha</label>
 														<div class="col-md-7">
 															<input type="password" name="senha" class="form-control required senha minlength"
-																jsf:value="#{vendedorBean.vendedor.senha}" required="true" minlength="6" />
+																jsf:value="#{vendedorBean.vendedor.senha}" required="true" minlength="6" lang="Senha">
+																<f:validateLength minimum="6"/>
+															</input>	
 															<span>Campo obrigatorio minimo 6 caraacteres</span>		
 														</div>
 													</div>
@@ -173,9 +176,11 @@
 														<label class="col-md-3 control-label" for="confirmSenha"> Confirma
 															senha</label>
 														<div class="col-md-7">
-															<input type="password" name="confirmSenha" minlength="6"
+															<input type="password" name="confirmSenha" minlength="6" lang="Confirmar Senha"
 																class="form-control required confirmsenha minlength" required="true"
-																jsf:value="#{vendedorBean.confirmeSenha}" />
+																jsf:value="#{vendedorBean.confirmeSenha}" >
+															    <f:validateLength minimum="6"/>
+															</input>	
 																<span>Campo obrigatorio</span>	
 														</div>
 													</div>													

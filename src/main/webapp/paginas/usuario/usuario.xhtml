@@ -9,12 +9,12 @@
 
 <body>
   <ui:composition template="/sistema.xhtml">
-  <ui:define name="titulo"><i class="fa fa-angle-right"></i> usuario</ui:define>
+  <ui:define name="titulo"><i class="fa fa-angle-right"></i> administrdores</ui:define>
   <ui:define name="conteudo">     
      <t:saveState />
       <h:form id="form" prependId="false">         	       
         <h:dataTable id="tabela" var="list" value="#{usuarioBean.lista}" 
-            styleClass="table table-responsive  table-hover" rows="10">
+            styleClass="table table-responsive  table-hover" rows="20">
            <h:column >
               <f:facet name="header">Id</f:facet>
               #{list.id}              
