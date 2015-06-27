@@ -60,6 +60,18 @@ public class LoginBean {
 		alerta.error("Usuario ou Senha incorreto");   
 		return null;
 	}
+	
+	public String loginPermissao(){
+		Vendedor vendedor = autenticaLogin.autenticaLogVendedor(Login, Senha);
+		if(vendedor != null){		
+			img.caregarImagem(vendedor);
+			usuarioLogado.logarVendedor(vendedor);
+			usuarioLogado.setNomeLogado(vendedor.getPrimeiroNome());
+			return "/paginas/cliente/cliente?faces-redirect=true";
+		}
+		alerta.error("Usuario ou Senha incorreto");   
+		return null;
+	}
 	public String proximaPagina(){	
 		//alerta.info("Seja Bem vindo "+usuarioLogado.getNomeLogado());
 		Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();

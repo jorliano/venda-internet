@@ -43,7 +43,7 @@
 												<h3 class="profile-data">#{usuarioLogado.vendedor.email}</h3>
 											</a> <a href="javascript:;" class="list-group-item">
 												<p class="stat-title">Meu aniversário é</p>
-												<h3 class="profile-data">#{usuarioLogado.vendedor.dataNasc}</h3>
+												<h3 class="profile-data">#{usuarioLogado.vendedor.dataNascimento}</h3>
 											</a> <a href="javascript:;" class="list-group-item">
 												<p class="stat-title">Meu endereço é</p>
 												<h3 class="profile-data">#{usuarioLogado.vendedor.endereco}</h3>
@@ -83,7 +83,7 @@
 									     </div>
 										<div class="panel-body">
 										   <h:form id="form" prependId="false">
-											   <h:dataTable id="tabela" var="list" value="#{clienteBean.lista}"
+											   <h:dataTable id="tabela" var="list" value="#{clienteBean.listaDoVendedor}"
 											styleClass="table table-responsive  table-hover "  rows="3">											
 											<h:column>
 												<f:facet name="header">Nome</f:facet>
@@ -111,7 +111,7 @@
 									<form jsf:id="form1" class="validate" jsf:prependId="false">
 										<textarea jsf:id="conteudo" class="form-control" rows="2" jsf:value="#{vendedorBean.conteudoEmail}"
 											placeholder="Sujestôes para melhorar a empresa ?"></textarea>
-										<hr />
+										<br/>
 										<button jsf:id="topo" type="submit" class="btn btn-primary pull-right topo" jsf:action="#{vendedorBean.enviarEmail}">Enviar
 										 <f:ajax execute="@form" render="@form :msg"></f:ajax>
 										</button>

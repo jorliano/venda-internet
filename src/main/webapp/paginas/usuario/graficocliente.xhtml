@@ -18,7 +18,7 @@
 		<ui:define name="conteudo">
         <h:form >     		   		       
 		     	<button type="submit" Class="btn btn-primary"  jsf:action="#{graficoBean.barGrafico}" >Mostrar Grafico
-		     	  <f:ajax execute="@form" render="@all"></f:ajax>
+		     	  <f:ajax execute="@form" render="@form"></f:ajax>
 		     	</button>     	
 		     	<div class="col-xs-4">
 			     <h:selectOneMenu  styleClass="form-control" value="#{graficoBean.nome}">						

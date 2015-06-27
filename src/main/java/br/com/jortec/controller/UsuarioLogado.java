@@ -21,7 +21,8 @@ public class UsuarioLogado implements Serializable{
     private List permissao = new ArrayList();
 	private Usuario usuario;
 	private Vendedor vendedor;
-	private String nomeLogado;   
+	private String nomeLogado;  
+	private String img;
 	
 	public UsuarioLogado(){
 		permissao.add("/paginas/cliente/cliente.xhtml");
@@ -33,15 +34,26 @@ public class UsuarioLogado implements Serializable{
 	
 	public void logarUsuario(Usuario usuario){
 		this.usuario = usuario;
+		img = "/imagens/adm/adm.png";
 	}
 	public void logarVendedor(Vendedor vendedor){
 		this.vendedor = vendedor;
+		img= vendedor.getUrl();
 	}
 	
 	public String desloga() {
-		this.usuario = null;
-		this.vendedor = null;
-		return "/index.xhtml?faces-redirect=true";
+		if(this.usuario != null && this.vendedor != null){
+			this.vendedor = null;
+			setNomeLogado(this.usuario.getNome());
+			img = "/imagens/adm/adm.png";
+			return "/sistema?faces-redirect=true";
+		}			
+		else{  
+			this.usuario = null;
+			this.vendedor = null;
+			return "/index.xhtml?faces-redirect=true";
+		}		
+		
 	}	
 		
 	public boolean isLogado(){
@@ -68,6 +80,10 @@ public class UsuarioLogado implements Serializable{
 	}
 	public void setNomeLogado(String nomeLogado) {
 		this.nomeLogado = nomeLogado;
+	}
+
+	public String getImg() {
+		return img;
 	}
 	
 	

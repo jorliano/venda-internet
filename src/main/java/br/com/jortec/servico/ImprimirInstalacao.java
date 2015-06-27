@@ -36,13 +36,13 @@ public class ImprimirInstalacao {
 	
 	Map<String, Object> parametro = new HashMap<String, Object>();
 	
-	public void imprime(Cliente cliente){
+	public void imprime(Cliente cliente,String geradoPor){
 		List<Cliente> lista = new ArrayList<Cliente>();		
 		lista.add(cliente);
 		
 		
 		if(dados.getIpPrint() != ""){
-			parametro.put("geradoPor", cliente.getVendedor().getPrimeiroNome());
+			parametro.put("geradoPor", geradoPor);
 			parametro.put("ip", dados.getIpPrint());
 			parametro.put("mask", dados.getMaskPrint());
 			parametro.put("gatwey", dados.getGatweyPrint());

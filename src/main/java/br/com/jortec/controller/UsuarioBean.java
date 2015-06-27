@@ -28,6 +28,7 @@ public class UsuarioBean implements Serializable{
 	List<Usuario> lista = new ArrayList<Usuario>();
 	private String confirmeSenha;
 	
+	
 	@Autowired
 	UsuarioDao dao;
 	

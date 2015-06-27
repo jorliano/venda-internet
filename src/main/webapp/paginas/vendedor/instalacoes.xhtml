@@ -8,28 +8,28 @@
 
 <body>
   <ui:composition template="/sistema.xhtml">
-  <ui:define name="titulo"><i class="fa fa-angle-right"></i> cliente</ui:define>
+  <ui:define name="titulo"><i class="fa fa-angle-right"></i> Instalacões</ui:define>
   <ui:define name="conteudo">     
-      <h:form id="form" prependId="false" styleClass="validate">    
+      <h:form id="form" prependId="false" >    
          <div class="row">	 
 	           
 				<div class="input-group col-sm-6 pull-right   ">
-					<input type="text"  class="form-control" jsf:value="#{clienteBean.cliente.nome}" 
+					<input type="text"  class="form-control" jsf:value="#{instalacaoBean.cliente.nome}" 
 					placeholder="Busca por nome"/>
 					<span class="hide">Busca por nome</span>
 					<span class="input-group-btn">
-							<button  class="btn btn-primary" jsf:action="#{clienteBean.buscaIntalacao}">
+							<button  class="btn btn-primary" jsf:action="#{instalacaoBean.buscaIntalacao}">
 							<i class="fa fa-search"></i>
 					     	   <f:ajax execute="@form" render="@form"/>
 					     	</button>
 					</span>					
         		</div>    
-        		<div class="col-md-3">	           
-	             #{sistemaBean.clientes} Instalações
+        		<div class="col-md-3">	          
+        		 <h:outputLabel id="cont" value="#{sistemaBean.clientes} Instalações" /> 	             
 	           </div>    	 																											
 		</div>			
 		<br/>  	       
-        <h:dataTable id="tabelaCli" var="list" value="#{clienteBean.lista}" 
+        <h:dataTable id="tabelaCli" var="list" value="#{instalacaoBean.lista}" 
             styleClass="table table-responsive  table-hover" rows="7">
            <h:column >
               <div class="row">
@@ -57,12 +57,12 @@
                   <br/>
                   <div class="pull-right">
                       <button jsf:id="bt_imprimir" type="button"  class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg"
-                      jsf:action="#{clienteBean.imprimir}">IP                        
+                      jsf:action="#{instalacaoBean.imprimir}">IP                        
                       </button>
                        &nbsp;
-                      <button jsf:id="bt_ip"  class="btn btn-info" jsf:action="#{clienteBean.imprimir}"
+                      <button jsf:id="bt_ip"  class="btn btn-info" jsf:action="#{instalacaoBean.imprimir}"
                       data-toggle="tooltip" data-placement="top" title="Imprimir"><i class="fa fa-print"></i>
-                        <f:setPropertyActionListener target="#{clienteBean.cliente}" value="#{list}"/>                        
+                        <f:setPropertyActionListener target="#{instalacaoBean.cliente}" value="#{list}"/>                        
                       </button>                    
                   </div>                 
                 </div>                
@@ -70,8 +70,24 @@
           </h:column>
           
       </h:dataTable> 
-      <!-- final da tabela -->           
-	       <!-- Large modal -->	
+      <!-- final da tabela -->        	      		  
+			
+				<div class="row">
+					<div class="col-md-12">				
+						<button class="btn btn-default pull-left topo" jsf:action="#{instalacaoBean.anterior}" jsf:rendered="#{sistemaBean.clientes > 7}">Anterior
+						  <f:ajax render="@form"/>
+						</button> 
+						<button class="btn btn-default pull-right topo" jsf:action="#{instalacaoBean.proximo}" jsf:rendered="#{sistemaBean.clientes > 7}">Proximo
+						 <f:ajax render="@form"/>
+						</button>				 																															
+					</div>
+				</div>
+			
+			 
+			     		 	    
+        </h:form>    		  
+        <h:form prependId="false" styleClass="validate">
+            <!-- Large modal -->	
 			
 			<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 			  <div class="modal-dialog modal-lg">
@@ -154,23 +170,7 @@
 			  </div>
 			</div>  	
 		<!-- Final do modal -->	
-		  
-			
-				<div class="row">
-					<div class="col-md-12">				
-						<button class="btn btn-default pull-left topo" jsf:action="#{clienteBean.anterior}" jsf:rendered="#{sistemaBean.clientes > 7}">Anterior
-						  <f:ajax render="@form"/>
-						</button> 
-						<button class="btn btn-default pull-right topo" jsf:action="#{clienteBean.proximo}" jsf:rendered="#{sistemaBean.clientes > 7}">Proximo
-						 <f:ajax render="@form"/>
-						</button>				 																															
-					</div>
-				</div>
-			
-			 
-			     		 	    
-        </h:form>    		  
-    
+        </h:form>
     
     </ui:define> 
    </ui:composition>

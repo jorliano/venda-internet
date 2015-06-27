@@ -11,9 +11,16 @@
 		<ui:define name="titulo">
 			<i class="fa fa-angle-right"></i> login</ui:define>
 		<ui:define name="conteudo">
+		   
+		        <div class="alert alert-warning alert-dismissible" role="alert">
+				  <button type="button" style="margin-right: 5%" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				  <strong>Aviso!</strong> Essa área é restritar ao vendedor, se deseja acessa-lá 
+				    entre com login e senha do vendedor desejado. 
+				  
+				</div>
+		   
            <div class="row">			
-			<div
-				class="col-xs-12 col-sm-6 col-sm-offset-3 ">
+			<div class="col-xs-12 col-sm-6 col-sm-offset-3 ">
 				<div class="panel panel-default panel-more-shadow">
 					<div class="panel-body">
 						<form jsf:id="form" role="form">
@@ -36,7 +43,8 @@
 							</div>
 
 							<button type="submit" class="btn btn-lg btn-primary btn-block"
-								jsf:action="#{loginBean.logar()}">Logar</button>
+								jsf:action="#{loginBean.loginPermissao}">Logar							   
+							</button>
 
 						</form>
 					</div>

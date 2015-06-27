@@ -21,28 +21,28 @@ public class GraficoDao {
 
 	public List<Cliente> listarPrimeiroTrimestre() {
 
-		String consulta = "select c from Cliente c where dataCadastro BETWEEN '01/01/2015' AND '31/03/2015' ";
+		String consulta = "select c from Cliente c where dataCadastro BETWEEN '2015/01/01' AND '2015/03/31' ";
 		TypedQuery<Cliente> query = manager
 				.createQuery(consulta, Cliente.class);
 		return query.getResultList();
 	}	
 	public List<Cliente> listarSegundoTrimestre() {
 
-		String consulta = "select c from Cliente c where dataCadastro BETWEEN '01/04/2015' AND '31/06/2015' ";
+		String consulta = "select c from Cliente c where dataCadastro BETWEEN '2015/04/01' AND '2015/06/31' ";
 		TypedQuery<Cliente> query = manager
 				.createQuery(consulta, Cliente.class);
 		return query.getResultList();
 	}
 	public List<Cliente> listarTerceiroTrimestre() {
 
-		String consulta = "select c from Cliente c where dataCadastro BETWEEN '01/07/2015' AND '31/09/2015' ";
+		String consulta = "select c from Cliente c where dataCadastro BETWEEN '2015/07/01' AND '2015/09/31' ";
 		TypedQuery<Cliente> query = manager
 				.createQuery(consulta, Cliente.class);
 		return query.getResultList();
 	}
 	public List<Cliente> listarQuartoTrimestre() {
 
-		String consulta = "select c from Cliente c where dataCadastro BETWEEN '01/10/2015' AND '31/12/2015' ";
+		String consulta = "select c from Cliente c where dataCadastro BETWEEN '2015/10/01' AND '2015/12/31' ";
 		TypedQuery<Cliente> query = manager
 				.createQuery(consulta, Cliente.class);
 		return query.getResultList();
@@ -51,7 +51,7 @@ public class GraficoDao {
 	//Grafico pieVendedor
 	
 	public List<Cliente> listaMes(int mes){
-		String consulta = "select c from Cliente c where estatus='concluido' and dataCadastro BETWEEN '01/0"+mes+"/2015' AND '31/0"+mes+"/2015' ";
+		String consulta = "select c from Cliente c where estatus='concluido' and dataCadastro BETWEEN '2015/0"+mes+"/01' AND '2015/0"+mes+"/31' ";
 		TypedQuery<Cliente> query = manager
 				.createQuery(consulta, Cliente.class);
 		return query.getResultList();

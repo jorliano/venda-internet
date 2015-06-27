@@ -35,7 +35,7 @@ $(function() {
       });
      
       
-    $(".alert").fadeOut(5000); 
+    $("#msg").fadeOut(5000); 
        
     /* Aplicando Placeholder com texto do SPAN */
     $(this).find('input').each(function(){

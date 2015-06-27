@@ -26,14 +26,12 @@ import br.com.jortec.util.Alerta;
 
 
 @Controller
-@Scope("view")
+@Scope("request")
 public class ClienteBean implements Serializable{
  
 	
 Cliente cliente = new Cliente();
-List<Cliente> lista = new ArrayList<Cliente>();
-List<Cliente> listaDoVendedor = new ArrayList<Cliente>();
-private int paginaAtual =0;
+private List<Cliente> listaDoVendedor = new ArrayList<Cliente>();
 
  @Autowired
  ClienteDao dao;
@@ -48,8 +46,7 @@ private int paginaAtual =0;
  Alerta alerta;
  
 @PostConstruct 
-public void loade(){
-	 lista = dao.paginacao(0);		 
+public void loade(){	  
 	 if(usuarioLogado.getVendedor() != null){
 		 listaDoVendedor = dao.listarPorVendedor(usuarioLogado.getVendedor().getId());
 		 cliente.setVendedor(usuarioLogado.getVendedor()); 	
@@ -83,75 +80,18 @@ public void loade(){
     return "cliente?faces-redirect=true";
   }
   public void busca(){
-		lista = dao.buscaDoVendedorPorNome(cliente.getNome(), usuarioLogado.getVendedor().getId());  
-		paginaAtual = 0;
+		listaDoVendedor = dao.buscaDoVendedorPorNome(cliente.getNome(), usuarioLogado.getVendedor().getId());  		
   }
-
+  
   public String edita(){
-	 return "edita?faces-redirect=true";
-  }
-  //Paginação das instalações
-  public void anterior(){
-	  if(paginaAtual >= 7){
-		  paginaAtual = paginaAtual -7;
-		  lista = dao.paginacao(paginaAtual);
-	  }
-  }
-  public void proximo(){	 
-	  
-	  if(paginaAtual >= 7 && lista.size() > paginaAtual){
-		  paginaAtual = paginaAtual + 7;
-		  lista = dao.paginacao(paginaAtual);
-	  
-	  }	  
-	  if(paginaAtual < 7){
-		 paginaAtual = 7;
-		 lista = dao.paginacao(paginaAtual);
-		 
-	  }	 
-	  
-	  
-  }
-	  
-  //instalação com restrições do adm
-  public String cancelar(){
-		cliente.setEstatus("cancelado"); 
-        cliente.setDataCadastro(new Date());
-		dao.atualiza(cliente);
-		alerta.info("Instalação cancelado com sucesso");   
-		lista = dao.listar();	
-		return null;
-	  }
-  public String finalizado(){
-	  cliente.setEstatus("concluido"); 
-	  cliente.setDataCadastro(new Date());
-	  dao.atualiza(cliente);
-	  lista = dao.listar();	
-	  alerta.info("Instalação concluida do sucesso"); 
-	  return null;
-  } 
-  public void buscaIntalacao(){
-		lista = dao.buscaDoInstalacoPorNome(cliente.getNome());      
- }
-
-  public void imprimir(){
-	  
-	  
-	  print.imprime(cliente);
-	  
-  }
-    
+	 return "edita";
+  }    
+ 
 public Cliente getCliente() {
 	return cliente;
 }
 public void setCliente(Cliente cliente) {
 	this.cliente = cliente;
-}
-public List<Cliente> getLista() {
-	return lista;
-}
-public void setLista(List<Cliente> lista) {
-	this.lista = lista;
 }
 
 public List<Cliente> getListaDoVendedor() {

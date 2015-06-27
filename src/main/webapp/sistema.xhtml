@@ -44,7 +44,7 @@
 				<span class="sr-only">Toggle navigation</span> <i
 					class="fa fa-wrench"></i>
 			</button>
-			<a class="navbar-brand logo" href="#"> <img src="images/logo.png"
+			<a class="navbar-brand logo" href="#" > <img src="images/logo.png" 
 				alt="App logo" width="175" /></a>
 			<div class="navbar-side-menu-toggle">
 				<button class="toggle-btn" type="button">
@@ -54,10 +54,16 @@
 			</div>
 		</div>
 		<div class="collapse navbar-collapse" id="top-navbar">
+		    <ul class="nav navbar-nav navbar-center" style="margin-top: 2%">
+								    
+					<li ><h:outputLabel value="ADM #{usuarioLogado.usuario.nome}" rendered="#{usuarioLogado.usuario != null}" />
+					</li>
+				
+			</ul>
 			<ul class="nav navbar-nav navbar-right" style="margin-top: 2%">
-				<h:form>
-					<li><img
-						src="#{request.contextPath}#{usuarioLogado.vendedor.url}"
+				<h:form>				    
+					<li><img 
+						src="#{request.contextPath}#{usuarioLogado.img}"
 						class="user-settings-pic" /> #{usuarioLogado.nomeLogado} | <h:commandLink
 							value="Sair" action="#{usuarioLogado.desloga}" /></li>
 				</h:form>
