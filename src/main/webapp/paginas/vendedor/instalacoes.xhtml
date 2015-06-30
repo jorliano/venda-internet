@@ -32,8 +32,8 @@
         <h:dataTable id="tabelaCli" var="list" value="#{instalacaoBean.lista}" 
             styleClass="table table-responsive  table-hover" rows="7">
            <h:column >
-              <div class="row">
-                <div class="col-xs-6">
+             
+               
                   <label>Nome : #{list.nome}</label>
                   <br/>
                   <label>Endereco : #{list.rua} N° #{list.numero}  #{list.complemento}</label>
@@ -44,10 +44,12 @@
                   <h:outputLabel value="#{list.dataCadastro}" >
                            <f:convertDateTime pattern="dd/MM/yyyy hh:mm"/>
                   </h:outputLabel>   
-                </div>                
-                
+                              
+                     
+          </h:column>     
+          <h:column>
               
-                <div class="col-xs-6">
+               
                   <label>CPF : #{list.cpf}</label>
                    <label class="pull-right">Vendedor : #{list.vendedor.primeiroNome}</label>
                   <br/>
@@ -65,9 +67,8 @@
                         <f:setPropertyActionListener target="#{instalacaoBean.cliente}" value="#{list}"/>                        
                       </button>                    
                   </div>                 
-                </div>                
-              </div>           
-          </h:column>
+                          
+            </h:column> 
           
       </h:dataTable> 
       <!-- final da tabela -->        	      		  

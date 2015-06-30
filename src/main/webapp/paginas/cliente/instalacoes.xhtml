@@ -32,8 +32,8 @@
         <h:dataTable id="tabelaCli" var="list" value="#{instalacaoBean.lista}" 
             styleClass="table table-responsive  table-hover" rows="7">
            <h:column >
-              <div class="row">
-                <div class="col-xs-6">
+              
+               
                   <label>Nome : #{list.nome}</label>
                   <br/>
                   <label>Endereco : #{list.rua}  N° #{list.numero} #{list.complemento}</label>
@@ -44,10 +44,9 @@
                   <h:outputLabel value="#{list.dataCadastro}" >
                            <f:convertDateTime pattern="dd/MM/yyyy hh:mm"/>
                   </h:outputLabel>   
-                </div>                
-                
-              
-                <div class="col-xs-6">
+             </h:column>
+             <h:column>                                           
+               
                   <label class="pull-right">Vendedor : #{list.vendedor.primeiroNome}</label>
                   <label>CPF : #{list.cpf}</label>                   
                   <br/>
@@ -69,18 +68,16 @@
                         data-toggle="tooltip" data-placement="top" title="Finalizar"
                         onclick="return confirm('A instalação está concluida ?');"><i class="fa fa-check"></i>
                         <f:setPropertyActionListener target="#{instalacaoBean.cliente}" value="#{list}"/>
-                        <f:ajax execute="@form" render="@from :msg "></f:ajax>
+                        <f:ajax  render="@all :msg "></f:ajax>
                       </button>
                       &nbsp;
                       <button jsf:id="bt_cancelar" type="submit" class="btn btn-danger" jsf:action="#{instalacaoBean.cancelar}" 
                        data-toggle="tooltip" data-placement="top" title="Cancelar"
                        onclick="return confirm('Realmente deseja cancelar a instalação ?');"><i class="fa fa-trash-o"></i>
                          <f:setPropertyActionListener target="#{instalacaoBean.cliente}" value="#{list}"/>
-                         <f:ajax execute="@form" render="@from :msg "></f:ajax>
+                         <f:ajax  render="@all :msg "></f:ajax>
                       </button>
-                  </div>                 
-                </div>                
-              </div>           
+                  </div>                                        
           </h:column>
           
       </h:dataTable> 

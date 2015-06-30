@@ -11,146 +11,168 @@
 	<ui:composition template="/sistema.xhtml">
 		<ui:define name="titulo">
 			<i class="fa fa-angle-right"></i> configuração</ui:define>
-		<ui:define name="conteudo">			
-			
-				<div class="row-fluid">
-					<div class="col-xs-12 well">
-					   <h3>Cadastro de Planos </h3>
-						<hr/>
-					   <form jsf:id="form1" jsf:prependId="false" class="form-horizontal validate">
-						
-						<div class="form-group">
-						   <div class="col-md-2">
-						     <label class="control-label" for="plano">Plano</label>
-						   </div>							
-						   <div class="col-md-5">
-								<input type="text" jsf:id="plano" jsf:label="Plano" required="true"
-									class="form-control required" jsf:value="#{sistemaBean.sistema.plano}" />
-									<span>Digite o plano</span>
-						   </div>
-						</div>
+		<ui:define name="conteudo">
+
+			<div class="row-fluid">
+				<div class="col-xs-12 well">
+					<h3>Cadastro de Planos</h3>
+					<hr />
+					<form jsf:id="form1" jsf:prependId="false"
+						class="form-horizontal validate">
+
 						<div class="form-group">
 							<div class="col-md-2">
-						     <label class="control-label" for="valor">Valor</label>
-						   </div>
-							<div class="col-md-3">
-								<input type="number" jsf:id="valor" jsf:label="Valor" required="true"
-									class="form-control required" jsf:value="#{sistemaBean.sistema.valor}" />
-							  <span></span>
+								<label class="control-label" for="plano">Plano</label>
+							</div>
+							<div class="col-md-5">
+								<input type="text" jsf:id="plano" jsf:label="Plano"
+									required="true" class="form-control required"
+									jsf:value="#{sistemaBean.sistema.plano}" /> <span>Digite
+									o plano</span>
 							</div>
 						</div>
-						<div class="form-group">							
+						<div class="form-group">
 							<div class="col-md-2">
-								 <button type="submit" jsf:id="bt_conf_inc"  jsf:action="#{sistemaBean.salvar}"  class="btn btn-primary"  >Salvar 
-									   <f:ajax execute="@form " render="@form :msg :form" onevent="bt_lock"/>
-								</button>	
+								<label class="control-label" for="valor">Valor</label>
+							</div>
+							<div class="col-md-3">
+								<input type="number" jsf:id="valor" jsf:label="Valor"
+									required="true" class="form-control required"
+									jsf:value="#{sistemaBean.sistema.valor}" /> <span></span>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-md-2">
+								<button type="submit" jsf:id="bt_conf_inc"
+									jsf:action="#{sistemaBean.salvar}" class="btn btn-primary">
+									Salvar
+									<f:ajax  render=":msg @all"
+										onevent="bt_lock" />
+								</button>
 							</div>
 						</div>
 						<h:inputHidden value="#{sistemaBean.sistema.id}" />
-					  </form>
-					</div>
-					<div class="col-xs-12">
-					<h:form id="form" prependId="false">
-					   <h:dataTable id="tabela" var="list" value="#{sistemaBean.lista}"
-					styleClass="table table-responsive  table-hover "  rows="10">					
-					<h:column>
-						<f:facet name="header">Plano</f:facet>
+
+
+						<div class="col-xs-12">
+
+							<h:dataTable id="tabela" var="list" value="#{sistemaBean.lista}"
+								styleClass="table table-responsive  table-hover " rows="10">
+								<h:column>
+									<f:facet name="header">Plano</f:facet>									
                       #{list.plano}                                                                                
                     </h:column>
-					<h:column>
-						<f:facet name="header">Valor</f:facet>
-						<h:outputText value="#{list.valor}">
-                          <f:convertNumber currencyCode="BRL" type="currency"/>
-                        </h:outputText>
-                    </h:column>
-					<h:column>
-						<f:facet name="header">Ações</f:facet>
-						<h:commandLink styleClass="fa fa-edit fa-2x">
-							<f:setPropertyActionListener target="#{sistemaBean.sistema}" value="#{list}" />
-						</h:commandLink> 
-                        &nbsp;           
-                        <h:commandLink action="#{sistemaBean.deletarEmail(list)}"
-							onclick="return confirm('Realmente deseja deletar esses dados ?');"
-							styleClass="fa fa-trash-o fa-2x " >
-							<f:ajax execute="@form " render="@form :msg"/>
-						</h:commandLink>	
-					 </h:column>
-				  </h:dataTable>
-				  <!-- final da tabela -->
-				  </h:form>
-					</div>
-				</div>
-				<div class="row-fluid">
-					<div class="col-xs-12 well">
-					   <form jsf:id="form3" jsf:prependId="false" class="form-horizontal validate">
-						<h3>Cadastro de email</h3>
-						<hr/>
-						<div class="form-group">
-						   <div class="col-md-2">
-						     <label class="control-label" for="remetente">Remetente</label>
-						   </div>							
-						   <div class="col-md-4">
-								<input type="email" jsf:id="remetente" jsf:label="Remetente" required="true"
-									class="form-control required email" jsf:value="#{sistemaBean.dadosEmail.remetente}" />
-									<span>Digite o email</span>
-						   </div>
-						   <div class="col-md-2">
-						     <label class="control-label" for="senha">Senha</label>
-						   </div>	
-						   <div class="col-md-4">
-								<input type="password" jsf:id="senha" jsf:label="Senha" required="true"
-									class="form-control required " jsf:value="#{sistemaBean.dadosEmail.senha}" />
-									<span>Cmapo requirido</span>
-						   </div>
+								<h:column>
+									<f:facet name="header">Valor</f:facet>
+									<h:outputText value="#{list.valor}">
+										<f:convertNumber currencyCode="BRL" type="currency" />
+									</h:outputText>
+								</h:column>
+								<h:column>
+									<f:facet name="header">Ações</f:facet>
+									<h:commandLink styleClass="fa fa-edit fa-2x">
+										<f:setPropertyActionListener target="#{sistemaBean.sistema}"
+											value="#{list}" />
+									</h:commandLink> 
+			                        &nbsp;           
+			                        <h:commandLink
+										action="#{sistemaBean.deletarEmail(list)}"
+										onclick="return confirm('Realmente deseja deletar esses dados ?');"
+										styleClass="fa fa-trash-o fa-2x ">
+										<f:ajax  render="@all :msg" />
+									</h:commandLink>
+								</h:column>
+							</h:dataTable>
+							<!-- final da tabela -->
+							
 						</div>
+					</form>
+				</div>
+			</div>
+			<div class="row-fluid">
+				<div class="col-xs-12 well">
+					<form jsf:id="form" jsf:prependId="false"
+						class="form-horizontal validate">
+						<h3>Cadastro de email</h3>
+						<hr />
 						<div class="form-group">
-							 <div class="col-md-2">
-						     <label class="control-label" for="destinatario">Destinatario</label>
-						   </div>							
-						   <div class="col-md-4">
-								<input type="email" jsf:id="destinatario" jsf:label="Destinatario" required="true"
-									class="form-control required email" jsf:value="#{sistemaBean.dadosEmail.destinatario}" />
-									<span>Digite o email</span>
-						   </div>
+							<div class="col-md-2">
+								<label class="control-label" for="remetente">Remetente</label>
+							</div>
+							<div class="col-md-4">
+								<input type="email" jsf:id="remetente" jsf:label="Remetente"
+									required="true" class="form-control required email"
+									jsf:value="#{sistemaBean.dadosEmail.remetente}" /> <span>Digite
+									o email</span>
+							</div>							
 						</div>
 						<div class="form-group">							
 							<div class="col-md-2">
-								 <button type="submit" jsf:id="topo"  jsf:action="#{sistemaBean.salvarEmail}"  class="btn btn-primary"  >Salvar 
-									   <f:ajax execute="@form " render="@form :msg :form" onevent="bt_lock"/>
-								</button>	
+								<label class="control-label" for="senha">Senha</label>
+							</div>
+							<div class="col-md-4">
+								<input type="password" jsf:id="senha" jsf:label="Senha"
+									required="true" class="form-control required "
+									jsf:value="#{sistemaBean.dadosEmail.senha}" /> <span>Cmapo
+									requirido</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-md-2">
+								<label class="control-label" for="destinatario">Destinatario</label>
+							</div>
+							<div class="col-md-4">
+								<input type="email" jsf:id="destinatario"
+									jsf:label="Destinatario" required="true"
+									class="form-control required email"
+									jsf:value="#{sistemaBean.dadosEmail.destinatario}" /> <span>Digite
+									o email</span>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-md-2">
+								<button type="submit" jsf:id="topo"
+									jsf:action="#{sistemaBean.salvarEmail}" class="btn btn-primary">
+									Salvar
+									<f:ajax  render="@all :msg "
+										onevent="bt_lock" />
+								</button>
 							</div>
 						</div>
 						<h:inputHidden value="#{sistemaBean.dadosEmail.id}" />
-					  </form>
-					  <form jsf:id="form4">
-					  <div class="row-fluid">					       
-						  <h:dataTable id="tabela2" var="list" value="#{sistemaBean.listEmail}"
-							styleClass="table table-responsive  table-hover "  rows="1">
-							<h:column>
-								<f:facet name="header">Remetente</f:facet>
+					
+						<div class="row-fluid">
+							<h:dataTable id="tabela2" var="list"
+								value="#{sistemaBean.listEmail}"
+								styleClass="table table-responsive  table-hover " rows="1">
+								<h:column>
+									<f:facet name="header">Remetente</f:facet>
 		                      #{list.remetente}              
 		                   </h:column>
-							<h:column>
-								<f:facet name="header">Destinatario</f:facet>
+								<h:column>
+									<f:facet name="header">Destinatario</f:facet>
 		                      #{list.destinatario}                                                                                
 		                    </h:column>
-		                    <h:column>								
-								<h:commandLink styleClass="fa fa-edit fa-2x">
-									<f:setPropertyActionListener target="#{sistemaBean.dadosEmail}" value="#{list}" />
-								</h:commandLink> 
+								<h:column>
+									<h:commandLink styleClass="fa fa-edit fa-2x">
+										<f:setPropertyActionListener
+											target="#{sistemaBean.dadosEmail}" value="#{list}" />
+									</h:commandLink> 
 		                        &nbsp;           
-		                        <h:commandLink action="#{sistemaBean.deletar(list)}"
-									onclick="return confirm('Realmente deseja deletar esse plano ?');"
-									styleClass="fa fa-trash-o fa-2x " >
-									<f:ajax execute="@form " render="@form :msg"/>
-								</h:commandLink>	
-					          </h:column>
-		                   </h:dataTable> 
-					  </div>
-					  </form>
-					</div>
+		                        <h:commandLink
+										action="#{sistemaBean.deletar(list)}"
+										onclick="return confirm('Realmente deseja deletar esse plano ?');"
+										styleClass="fa fa-trash-o fa-2x ">
+										<f:ajax execute="@form " render="@form :msg" />
+									</h:commandLink>
+								</h:column>
+							</h:dataTable>
+						</div>
+					</form>
+				</div>
 			</div>
-			
+
 
 		</ui:define>
 	</ui:composition>
