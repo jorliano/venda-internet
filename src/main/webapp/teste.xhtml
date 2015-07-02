@@ -4,146 +4,43 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"		
 	xmlns:jsf="http://xmlns.jcp.org/jsf">
+<h:head>
 
+<!-- Bootstrap -->
+	<link href="#{request.contextPath}/css/bootstrap.min.css" rel="stylesheet"
+		type="text/css" />
+	<!--fonte de icones externa -->
+	<link rel="stylesheet"
+		href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
+		
+	
+</h:head>
 
 <body>
-  <ui:composition template="/sistema.xhtml">
-  <ui:define name="titulo"><i class="fa fa-angle-right"></i> instalacões agendadas</ui:define>
-  <ui:define name="conteudo">     
-      <form jsf:id="form" >    
-        
-	           
-				<div class="input-group col-sm-6 pull-right   ">
-					<input type="text"  class="form-control" jsf:value="#{instalacaoBean.cliente.nome}" 
-					placeholder="Busca por nome"/>
-					<span class="hide">Busca por nome</span>
-					<span class="input-group-btn">
-							<button  class="btn btn-primary" jsf:action="#{instalacaoBean.buscaIntalacao}">
-							<i class="fa fa-search"></i>
-					     	   <f:ajax execute="@form" render="@form"/>
-					     	</button>
-					</span>					
-        		</div>    
-        		<div class="col-md-3">	          
-        		 <h:outputLabel id="cont" value="#{sistemaBean.clientes} Instalações" /> 	             
-	           </div>    	 																											
-				
-		<br/>  	       
-        <h:dataTable id="tabelaCli" var="list" value="#{instalacaoBean.lista}" 
-            styleClass="table table-responsive  table-hover" rows="7">
-           <h:column >
-             
-               
-                  <label>Nome : #{list.nome}</label>
-                  <br/>
-                  <label>Endereco : #{list.rua} N° #{list.numero}  #{list.complemento}</label>
-                  <br/>
-                  <label>Referencia : #{list.referencia}</label>
-                   <br/>
-                 <label>Data e hora :</label> 
-                  <h:outputLabel value="#{list.dataCadastro}" >
-                           <f:convertDateTime pattern="dd/MM/yyyy hh:mm"/>
-                  </h:outputLabel>   
-                           
-             </h:column>
-             <h:column>
-              
-               
-                  <label>CPF : #{list.cpf}</label>
-                   <label class="pull-right">Vendedor : #{list.vendedor.primeiroNome}</label>
-                  <br/>
-                  <label>Bairro : #{list.bairro}</label>
-                  <br/>
-                  <label>Plano : #{list.plano}</label>
-                  <br/>
-                  <div class="pull-right">
-                      <button jsf:id="bt_imprimir" type="button"  class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg"
-                      jsf:action="#{instalacaoBean.imprimir}">IP                        
-                      </button>
-                       &nbsp;
-                      <button jsf:id="bt_ip"  class="btn btn-info" jsf:action="#{instalacaoBean.imprimir}"
-                      data-toggle="tooltip" data-placement="top" title="Imprimir"><i class="fa fa-print"></i>
-                        <f:setPropertyActionListener target="#{instalacaoBean.cliente}" value="#{list}"/>                        
-                      </button>                    
-                  </div>                 
-                              
-                    
-             </h:column>   
-          
-      </h:dataTable> 
-      <!-- final da tabela -->        	      		  
-			
-				<div class="row">
-					<div class="col-md-12">				
-						<button class="btn btn-default pull-left topo" jsf:action="#{instalacaoBean.anterior}" jsf:rendered="#{sistemaBean.clientes > 7}">Anterior
-						  <f:ajax render="@form"/>
-						</button> 
-						<button class="btn btn-default pull-right topo" jsf:action="#{instalacaoBean.proximo}" jsf:rendered="#{sistemaBean.clientes > 7}">Proximo
-						 <f:ajax render="@form"/>
-						</button>				 																															
-					</div>
-				</div>
-			
-			 
-			     		 	    
-        </form>    		  
-        
-            <!-- Large modal -->	
-			
-			<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-			  <div class="modal-dialog modal-lg">
-			    <div class="modal-content">
-			      <div class="modal-header">
-			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			        <h4 class="modal-title">Dados de acesso do cliente</h4>
-			      </div>
-			      <div class="modal-body">
-			         					         
-							    
-							      	<form class="validate form-inline">
-							      	  <div class="row">
-							             <div class="col-xs-3">
-									      <label>IP</label>
-								          <input type="text" class="form-control ip " jsf:value="#{dados.ipPrint}" />
-								          <span>255.255.255.255</span>
-									     </div>	
-									     <div class="col-xs-3">
-									        <label>Mask</label>
-								          <input type="text" class="form-control ip " jsf:value="#{dados.maskPrint}"/>
-								           <span>255.255.255.255</span>
-									     </div>	
-									     <div class="col-xs-3">
-									         <label>Gatwey</label>
-								           <input type="text" class="form-control ip" jsf:value="#{dados.gatweyPrint}" />
-								           <span>255.255.255.255</span>
-									     </div>	
-									     <div class="col-xs-3">
-									       <label>DNS</label>
-								          <input type="text" jsf:value="#{dados.dnsPrint}" class="form-control ip"/>
-								          <span>255.255.255.255</span>									     </div>					        
-										</div>							     
-										</form>							     
-								    				      
-								     	     
-								     <div class="pull-right" style="margin-top: 25px">
-								        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-								        <button type="submit" class="btn btn-primary" >OK</button>
-								     </div>
-							     					    					    					  
-							 
-					    
-					    </div>					    
-					  </div>					
-					</div>	      			      			      			      			      			       			       
-			       
-			       <div class="modal-footer">
-				      
-				  </div>			      
-			     </div>			    	
-		<!-- Final do modal -->	
-        
+     
+     
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+	      <div class="bs-docs-example" style="padding-bottom: 24px;">
+            <a class="btn btn-large btn-danger" data-toggle="confirmation">Click to toggle confirmation</a>
+          </div>
+
+                
+     
+ 
+		
+	
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>			
+	<script type="text/javascript" 	src="#{request.contextPath}/js/bootstrap.min.js"></script>   		
+	<script type="text/javascript"  src="#{request.contextPath}/js/confirmation.js"> </script>
+	<script type="text/javascript">
+	$('[data-toggle="confirmation"]').confirmation('show');
+
+	
+	</script>	
+  
     
-    </ui:define> 
-   </ui:composition>
 </body> 
 </html>
