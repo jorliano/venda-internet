@@ -50,7 +50,7 @@
 															<div class="fileinput-preview thumbnail">
 																	<img  src="#{request.contextPath}#{vendedorBean.vendedor.url}" style="height: 120px;width: 120px" />
 															</div>	
-															<button  type="button"  class="btn btn-info" data-toggle="modal" data-target=".modal"
+															<button  type="button"  class="btn btn-info" data-toggle="modal" data-target="#modal"
 															>Camera <i class="fa fa-camera"></i>															    
 															  </button>																													
 															</div>
@@ -186,8 +186,8 @@
 																		    <f:ajax execute="@form " render="@form" onevent="bt_lock"/>
 																		 </button>	    																					 				
 																		 &nbsp;
-																		 <button type="submit" jsf:id="bt_conf_dele"   jsf:action="#{vendedorBean.deletar}" class="btn btn-default topo"  
-																		   onclick="return confirm('Deseja realmente deletar esse vendedor ?');"   >Deletar <i class="fa fa-user-times "></i></button>																															 
+																		 <button type="button" jsf:id="bt_conf_dele"    class="btn btn-default"  
+																		  data-toggle="modal" data-target=".bs-example-modal-sm" >Deletar <i class="fa fa-user-times "></i></button>																															 
 																		
 																		 &nbsp;
 																		 <button jsf:outcome="vendedor" class="btn btn-danger" >Voltar <i class="fa fa-undo"></i></button>
@@ -246,11 +246,31 @@
 		<!-- Final do modal -->	
 		
 		
-        </h:form>
+                </h:form>
         
 			  </section>
 			</div>                    
-
+            <!-- Modal Confirm -->
+            <form jsf:id="form1">
+               
+				
+				<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+				  <div class="modal-dialog modal-sm">
+				    <div class="modal-content">
+				      <br/>
+					       <h4 class="col-xs-offset-1">Todos dados relacionado ao cliente serão excluido,você esta certo disso ? </h4>
+					        <br/>
+					       <div class="col-xs-offset-4">					       
+					         <button type="submit" class="btn btn-success" jsf:id="bt_delete" jsf:action="#{vendedorBean.deletar}">
+					           Sim					          
+					         </button>
+					          &nbsp;
+					         <button type="button" class="btn btn-danger" data-dismiss="modal">Nâo</button>
+					   </div>
+				    </div>
+				  </div>
+				</div>
+            </form>
 		</ui:define>
 	</ui:composition>
 	

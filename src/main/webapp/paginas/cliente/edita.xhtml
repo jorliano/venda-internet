@@ -128,8 +128,8 @@
 																	      &nbsp;				      
 																	      <button jsf:outcome="cliente.xhtml" class="btn btn-danger" >Voltar <i class="fa fa-undo"></i></button>
 																	      &nbsp;
-																	      <button jsf:id="bt_conf_delite"  jsf:action="#{clienteBean.deletar}"  class="btn btn-default topo" 
-																	        onclick="return confirm('Deseja realmente deletar essa instalação ?');"   >Deletar <i class="fa fa-user-times "></i></button>
+																	      <button jsf:id="bt_conf_delite"  type="button"  class="btn btn-default" 
+																	       data-toggle="modal" data-target=".modal"   >Deletar <i class="fa fa-user-times "></i></button>
 																</div>
 																
 													</div>										
@@ -144,7 +144,27 @@
 				</div>
 				</section>
 			</div>
-            
+			<!-- Modal Confirm -->
+            <form jsf:id="form1">
+               
+				
+				<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+				  <div class="modal-dialog modal-sm">
+				    <div class="modal-content">
+				      <br/>
+					       <h4 class="col-xs-offset-2"> Tem certeza que quer deletar ?</h4>
+					        <br/>
+					       <div class="col-xs-offset-4">					       
+					         <button type="submit" class="btn btn-success" jsf:id="bt_delete" jsf:action="#{clienteBean.deletar}">
+					           Sim					          
+					         </button>
+					          &nbsp;
+					         <button type="button" class="btn btn-danger" data-dismiss="modal">Nâo</button>
+					   </div>
+				    </div>
+				  </div>
+				</div>
+            </form>
 
 		</ui:define>
 	</ui:composition>

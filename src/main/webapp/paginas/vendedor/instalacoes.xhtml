@@ -87,7 +87,7 @@
 			 
 			     		 	    
         </h:form>    		  
-        <h:form prependId="false" styleClass="validate">
+        
             <!-- Large modal -->	
 			
 			<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -97,69 +97,46 @@
 			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			        <h4 class="modal-title">Dados de acesso do cliente</h4>
 			      </div>
-			      <div class="modal-body">
-			          <div role="tabpanel">
-						  <!-- Nav tabs -->
-						  <ul class="nav nav-tabs" role="tablist">
-						    <li role="presentation" class="active"><a href="#IPestatico" aria-controls="IPestatico" role="tab" data-toggle="tab">IP Estatico</a></li>
-						    <li role="presentation"><a href="#PPPoE" aria-controls="PPPoE" role="tab" data-toggle="tab">PPPoE</a></li>    
-						  </ul>
-					    <!-- Tab panes -->
-					    <div class="tab-content">
-					     <div role="tabpanel" class="tab-pane active" id="IPestatico">
-					         
-							    <form jsf:id="form2">
-							       <div class="row-fluid">							        
-								         <div class="col-xs-3">
-								          <label>IP</label>
-								          <input type="text" class="form-control ip " jsf:value="#{dados.ipPrint}" />
-								          <span>255.255.255.255</span>
-								        </div>
-								        <div class="col-xs-3">
-								          <label>Mask</label>
-								          <input type="text" class="form-control ip " jsf:value="#{dados.maskPrint}"/>
-								           <span>255.255.255.255</span>
-								        </div>
-								        <div class="col-xs-3">
-								          <label>Gatwey</label>
-								          <input type="text" class="form-control ip" jsf:value="#{dados.gatweyPrint}" />
-								          <span>255.255.255.255</span>
-								        </div>
-								        <div class="col-xs-3">
-								          <label>DNS</label>
-								          <input type="text" jsf:value="#{dados.dnsPrint}" class="form-control ip"/>
-								          <span>255.255.255.255</span>
-								        </div>
-								      </div>					      
-								     	     
+			      <div class="modal-body">			          
+					  <form jsf:id="form1" class="form-horizontal validate" jsf:prependId="false">
+                  			<div class="form-group">
+								<label class="col-md-3 control-label" for="ip">IP</label>
+							     <div class="col-md-7">
+								    <input type="text" class="form-control ip " jsf:value="#{dados.ipPrint}" name="ip" />
+								   <span>255.255.255.255</span>
+							     </div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-3 control-label" for="mascara">MASKARA	</label>
+								<div class="col-md-7">
+							    	<input type="text" class="form-control ip " jsf:value="#{dados.maskPrint}" name="mascara"/>
+								    <span>255.255.255.255</span>
+								</div>
+							</div>
+		    				<div class="form-group">
+									<label class="col-md-3 control-label" for="gatwey">GATWEAY
+														</label>
+									<div class="col-md-7">
+			     					  <input type="text" class="form-control ip" jsf:value="#{dados.gatweyPrint}" name="gatweay" />
+			                          <span>255.255.255.255</span>
+									</div>
+							</div>
+							<div class="form-group">
+				      			<label class="col-md-3 control-label" for="dns">DNS
+								</label>
+								<div class="col-md-7">
+									  <input type="text" jsf:value="#{dados.dnsPrint}" class="form-control ip" name="dns"/>
+						              <span>255.255.255.255</span>
+								</div>
+							</div>
+                                            
+							   
 								     <div class="pull-right" style="margin-top: 25px">
 								        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 								        <button type="submit" class="btn btn-primary" >OK</button>
-								     </div>
-							    </form>							  
+								     </div>						  			  
 					    
-					     </div>
-					    <div role="tabpanel" class="tab-pane " id="PPPoE">	    					      							   
-							     <form jsf:id="form3">
-							         <div class="row-fluid">
-								        <div class="col-xs-3">
-								          <label>Login</label>
-								          <input type="text" jsf:value="#{dados.loginPrint}" class="form-control" placeholder="usernome"/>
-								        </div>
-								        <div class="col-xs-3">
-								          <label>Senha</label>
-								          <input type="text" jsf:value="#{dados.senhaPrint}" class="form-control" placeholder="senha"/>
-								        </div>						        
-								      </div>				      
-								     	     
-								     <div class="pull-right" style="margin-top: 25px">
-								        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-								        <button type="submit" class="btn btn-primary" >OK</button>
-								     </div>
-							    </form>
-							 
-					    
-					    </div>					    
+					      </form>			    				    
 					  </div>					
 					</div>	      			      			      			      			      			       			       
 			       
@@ -168,10 +145,9 @@
 				  </div>			      
 			     </div>
 			    </div>
-			  </div>
-			</div>  	
+			   	
 		<!-- Final do modal -->	
-        </h:form>
+       
     
     </ui:define> 
    </ui:composition>

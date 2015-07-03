@@ -73,7 +73,7 @@ public class SistemaBean implements Serializable {
 
 	}
 
-	public String deletar(Sistema sistema) {
+	public String deletar() {
 		System.out.println("salvar chamado" + sistema.getPlano());
 		dao.deletar(sistema);
 		alerta.info("Plano deletado com sucesso");

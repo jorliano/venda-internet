@@ -85,8 +85,8 @@
 																		 <button type="submit" jsf:id="bt_conf_inc"  jsf:action="#{usuarioBean.salvar}"  class="btn btn-primary ">Salvar <i class="fa fa-user-plus "></i>
 																		   <f:ajax execute="@form " render="@form :msg" onevent="bt_lock"/>
 																		 </button>	
-																		 <button type="submit" jsf:id="bt_conf_dele"   jsf:action="#{usuarioBean.deletar}" class="btn btn-default"  
-																		   onclick="return confirm('Deseja realmente deletar esse administrador ?');"   >Deletar <i class="fa fa-user-times "></i></button>
+																		 <button type="submit" jsf:id="bt_conf_dele"   class="btn btn-default"  
+																		   data-toggle="modal" data-target=".bs-example-modal-sm"  >Deletar <i class="fa fa-user-times "></i></button>
 																		 &nbsp;
 																		 <button jsf:outcome="usuario" class="btn btn-danger" >Voltar <i class="fa fa-undo"></i></button>
 																	   
@@ -104,7 +104,27 @@
 				</div>
 				</section>
 			</div>
-            
+            <!-- Modal Confirm -->
+            <form jsf:id="form1">
+               
+				
+				<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+				  <div class="modal-dialog modal-sm">
+				    <div class="modal-content">
+				      <br/>
+					       <h4 class="col-xs-offset-2">Tem certeza que quer deletar ? </h4>
+					        <br/>
+					       <div class="col-xs-offset-4">					       
+					         <button type="submit" class="btn btn-success" jsf:id="bt_delete" jsf:action="#{usuarioBean.deletar}" >
+					           Sim					          
+					         </button>
+					          &nbsp;
+					         <button type="button" class="btn btn-danger" data-dismiss="modal">Nâo</button>
+					   </div>
+				    </div>
+				  </div>
+				</div>
+            </form>
 		</ui:define>
 	</ui:composition>
 </body>

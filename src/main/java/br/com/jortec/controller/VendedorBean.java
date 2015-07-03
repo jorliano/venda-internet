@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.event.AjaxBehaviorEvent;
 import javax.servlet.http.Part;
 
 import org.primefaces.event.CaptureEvent;
@@ -125,11 +126,11 @@ public class VendedorBean implements Serializable {
 	}
 
 	public void carregaFoto() throws IOException {
-
+		System.out.println(foto.getSize());
 		if (foto != null) {
 			img.Upload(foto, "vendedor.jpg");
 			vendedor.setUrl("/imagens/vendedor.jpg");
-
+           
 		}
 
 	}
