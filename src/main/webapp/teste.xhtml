@@ -1,4 +1,238 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+
+<body>
+	<ui:composition template="/sistema.xhtml">
+		<ui:define name="titulo">
+			<i class="fa fa-angle-right"></i> configuração</ui:define>
+		<ui:define name="conteudo">
+
+			<div class="main-content">
+				<section>
+				<div class="container-fluid container-padded">
+					<div class="row">
+						<div class="col-md-12 page-title">
+							<h2>Configuração</h2>
+							<hr />
+						</div>
+					</div>
+				</div>
+				<div class="container-fluid container-padded">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="panel panel-plain">
+								<div class="panel-body">
+									<div class="panel panel-default m-bot0">
+										<div class="panel-body tab-content">
+
+											<div class="tab-pane active" id="profile-settings">
+												<form jsf:id="form" class="form-horizontal validate"
+													jsf:prependId="false">
+													<h4>
+														<i class="fa fa-user fa-fw"></i> Cadastro de Plano
+													</h4>
+
+													<hr />
+
+
+													<div class="form-group">
+														<label class="col-md-3 control-label" for="plano">Plano
+														</label>
+														<div class="col-md-7">
+															<input type="text" jsf:id="plano" jsf:label="Plano"
+																required="true" class="form-control required"
+																jsf:value="#{sistemaBean.sistema.plano}" /> <span>Digite
+																o plano</span>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-md-3 control-label" for="valor">Valor</label>
+														<div class="col-md-7">
+															<input type="number" jsf:id="valor" jsf:label="Valor"
+																required="true" class="form-control required"
+																jsf:value="#{sistemaBean.sistema.valor}" /> <span></span>
+														</div>
+													</div>
+													<div class="form-group">
+														<div class="col-md-7 col-md-push-3">
+															<h:commandButton value="Salvar"
+																action="#{sistemaBean.salvar}"
+																styleClass="btn btn-primary">
+																<f:ajax render="@form :msg" onevent="bt_lock" />
+															</h:commandButton>
+														</div>
+													</div>
+                                                 </form>
+												<form jsf:id="form1" class="form-horizontal validate"
+													jsf:prependId="false">
+													<div class="col-xs-12">
+
+														<h:dataTable id="tabela" var="list"
+															value="#{sistemaBean.lista}"
+															styleClass="table table-responsive  table-hover "
+															rows="10">
+															<h:column>
+																<f:facet name="header">Plano</f:facet>									
+                      #{list.plano}                                                                                
+                    </h:column>
+															<h:column>
+																<f:facet name="header">Valor</f:facet>
+																<h:outputText value="#{list.valor}">
+																	<f:convertNumber currencyCode="BRL" type="currency" />
+																</h:outputText>
+															</h:column>
+															<h:column>
+																<f:facet name="header">Ações</f:facet>
+																<h:commandLink styleClass="fa fa-edit fa-2x">
+																	<f:setPropertyActionListener
+																		target="#{sistemaBean.sistema}" value="#{list}" />
+																		<f:ajax render=":form" /> 
+																</h:commandLink> 
+			                        &nbsp;           
+			                        <h:commandLink
+																	action="#{sistemaBean.deletarEmail}"
+																	onclick="return confirm('Realmente deseja deletar esses dados ?');"
+																	styleClass="fa fa-trash-o fa-2x ">
+																	<f:setPropertyActionListener
+																		target="#{sistemaBean.sistema}" value="#{list}" />
+																	<!-- <f:ajax execute="@form " render="@all :msg" /> -->
+																</h:commandLink>
+															</h:column>
+														</h:dataTable>
+														<!-- final da tabela -->
+
+													</div>
+												</form>
+												<form jsf:id="form2" class="form-horizontal validate"
+													jsf:prependId="false">
+													<h4>
+														<i class="fa fa-user fa-fw"></i> Cadastro de Email
+													</h4>
+
+													<hr />
+
+
+
+													<div class="form-group">
+														<label class="col-md-3 control-label" for="remetente">Remetente</label>
+														<div class="col-md-7">
+															<input type="email" jsf:id="remetente"
+																jsf:label="Remetente" required="true"
+																class="form-control required email"
+																jsf:value="#{sistemaBean.dadosEmail.remetente}" /> <span>Digite
+																o email</span>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-md-3 control-label" for="senha">Senha</label>
+														<div class="col-md-7">
+															<input type="password" jsf:id="senha" jsf:label="Senha"
+																required="true" class="form-control required "
+																jsf:value="#{sistemaBean.dadosEmail.senha}" /> 
+																<span>Campo requirido</span>
+														</div>
+													</div>
+													<div class="form-group">
+														<label class="col-md-3 control-label" for="destinatario">Destinatario</label>
+														<div class="col-md-7">
+															<input type="password" jsf:id="destinatario"
+																jsf:label="Destinatario" required="true"
+																class="form-control required "
+																jsf:value="#{sistemaBean.dadosEmail.senha}" /> 
+																<span>Cmapo requirido</span>
+														</div>
+													</div>
+
+													<div class="form-group">
+														<div class="col-md-7 col-md-push-3">
+															<h:commandButton value="Salvar"
+																action="#{sistemaBean.salvarEmail}"
+																styleClass="btn btn-primary">
+																<f:ajax render="@form :msg" onevent="bt_lock" />
+															</h:commandButton>
+														</div>
+													</div>
+												</form>
+												<form jsf:id="form3" class="form-horizontal validate"
+													jsf:prependId="false">
+													<div class="col-xs-10">
+														<h:dataTable id="tabela2" var="list"
+															value="#{sistemaBean.listEmail}"
+															styleClass="table table-responsive  table-hover "
+															rows="1">
+															<h:column>
+																<f:facet name="header">Remetente</f:facet>
+		                      #{list.remetente}              
+		                   </h:column>
+															<h:column>
+																<f:facet name="header">Destinatario</f:facet>
+		                      #{list.destinatario}                                                                                
+		                    </h:column>
+															<h:column>
+																<h:commandLink styleClass="fa fa-edit fa-2x">
+																	<f:setPropertyActionListener
+																		target="#{sistemaBean.dadosEmail}" value="#{list}" />
+																		<f:ajax  render=":form2" />
+																		
+																</h:commandLink> 
+		                        &nbsp;           
+		                        <h:commandLink action="#{sistemaBean.deletar}"
+																	onclick="return confirm('Realmente deseja deletar esse plano ?');"
+																	styleClass="fa fa-trash-o fa-2x ">
+																	<f:setPropertyActionListener
+																		target="#{sistemaBean.dadosEmail}" value="#{list}" />
+																	<f:ajax execute="@form " render="@form :msg" />
+																</h:commandLink>
+															</h:column>
+														</h:dataTable>
+														<!-- final da tabela -->
+
+													</div>
+												</form>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				</section>
+			</div>
+
+		</ui:define>
+	</ui:composition>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
@@ -6,10 +240,10 @@
 	xmlns:jsf="http://xmlns.jcp.org/jsf">
 <h:head>
 
-<!-- Bootstrap -->
+
 	<link href="#{request.contextPath}/css/bootstrap.min.css" rel="stylesheet"
 		type="text/css" />
-	<!--fonte de icones externa -->
+	
 	<link rel="stylesheet"
 		href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
 		
@@ -19,15 +253,23 @@
 <body>
      
      
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-	      <div class="bs-docs-example" style="padding-bottom: 24px;">
-            <a class="btn btn-large btn-danger" data-toggle="confirmation">Click to toggle confirmation</a>
+       <h3>Live demo</h3>
+          <div class="bs-docs-example" style="padding-bottom: 24px;">
+            <a class="btn btn-large btn-danger" type="submit" data-toggle="confirmation">Click to toggle confirmation</a>
+            <button onclick="teste()" type="submit"> teste</button>
           </div>
 
-                
+          <h4>Four directions</h4>
+          <div class="bs-docs-example tooltip-demo">
+            <ul class="bs-docs-tooltip-examples">
+              <li><a class="btn" data-toggle="confirmation" data-placement="left">Confirmation on left</a></li>
+              <li><a class="btn" data-toggle="confirmation" data-placement="top">Confirmation on top</a></li>
+              <li><a class="btn" data-toggle="confirmation" data-placement="bottom">Confirmation on bottom</a></li>
+              <li><a class="btn" data-toggle="confirmation" data-placement="right">Confirmation on right</a></li>
+            </ul>
+          </div>
+
+                     
      
  
 		
@@ -36,11 +278,15 @@
 	<script type="text/javascript" 	src="#{request.contextPath}/js/bootstrap.min.js"></script>   		
 	<script type="text/javascript"  src="#{request.contextPath}/js/confirmation.js"> </script>
 	<script type="text/javascript">
-	$('[data-toggle="confirmation"]').confirmation('show');
+	$('[data-toggle="confirmation"]').confirmation('hide');
 
+    function teste(){
+    	$(this).confirmation('hide');
+    };
 	
 	</script>	
   
     
 </body> 
 </html>
+ -->
