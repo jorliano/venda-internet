@@ -94,7 +94,7 @@ public class SistemaBean implements Serializable {
 		alerta.info("Dados atualizados com sucesso");
 		this.dadosEmail = new DadosdeEmail();
 	}
-
+	
 	public List<Sistema> getLista() {
 		return lista;
 

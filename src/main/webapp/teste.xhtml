@@ -1,78 +1,171 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"	
-	xmlns:p="http://primefaces.org/ui"	
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"		
 	xmlns:jsf="http://xmlns.jcp.org/jsf">
 
 
 <body>
-	<ui:composition template="/sistema.xhtml">
-		<ui:define name="titulo">
-			<i class="fa fa-angle-right"></i>  vendedor <i class="fa fa-angle-right"></i> cadastro</ui:define>
-		<ui:define name="conteudo">
+  <ui:composition template="/sistema.xhtml">
+  <ui:define name="titulo"><i class="fa fa-angle-right"></i> instalações agendadas</ui:define>
+  <ui:define name="conteudo"> 
+  
+   <!-- Large modal -->
 
-			<div class="main-content">
-				<section>
-				<div class="container-fluid container-padded">
-					<div class="row">
-						<div class="col-md-12 page-title">
-							<h2>Cadastro de Vendedor</h2>
-							<hr />
-						</div>
-					</div>
-				</div>
-				<div class="container-fluid container-padded">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="panel panel-plain">
-								<div class="panel-body">									
-									<div class="panel panel-default m-bot0">
-										<div class="panel-body tab-content">
-											<div class="tab-pane active" id="profile-settings">
-												  <!-- Modal Confirm -->
-            <form jsf:id="form1">
-                  <button jsf:id="bt_salvar" type="button" class="btn btn-success" onclick="$('.bs-example-modal-sm').modal('show')"
-                        data-toggle="tooltip" data-placement="top" title="Finalizar"
-                       ><i class="fa fa-check"></i>
-                        <f:setPropertyActionListener target="#{instalacaoBean.cliente}" value="#{list}"/>
-                        <f:ajax  render="@all :msg "></f:ajax>
-                      </button>
-				
-				<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-				  <div class="modal-dialog modal-sm">
-				    <div class="modal-content">
-				      <br/>
-					       <h4 class="col-xs-offset-1">Todos dados relacionado ao cliente serão excluido,você esta certo disso ? </h4>
-					        <br/>
-					       <div class="col-xs-offset-4">					       
-					         <button type="submit" class="btn btn-success" jsf:id="bt_delete" jsf:action="#{vendedorBean.deletar}">
-					           Sim					          
-					         </button>
-					          &nbsp;
-					         <button type="button" class="btn btn-danger" data-dismiss="modal">Nâo</button>
-					   </div>
-				    </div>
-				  </div>
-				</div>
-            </form>
-												
-											</div>																		
-										</div>
+			<div class="modal fade bs-example-modal-lg">
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						<form jsf:id="form2" class="form-horizontal validate"
+							jsf:prependId="false">
+							
+								<h4>
+									<i class="fa fa-user fa-fw"></i> Dados do cliente
+								</h4>
+
+								<hr />
+
+
+								<div class="form-group">
+									<label class="col-md-3 control-label" for="ip">IP</label>
+									<div class="col-md-7">
+										<input type="text" class="form-control ip "
+											jsf:value="#{dados.ipPrint}" name="ip" /> <span>255.255.255.255</span>
 									</div>
 								</div>
-							</div>
-						</div>
-					</div>
-				</div>	
-				
-				
-				</section>
-			</div>
-            
+								<div class="form-group">
+									<label class="col-md-3 control-label" for="mascara">MASKARA
+									</label>
+									<div class="col-md-7">
+										<input type="text" class="form-control ip "
+											jsf:value="#{dados.maskPrint}" name="mascara" /> <span>255.255.255.255</span>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-3 control-label" for="gatwey">GATWEAY
+									</label>
+									<div class="col-md-7">
+										<input type="text" class="form-control ip"
+											jsf:value="#{dados.gatweyPrint}" name="gatweay" /> <span>255.255.255.255</span>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-3 control-label" for="dns">DNS </label>
+									<div class="col-md-7">
+										<input type="text" jsf:value="#{dados.dnsPrint}"
+											class="form-control ip" name="dns" /> <span>255.255.255.255</span>
+									</div>
+								</div>
 
-		</ui:define>
-	</ui:composition>
-</body>
+								<div class="form-group">
+									<div class="col-md-7 col-md-push-5">
+										<button jsf:id="bt" class="btn btn-primary topo">
+											OK											
+										</button>
+										&nbsp;
+										<button class="btn btn-danger" type="button"
+											data-dismiss="modal">Voltar</button>
+
+									</div>
+
+								</div>
+							
+						</form>
+
+
+					</div>
+
+
+					<div class="modal-footer"></div>
+				</div>
+			</div>
+			<!-- Final do modal -->
+  
+  
+  
+  
+  
+      
+      <form jsf:id="form">  
+         <div class="row">	  
+	          
+				<div class="input-group col-sm-6 pull-right   ">
+					<input type="text"  class="form-control" jsf:value="#{instalacaoBean.cliente.nome}" 
+					placeholder="Busca por nome"/>
+					<span class="hide">Busca por nome</span>
+					<span class="input-group-btn">
+							<button  class="btn btn-primary" jsf:action="#{instalacaoBean.buscaIntalacao}">
+							<i class="fa fa-search"></i>
+					     	   <f:ajax execute="@form" render="@form"/>
+					     	</button>
+					</span>					
+        		</div>    
+        		       	 																											
+		</div>			       
+        <h:dataTable id="tabelaCli" var="list" value="#{instalacaoBean.lista}" 
+            styleClass="table table-responsive  table-hover" rows="7" style="margin-top: -8%;">
+           <h:column >
+              
+               
+                  <label>Nome : #{list.nome}</label>
+                  <br/>
+                  <label>Endereco : #{list.rua}  N° #{list.numero} #{list.complemento}</label>
+                  <br/>
+                  <label>Referencia : #{list.referencia}</label>
+                   <br/>
+                 <label>Data e hora :</label> 
+                  <h:outputLabel value="#{list.dataCadastro}" >
+                           <f:convertDateTime pattern="dd/MM/yyyy hh:mm"/>
+                  </h:outputLabel>   
+             </h:column>
+             <h:column>                                           
+               
+                  <label class="pull-right">Vendedor : #{list.vendedor.primeiroNome}</label>
+                  <label>CPF : #{list.cpf}</label>                   
+                  <br/>
+                  <label>Bairro : #{list.bairro}</label>
+                  <br/>
+                  <label>Plano : #{list.plano}</label>
+                  <br/>
+                  <div class="pull-right">
+                      <button jsf:id="bt_imprimir" type="button" class="btn btn-primary" onclick="$('.bs-example-modal-lg').modal('show')"
+                    	  data-toggle="tooltip" data-placement="top" title="Dados">IP                        
+                      </button>
+                       &nbsp;
+                      <button jsf:id="bt_ip"  class="btn btn-info" jsf:action="#{instalacaoBean.imprimir}"
+                      data-toggle="tooltip" data-placement="top" title="Imprimir"><i class="fa fa-print"></i>
+                        <f:setPropertyActionListener target="#{instalacaoBean.cliente}" value="#{list}"/>                        
+                      </button>
+                      &nbsp;
+                      <button jsf:id="bt_salvar" type="button" class="btn btn-success"  onclick="$('.bs-example-modal-sm').modal('show')"
+                        data-toggle="tooltip" data-placement="top" title="Finalizar" ><i class="fa fa-check"></i>
+                        <f:setPropertyActionListener target="#{instalacaoBean.cliente}" value="#{list}"/>                       
+                      </button>
+                      &nbsp;
+                      <button jsf:id="bt_cancelar" type="button" class="btn btn-danger" onclick="$('.cancelada').modal('show')" 
+                       data-toggle="tooltip" data-placement="top" title="Cancelar" ><i class="fa fa-trash-o"></i>
+                         <f:setPropertyActionListener target="#{instalacaoBean.cliente}" value="#{list}"/>                        
+                      </button>
+                  </div>                                        
+          </h:column>
+          
+      </h:dataTable> 
+     <!-- final da tabela -->          
+	      
+		 <!-- Paginação -->
+		      <div class="row">
+					<div class="col-md-12">				
+						<button class="btn btn-default pull-left topo" jsf:action="#{instalacaoBean.anterior}" jsf:rendered="#{sistemaBean.clientes > 7}">Anterior
+						  <f:ajax render="@form"/>
+						</button> 
+						<button class="btn btn-default pull-right topo" jsf:action="#{instalacaoBean.proximo}" jsf:rendered="#{sistemaBean.clientes > 7}">Proximo
+						 <f:ajax render="@form"/>
+						</button>				 																															
+					</div>
+				</div>	      		 	    
+        </form>    
+        
+    </ui:define> 
+   </ui:composition>
+</body> 
 </html>

@@ -52,7 +52,7 @@ public class InstalacaoBean implements Serializable {
 		return null;
 	}
 
-	public String finalizado() {
+	public String finalizar() {
 		cliente.setEstatus("concluido");
 		cliente.setDataCadastro(new Date());
 		dao.atualiza(cliente);

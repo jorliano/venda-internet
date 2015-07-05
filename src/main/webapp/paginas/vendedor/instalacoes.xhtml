@@ -8,11 +8,87 @@
 
 <body>
   <ui:composition template="/sistema.xhtml">
-  <ui:define name="titulo"><i class="fa fa-angle-right"></i> instalacões agendadas</ui:define>
-  <ui:define name="conteudo">     
-      <h:form id="form" prependId="false" >    
-         <div class="row">	 
-	           
+  <ui:define name="titulo"><i class="fa fa-angle-right"></i> instalações agendadas</ui:define>
+  <ui:define name="conteudo"> 
+  
+   <!-- Large modal -->
+
+			<div class="modal fade bs-example-modal-lg">
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						<form jsf:id="form2" class="form-horizontal validate"
+							jsf:prependId="false">
+							
+								<h4>
+									<i class="fa fa-user fa-fw"></i> Dados do cliente
+								</h4>
+
+								<hr />
+
+
+								<div class="form-group">
+									<label class="col-md-3 control-label" for="ip">IP</label>
+									<div class="col-md-7">
+										<input type="text" class="form-control ip "
+											jsf:value="#{dados.ipPrint}" name="ip" /> <span>255.255.255.255</span>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-3 control-label" for="mascara">MASKARA
+									</label>
+									<div class="col-md-7">
+										<input type="text" class="form-control ip "
+											jsf:value="#{dados.maskPrint}" name="mascara" /> <span>255.255.255.255</span>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-3 control-label" for="gatwey">GATWEAY
+									</label>
+									<div class="col-md-7">
+										<input type="text" class="form-control ip"
+											jsf:value="#{dados.gatweyPrint}" name="gatweay" /> <span>255.255.255.255</span>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-md-3 control-label" for="dns">DNS </label>
+									<div class="col-md-7">
+										<input type="text" jsf:value="#{dados.dnsPrint}"
+											class="form-control ip" name="dns" /> <span>255.255.255.255</span>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<div class="col-md-7 col-md-push-5">
+										<button jsf:id="bt" class="btn btn-primary topo">
+											OK											
+										</button>
+										&nbsp;
+										<button class="btn btn-danger" type="button"
+											data-dismiss="modal">Voltar</button>
+
+									</div>
+
+								</div>
+							
+						</form>
+
+
+					</div>
+
+
+					<div class="modal-footer"></div>
+				</div>
+			</div>
+			<!-- Final do modal -->
+  
+  
+  
+  
+  
+      
+      <form jsf:id="form">  
+         <div class="row">	  
+	          
 				<div class="input-group col-sm-6 pull-right   ">
 					<input type="text"  class="form-control" jsf:value="#{instalacaoBean.cliente.nome}" 
 					placeholder="Busca por nome"/>
@@ -24,19 +100,16 @@
 					     	</button>
 					</span>					
         		</div>    
-        		<div class="col-md-3">	          
-        		 <h:outputLabel id="cont" value="#{sistemaBean.clientes} Instalações" /> 	             
-	           </div>    	 																											
-		</div>			
-		<br/>  	       
+        		       	 																											
+		</div>			       
         <h:dataTable id="tabelaCli" var="list" value="#{instalacaoBean.lista}" 
-            styleClass="table table-responsive  table-hover" rows="7">
+            styleClass="table table-responsive  table-hover" rows="7" style="margin-top: -8%;">
            <h:column >
-             
+              
                
                   <label>Nome : #{list.nome}</label>
                   <br/>
-                  <label>Endereco : #{list.rua} N° #{list.numero}  #{list.complemento}</label>
+                  <label>Endereco : #{list.rua}  N° #{list.numero} #{list.complemento}</label>
                   <br/>
                   <label>Referencia : #{list.referencia}</label>
                    <br/>
@@ -44,36 +117,33 @@
                   <h:outputLabel value="#{list.dataCadastro}" >
                            <f:convertDateTime pattern="dd/MM/yyyy hh:mm"/>
                   </h:outputLabel>   
-                              
-                     
-          </h:column>     
-          <h:column>
-              
+             </h:column>
+             <h:column>                                           
                
-                  <label>CPF : #{list.cpf}</label>
-                   <label class="pull-right">Vendedor : #{list.vendedor.primeiroNome}</label>
+                  <label class="pull-right">Vendedor : #{list.vendedor.primeiroNome}</label>
+                  <label>CPF : #{list.cpf}</label>                   
                   <br/>
                   <label>Bairro : #{list.bairro}</label>
                   <br/>
                   <label>Plano : #{list.plano}</label>
                   <br/>
                   <div class="pull-right">
-                       <button jsf:id="bt_imprimir" type="button" class="btn btn-primary" onclick="$('.bs-example-modal-lg').modal('show')"
+                      <button jsf:id="bt_imprimir" type="button" class="btn btn-primary" onclick="$('.bs-example-modal-lg').modal('show')"
                     	  data-toggle="tooltip" data-placement="top" title="Dados">IP                        
                       </button>
                        &nbsp;
                       <button jsf:id="bt_ip"  class="btn btn-info" jsf:action="#{instalacaoBean.imprimir}"
                       data-toggle="tooltip" data-placement="top" title="Imprimir"><i class="fa fa-print"></i>
                         <f:setPropertyActionListener target="#{instalacaoBean.cliente}" value="#{list}"/>                        
-                      </button>                    
-                  </div>                 
-                          
-            </h:column> 
+                      </button>
+                  </div>                                        
+          </h:column>
           
       </h:dataTable> 
-      <!-- final da tabela -->        	      		  
-			
-				<div class="row">
+     <!-- final da tabela -->          
+	      
+		 <!-- Paginação -->
+		      <div class="row">
 					<div class="col-md-12">				
 						<button class="btn btn-default pull-left topo" jsf:action="#{instalacaoBean.anterior}" jsf:rendered="#{sistemaBean.clientes > 7}">Anterior
 						  <f:ajax render="@form"/>
@@ -82,73 +152,9 @@
 						 <f:ajax render="@form"/>
 						</button>				 																															
 					</div>
-				</div>
-			
-			 
-			     		 	    
-        </h:form>    		  
+				</div>	      		 	    
+        </form>    
         
-            <!-- Large modal -->	
-			
-			<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-			  <div class="modal-dialog modal-lg">
-			    <div class="modal-content">
-			      <div class="modal-header">
-			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			        <h4 class="modal-title">Dados de acesso do cliente</h4>
-			      </div>
-			      <div class="modal-body">			          
-					  <form jsf:id="form1" class="form-horizontal validate" jsf:prependId="false">
-                  			<div class="form-group">
-								<label class="col-md-3 control-label" for="ip">IP</label>
-							     <div class="col-md-7">
-								    <input type="text" class="form-control ip " jsf:value="#{dados.ipPrint}" name="ip" />
-								   <span>255.255.255.255</span>
-							     </div>
-							</div>
-							<div class="form-group">
-								<label class="col-md-3 control-label" for="mascara">MASKARA	</label>
-								<div class="col-md-7">
-							    	<input type="text" class="form-control ip " jsf:value="#{dados.maskPrint}" name="mascara"/>
-								    <span>255.255.255.255</span>
-								</div>
-							</div>
-		    				<div class="form-group">
-									<label class="col-md-3 control-label" for="gatwey">GATWEAY
-														</label>
-									<div class="col-md-7">
-			     					  <input type="text" class="form-control ip" jsf:value="#{dados.gatweyPrint}" name="gatweay" />
-			                          <span>255.255.255.255</span>
-									</div>
-							</div>
-							<div class="form-group">
-				      			<label class="col-md-3 control-label" for="dns">DNS
-								</label>
-								<div class="col-md-7">
-									  <input type="text" jsf:value="#{dados.dnsPrint}" class="form-control ip" name="dns"/>
-						              <span>255.255.255.255</span>
-								</div>
-							</div>
-                                            
-							   
-								     <div class="pull-right" style="margin-top: 25px">
-								        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-								        <button type="submit" class="btn btn-primary" >OK</button>
-								     </div>						  			  
-					    
-					      </form>			    				    
-					  </div>					
-					</div>	      			      			      			      			      			       			       
-			       
-			       <div class="modal-footer">
-				      
-				  </div>			      
-			     </div>
-			    </div>
-			   	
-		<!-- Final do modal -->	
-       
-    
     </ui:define> 
    </ui:composition>
 </body> 
