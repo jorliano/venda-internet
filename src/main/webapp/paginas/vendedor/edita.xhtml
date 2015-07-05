@@ -43,20 +43,20 @@
 
 													<div class="form-group">
 														<label class="col-md-3 control-label">Imagem</label>
-														<div class="col-md-7">														   
-															<h:inputFile id="arquivo" value="#{vendedorBean.foto}" >
-															   <f:ajax execute="@form" render="@all" listener="#{vendedorBean.carregaFoto}"/>	
-															</h:inputFile>
+														<div class="col-md-7">														    
+															<h:inputFile id="arquivo" value="#{vendedorBean.foto}" styleClass="btn btn-default" />		
+															<br/>											   																
 															<div class="fileinput-preview thumbnail">
-																	<img  src="#{request.contextPath}#{vendedorBean.vendedor.url}" style="height: 120px;width: 120px" />
-															</div>	
-															<button  type="button"  class="btn btn-info" data-toggle="modal" data-target="#modal"
-															>Camera <i class="fa fa-camera"></i>															    
-															  </button>																													
+																	<img jsf:id="img" src="#{request.contextPath}#{vendedorBean.vendedor.url}" style="height: 120px;width: 120px" />
 															</div>
-														</div>                                                  				                                      
-												</form>
-												<form jsf:id="form2" class="form-horizontal validate" jsf:prependId="false" >	
+															<h:commandButton value="Carregar" action="#{vendedorBean.carregaFoto}" styleClass="btn btn-info " >															
+															    <f:ajax execute="@form" render="img arquivo"/>
+															</h:commandButton>			
+															&nbsp;
+															<button  type="button"  class="btn btn-info" data-toggle="modal" data-target="#camera"
+															  >Camera </button>																												
+															</div>
+													</div>												                                                 				                                      													
 													<div class="form-group">
 														<label class="col-md-3 control-label" for="primeiroNome">Primeiro
 															Nome</label>
@@ -183,7 +183,7 @@
 													<div class="form-group">
 																<div class="col-md-7 col-md-push-3">																																
 																		 <button type="submit" jsf:id="topo"  jsf:action="#{vendedorBean.salvar}"  class="btn btn-primary topo"  >Salvar <i class="fa fa-user-plus "></i>
-																		    <f:ajax execute="@form " render="@form" onevent="bt_lock"/>
+																		    <f:ajax execute="@form " render="@form :msg" onevent="bt_lock"/>
 																		 </button>	    																					 				
 																		 &nbsp;
 																		 <button type="button" jsf:id="bt_conf_dele"    class="btn btn-default"  
@@ -207,7 +207,7 @@
 				<h:form prependId="false" >
             <!-- Large modal -->	
 			
-			<div class="modal fade " id="modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+			<div class="modal fade "  id="camera" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 			  <div class="modal-dialog " role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">

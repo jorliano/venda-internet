@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.util.List;
 
 import javax.faces.context.FacesContext;
@@ -22,14 +23,14 @@ import br.com.jortec.util.Alerta;
 
 @Service
 @Scope("view")
-public class ImagemValidator { 
+public class ImagemValidator implements Serializable{ 
 	
 @Autowired
 Alerta alerta;
 
 	/*Ler arquivo part e gera um arquivo q serar salvo */	
 	 private final int limitTamanho = 40000;
-	    private final String tipoArquivo = "jpeg|jpg|gif|png";	   
+	 private final String tipoArquivo = "jpeg|jpg|gif|png";	   
 	 String realSavePath;
 	 String fileSavePath ;
 	    
@@ -39,18 +40,20 @@ Alerta alerta;
 	        try {	        	
 	        	
 	            if (foto.getSize() > 0) {
-	                String nomeArquivo = getFilename(foto);	               
+	                String nomeArquivo = getFilename(foto);	                             
 	                if (verificaTipoArquivo(nomeArquivo)) {
 	                    if (foto.getSize() > this.limitTamanho) {
 	                       System.out.println("tamanho grand");
 	                    	 alerta.error("Tamanho muito grande");
 	                    } else {
+	                    	                      	                    	
 	                    	
-	                        String nomeAtualArquivo = nomeArquivo;
-	                        String ext = nomeAtualArquivo.substring(nomeAtualArquivo.lastIndexOf("."), nomeAtualArquivo.length());	                      
-	                        fileSavePath = FacesContext.getCurrentInstance().getExternalContext().getRealPath("imagens");
-	                        fileSavePath = fileSavePath.substring(0,fileSavePath.indexOf("/imagens"));
-	                        realSavePath = fileSavePath+"/imagens/"+caminho;	                        
+	                       
+	                        ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();	                                            
+	                        System.out.println(servletContext.getRealPath(""));
+	                        String radon = getRandomImageName();
+	                        realSavePath = servletContext.getRealPath("");	        
+	                        realSavePath = realSavePath+"/imagens/vendedor/"+radon+".jpg";
 	                      
 	                        System.out.println(realSavePath);
 	                        
@@ -67,7 +70,8 @@ Alerta alerta;
 	                            outPut.flush();
 	                            outPut.close();
 	                           
-	                                                      
+	                           // System.out.println(radon+".jpg");
+	                            return radon+".jpg";                          
                              
 	                        } catch (IOException e) {
 	                            arquivoSalvo = "semImagens.jpg";
@@ -75,14 +79,14 @@ Alerta alerta;
 	                    }
 
 	                } else {
-	                    arquivoSalvo = "semImagens.jpg";
-	                    System.out.println("arquivo nao salvo");
+	                	 alerta.error("Selecione um arquivo valido");
+	                	 return null;
 	                }
 	            }
 	        } catch (Exception ex) {
 	        	
 	            arquivoSalvo = "semImagens.jpg";
-	        }
+	        }	       
 	        return arquivoSalvo;
 	    }
 	    public void caregarImagems(List<Vendedor> lista){
@@ -192,7 +196,11 @@ Alerta alerta;
 	        }
 	        return null;
 	    }
-	   
+	    private String getRandomImageName() {
+	        int i = (int) (Math.random() * 10000000);
+	         
+	        return String.valueOf(i);
+	    }
 	}
 
 

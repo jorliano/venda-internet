@@ -55,8 +55,8 @@
                   <label>Plano : #{list.plano}</label>
                   <br/>
                   <div class="pull-right">
-                      <button jsf:id="bt_imprimir" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg"
-                      jsf:action="#{instalacaoBean.imprimir}">IP                        
+                      <button jsf:id="bt_imprimir" type="button" class="btn btn-primary" onclick="$('.bs-example-modal-lg').modal('show')"
+                    	  data-toggle="tooltip" data-placement="top" title="Dados">IP                        
                       </button>
                        &nbsp;
                       <button jsf:id="bt_ip"  class="btn btn-info" jsf:action="#{instalacaoBean.imprimir}"
@@ -64,18 +64,14 @@
                         <f:setPropertyActionListener target="#{instalacaoBean.cliente}" value="#{list}"/>                        
                       </button>
                       &nbsp;
-                      <button jsf:id="bt_salvar" type="submit" class="btn btn-success" jsf:action="#{instalacaoBean.finalizado}"
-                        data-toggle="tooltip" data-placement="top" title="Finalizar"
-                        onclick="return confirm('A instalação está concluida ?');"><i class="fa fa-check"></i>
-                        <f:setPropertyActionListener target="#{instalacaoBean.cliente}" value="#{list}"/>
-                        <f:ajax  render="@all :msg "></f:ajax>
+                      <button jsf:id="bt_salvar" type="button" class="btn btn-success"  onclick="$('.bs-example-modal-sm').modal('show')"
+                        data-toggle="tooltip" data-placement="top" title="Finalizar" ><i class="fa fa-check"></i>
+                        <f:setPropertyActionListener target="#{instalacaoBean.cliente}" value="#{list}"/>                       
                       </button>
                       &nbsp;
-                      <button jsf:id="bt_cancelar" type="submit" class="btn btn-danger" jsf:action="#{instalacaoBean.cancelar}" 
-                       data-toggle="tooltip" data-placement="top" title="Cancelar"
-                       onclick="return confirm('Realmente deseja cancelar a instalação ?');"><i class="fa fa-trash-o"></i>
-                         <f:setPropertyActionListener target="#{instalacaoBean.cliente}" value="#{list}"/>
-                         <f:ajax  render="@all :msg "></f:ajax>
+                      <button jsf:id="bt_cancelar" type="button" class="btn btn-danger" onclick="$('.cancelada').modal('show')" 
+                       data-toggle="tooltip" data-placement="top" title="Cancelar" ><i class="fa fa-trash-o"></i>
+                         <f:setPropertyActionListener target="#{instalacaoBean.cliente}" value="#{list}"/>                        
                       </button>
                   </div>                                        
           </h:column>
@@ -96,7 +92,7 @@
 				</div>	      		 	    
         </h:form>    
           <!-- Large modal -->	
-			
+		  <form jsf:id="form2" class="validate">  	
 			<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 			  <div class="modal-dialog modal-lg">
 			    <div class="modal-content">
@@ -105,7 +101,7 @@
 			        <h4 class="modal-title">Dados de acesso do cliente</h4>
 			      </div>
 			      <div class="modal-body">			          
-					  <form jsf:id="form1" class="form-horizontal validate" jsf:prependId="false">
+					 
                   			<div class="form-group">
 								<label class="col-md-3 control-label" for="ip">IP</label>
 							     <div class="col-md-7">
@@ -143,7 +139,7 @@
 								        <button type="submit" class="btn btn-primary" >OK</button>
 								     </div>						  			  
 					    
-					      </form>			    				    
+					     		    				    
 					  </div>					
 					</div>	      			      			      			      			      			       			       
 			       
@@ -154,7 +150,43 @@
 			    </div>
 			   	
 		<!-- Final do modal -->	               
-    
+               <!-- Modal Confirm -->
+                         
+				 <!-- Concluir -->             				
+				<div class="modal fade bs-example-modal-sm concluido" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+				  <div class="modal-dialog modal-sm">
+				    <div class="modal-content">
+				      <br/>
+					       <h4 class="col-xs-offset-1">A instalação esta concluida ? </h4>
+					        <br/>
+					       <div class="col-xs-offset-4">					       
+					         <button type="submit" class="btn btn-success" jsf:id="bt_delete" jsf:action="#{instalacaoBean.finalizado}">
+					           Sim					          
+					         </button>
+					          &nbsp;
+					         <button type="button" class="btn btn-danger" data-dismiss="modal">Nâo</button>
+					   </div>
+				    </div>
+				  </div>
+				</div>
+				 <!-- Cancelar -->             				
+				<div class="modal fade bs-example-modal-sm cancelada" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+				  <div class="modal-dialog modal-sm">
+				    <div class="modal-content">
+				      <br/>
+					       <h4 class="col-xs-offset-1">Realmente deseja cancelar ? </h4>
+					        <br/>
+					       <div class="col-xs-offset-4">					       
+					         <button type="submit" class="btn btn-success"  jsf:action="#{instalacaoBean.cancelar}">
+					           Sim					          
+					         </button>
+					          &nbsp;
+					         <button type="button" class="btn btn-danger" data-dismiss="modal">Nâo</button>
+					   </div>
+				    </div>
+				  </div>
+				</div>
+            </form>
     </ui:define> 
    </ui:composition>
 </body> 

@@ -1,81 +1,78 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"		
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"	
+	xmlns:p="http://primefaces.org/ui"	
 	xmlns:jsf="http://xmlns.jcp.org/jsf">
-<h:head>
 
-
-	<link href="#{request.contextPath}/css/bootstrap.min.css" rel="stylesheet"
-		type="text/css" />
-	
-	<link rel="stylesheet"
-		href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
-		
-	
-</h:head>
 
 <body>
-     
-     
-       <h3>Live demo</h3>
-          <div class="bs-docs-example" style="padding-bottom: 24px;">
-            <a class="btn btn-large btn-danger" type="submit" data-toggle="confirmation">Click to toggle confirmation</a>
-            <button onclick="teste()" type="submit"> teste</button>
-          </div>
+	<ui:composition template="/sistema.xhtml">
+		<ui:define name="titulo">
+			<i class="fa fa-angle-right"></i>  vendedor <i class="fa fa-angle-right"></i> cadastro</ui:define>
+		<ui:define name="conteudo">
 
-          <h4>Four directions</h4>
-          <div class="bs-docs-example tooltip-demo">
-            <ul class="bs-docs-tooltip-examples">
-              <li><a class="btn" data-toggle="confirmation" data-placement="left">Confirmation on left</a></li>
-              <li><a class="btn" data-toggle="confirmation" data-placement="top">Confirmation on top</a></li>
-              <li><a class="btn" data-toggle="confirmation" data-placement="bottom">Confirmation on bottom</a></li>
-              <li><a class="btn" data-toggle="confirmation" data-placement="right">Confirmation on right</a></li>
-            </ul>
-          </div>
+			<div class="main-content">
+				<section>
+				<div class="container-fluid container-padded">
+					<div class="row">
+						<div class="col-md-12 page-title">
+							<h2>Cadastro de Vendedor</h2>
+							<hr />
+						</div>
+					</div>
+				</div>
+				<div class="container-fluid container-padded">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="panel panel-plain">
+								<div class="panel-body">									
+									<div class="panel panel-default m-bot0">
+										<div class="panel-body tab-content">
+											<div class="tab-pane active" id="profile-settings">
+												  <!-- Modal Confirm -->
+            <form jsf:id="form1">
+                  <button jsf:id="bt_salvar" type="button" class="btn btn-success" onclick="$('.bs-example-modal-sm').modal('show')"
+                        data-toggle="tooltip" data-placement="top" title="Finalizar"
+                       ><i class="fa fa-check"></i>
+                        <f:setPropertyActionListener target="#{instalacaoBean.cliente}" value="#{list}"/>
+                        <f:ajax  render="@all :msg "></f:ajax>
+                      </button>
+				
+				<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+				  <div class="modal-dialog modal-sm">
+				    <div class="modal-content">
+				      <br/>
+					       <h4 class="col-xs-offset-1">Todos dados relacionado ao cliente serão excluido,você esta certo disso ? </h4>
+					        <br/>
+					       <div class="col-xs-offset-4">					       
+					         <button type="submit" class="btn btn-success" jsf:id="bt_delete" jsf:action="#{vendedorBean.deletar}">
+					           Sim					          
+					         </button>
+					          &nbsp;
+					         <button type="button" class="btn btn-danger" data-dismiss="modal">Nâo</button>
+					   </div>
+				    </div>
+				  </div>
+				</div>
+            </form>
+												
+											</div>																		
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>	
+				
+				
+				</section>
+			</div>
+            
 
-                     
-     
- 
-		
-	
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>			
-	<script type="text/javascript" 	src="#{request.contextPath}/js/bootstrap.min.js"></script>   		
-	<script type="text/javascript"  src="#{request.contextPath}/js/confirmation.js"> </script>
-	<script type="text/javascript">
-	$('[data-toggle="confirmation"]').confirmation('hide');
-
-    function teste(){
-    	$(this).confirmation('hide');
-    };
-	
-	</script>	
-  
-    
-</body> 
+		</ui:define>
+	</ui:composition>
+</body>
 </html>
- -->

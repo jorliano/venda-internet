@@ -41,16 +41,19 @@
 													<div class="form-group">
 														<label class="col-md-3 control-label">Imagem</label>
 														<div class="col-md-7">														    
-															<h:inputFile id="arquivo" value="#{vendedorBean.foto}" >
-															   <f:ajax execute="@form" render="@all" listener="#{vendedorBean.carregaFoto}"/>	
-															</h:inputFile>
+															<h:inputFile id="arquivo" value="#{vendedorBean.foto}" styleClass="btn btn-default" />		
+															<br/>											   																
 															<div class="fileinput-preview thumbnail">
-																	<img  src="#{request.contextPath}#{vendedorBean.vendedor.url}" style="height: 120px;width: 120px" />
-															</div>	
-															<button  type="button"  class="btn btn-info" data-toggle="modal" data-target=".modal"
-															  >Camera <i class="fa fa-camera"></i></button>																												
+																	<img jsf:id="img" src="#{request.contextPath}#{vendedorBean.vendedor.url}" style="height: 120px;width: 120px" />
 															</div>
-														</div>	                                                    
+															<h:commandButton value="Carregar" action="#{vendedorBean.carregaFoto}" styleClass="btn btn-info " >															
+															    <f:ajax execute="@form" render="img arquivo"/>
+															</h:commandButton>			
+															&nbsp;
+															<button  type="button"  class="btn btn-info" data-toggle="modal" data-target=".modal"
+															  >Camera </button>																												
+															</div>
+													</div>	                                                    
 				             
 												</form>
 												<form jsf:id="form2" class="form-horizontal validate" jsf:prependId="false" >	

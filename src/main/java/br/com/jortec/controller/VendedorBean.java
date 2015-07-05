@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.event.AjaxBehaviorEvent;
+import javax.faces.event.BehaviorEvent;
 import javax.servlet.http.Part;
 
 import org.primefaces.event.CaptureEvent;
@@ -70,8 +71,7 @@ public class VendedorBean implements Serializable {
 			if (vendedor.getSenha().equals(confirmeSenha)) {
 				if (img.salvaImagem() != null) {
 					vendedor.setImg(img.salvaImagem());
-					vendedor.setUrl("/imagens/" + vendedor.getPrimeiroNome()
-							+ vendedor.getSobreNome() + ".jpg");
+					vendedor.setUrl("/imagens/" +getRandomImageName() +".jpg");
 				} else {
 					vendedor.setUrl("/imagens/vendedor/padrao.png");
 				}
@@ -90,8 +90,7 @@ public class VendedorBean implements Serializable {
 			// Conferir se tem imagem
 			if (img.salvaImagem() != null) {
 				vendedor.setImg(img.salvaImagem());
-				vendedor.setUrl("/imagens/" + vendedor.getPrimeiroNome()
-						+ vendedor.getSobreNome() + ".jpg");
+				vendedor.setUrl("/imagens/" +getRandomImageName() +".jpg");
 			} else {				
 				vendedor.setImg(v.getImg());
 				vendedor.setUrl(v.getUrl());
@@ -128,8 +127,10 @@ public class VendedorBean implements Serializable {
 	public void carregaFoto() throws IOException {
 		System.out.println(foto.getSize());
 		if (foto != null) {
-			img.Upload(foto, "vendedor.jpg");
-			vendedor.setUrl("/imagens/vendedor.jpg");
+			
+			String nome = img.Upload(foto, "vendedor.jpg");			
+			vendedor.setUrl("/imagens/vendedor/"+nome);
+			System.out.println(vendedor.getUrl());
            
 		}
 
@@ -159,7 +160,13 @@ public class VendedorBean implements Serializable {
 			Alerta.warn("A empresa precisa cadastrar um email valido ");
 		
 	}
-
+    //nomes aleatorios
+	 private String getRandomImageName() {
+	        int i = (int) (Math.random() * 10000000);
+	         
+	        return String.valueOf(i);
+	}
+	
 	public void setVendedor(Vendedor vendedor) {
 		this.vendedor = vendedor;
 	}
