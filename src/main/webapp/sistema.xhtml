@@ -3,7 +3,8 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:jsf="http://xmlns.jcp.org/jsf">
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -130,9 +131,15 @@
 							<div class="row">
 								<div class="col-md-12">
 									<div class="pull-right">
-										<div id="reportrange">
-											<i class="fa fa-calendar"></i> <span></span> <i
-												class="fa fa-angle-down"></i>
+										<div id="reportrange" >
+											<p:ajaxStatus>
+											  <f:facet name="start">											   
+											    <img src="#{request.contextPath}/imagens/load/loader.gif" width="50" height="50" style="margin-top: -60%"/>
+											  </f:facet>
+											  <f:facet name="complete">
+											    <h:graphicImage value="" />
+											  </f:facet>
+											</p:ajaxStatus>
 										</div>
 									</div>
 									<h:messages id="msg"

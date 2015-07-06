@@ -32,6 +32,8 @@ public class VendedorBean implements Serializable {
 	private static final long serialVersionUID = -3676344469132286835L;
 
 	List<Vendedor> lista = new ArrayList<Vendedor>();
+	
+	
 	Vendedor vendedor = new Vendedor();
 	private String confirmeSenha;
 	private Part foto;
@@ -56,7 +58,7 @@ public class VendedorBean implements Serializable {
 	@PostConstruct
 	public void load() {
 		lista = dao.listar();
-
+		
 		if (!lista.isEmpty())
 			img.caregarImagems(lista);
 	}

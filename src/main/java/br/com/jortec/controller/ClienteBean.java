@@ -32,6 +32,7 @@ public class ClienteBean implements Serializable{
 	
 Cliente cliente = new Cliente();
 private List<Cliente> listaDoVendedor = new ArrayList<Cliente>();
+List<Cliente> listaConcluidos = new ArrayList<Cliente>();
 
  @Autowired
  ClienteDao dao;
@@ -49,6 +50,7 @@ private List<Cliente> listaDoVendedor = new ArrayList<Cliente>();
 public void loade(){	  
 	 if(usuarioLogado.getVendedor() != null){
 		 listaDoVendedor = dao.listarPorVendedor(usuarioLogado.getVendedor().getId());
+		 listaConcluidos = dao.listarPorVendedorConcluido(usuarioLogado.getVendedor().getId());
 		 cliente.setVendedor(usuarioLogado.getVendedor()); 	
 		 
 		 
@@ -100,6 +102,10 @@ public List<Cliente> getListaDoVendedor() {
 
 public void setListaDoVendedor(List<Cliente> listaDoVendedor) {
 	this.listaDoVendedor = listaDoVendedor;
+}
+
+public List<Cliente> getListaConcluidos() {
+	return listaConcluidos;
 }
 
 	

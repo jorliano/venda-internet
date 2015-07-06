@@ -82,8 +82,15 @@ public class ClienteDao {
 		query.setMaxResults(20);	
 		return query.getResultList();
 	}
-    
-	
+    //perfil concluido
+	public List<Cliente> listarPorVendedorConcluido(long id){	
+		
+    	String consulta = "select c from Cliente c  where c.vendedor.id=:id  and estatus = 'concluido' order by dataCadastro desc";		
+		TypedQuery<Cliente> query = manager.createQuery(consulta, Cliente.class);	
+		query.setParameter("id", id);	
+		query.setMaxResults(3);	
+		return query.getResultList();
+	}
 	
 	
 	
