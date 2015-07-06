@@ -66,8 +66,8 @@ public void loade(){
 		  alerta.info("Cliente salvo com sucesso");
 		  this.cliente = new Cliente();
 	  }	
-	  else{
-		  System.out.println("atualizando cliente");
+	  else{		 
+		  cliente.setEstatus("cancelado");
 		  dao.atualiza(cliente);		  
 		  alerta.info("Cliente atualizado com sucesso");
 		  
@@ -77,7 +77,7 @@ public void loade(){
   
   public String deletar(){
 	
-	dao.Deletar(cliente);    
+	dao.atualiza(cliente);
     alerta.info("Cliente deletado com sucesso");   
     return "cliente?faces-redirect=true";
   }

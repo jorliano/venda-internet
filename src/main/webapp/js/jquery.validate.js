@@ -292,21 +292,19 @@ $(function() {
             } 
     });	
     
-     /*valida campo com mascara*/    
-     $( ".quiredmask" ).blur(function() {
-		
-		
-          if ( $(this).hasClass('quiredmask') && $.trim( $(this).val()).length > 8 ){
-              $(this).removeClass('valid').addClass('invalid');                
-              $(this).parent().find('span').html(requiredMsg).fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(500);
-               
-          }
-          else
-          {
-              $(this).removeClass('invalid').addClass('valid');
-              $(this).parent().find('span').fadeOut(500);
-               
-          }					
+     /*valida campo telefone*/    
+     $( ".telefone" ).blur(function() {    	 
+    	 var er = new RegExp(/\(\d{2}\) \d{4}-\d{4}/);
+         if (!er.test($.trim( $(this).val() ))){
+             $(this).removeClass('valid').addClass('invalid');           
+             $(this).parent().find('span').html(foneMsg).fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(500);
+              
+         }
+         else{
+             $(this).removeClass('invalid').addClass('valid');
+             $(this).parent().find('span').fadeOut(500);
+              
+         }		
   });	
  });
 		

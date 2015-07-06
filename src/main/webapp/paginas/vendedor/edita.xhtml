@@ -53,7 +53,7 @@
 															    <f:ajax execute="@form" render="img arquivo"/>
 															</h:commandButton>			
 															&nbsp;
-															<button  type="button"  class="btn btn-info" data-toggle="modal" data-target="#camera"
+															<button  type="button"  class="btn btn-info" 
 															  >Camera </button>																												
 															</div>
 													</div>												                                                 				                                      													
@@ -102,7 +102,7 @@
 														<div class="col-md-7">
 															<input type="tel" name="telefone"
 																jsf:value="#{vendedorBean.vendedor.telefone}"
-																class="form-control quiredmask telefone" required="true" />
+																class="form-control telefone" required="true" />
 															<span>Campo obrigatorio</span>	
 														</div>
 													</div>
@@ -203,51 +203,7 @@
 							</div>
 						</div>
 					</div>
-				</div>
-				<h:form prependId="false" >
-            <!-- Large modal -->	
-			
-			<div class="modal fade "  id="camera" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-			  <div class="modal-dialog " role="document">
-			    <div class="modal-content">
-			      <div class="modal-header">
-			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			        <h4 class="modal-title">Capitura imagem</h4>
-			      </div>
-			      <div class="modal-body">		          
-					         
-						    
-						      <div class="row">
-							   
-									<div class="col-md-7">		
-									   	<label class="col-md-3 control-label col-md-offset-3">WebCam</label>										    									  															   
-										<p:photoCam id="camera" widgetVar="pc" listener="#{vendedorBean.oncapture}" />										
-										<button  jsf:id="bts" onclick="PF('pc').capture()"  class="btn btn-info col-md-offset-3">Capiturar <i class="fa fa-camera"></i></button>
-																																									
-									</div>
-									<div class="col-md-4">									   				  															   
-										
-										<div class="fileinput-preview thumbnail">
-											<img id="imagem" src="#{request.contextPath}#{vendedorBean.vendedor.url}" style="height: 120px;width: 120px" />
-										</div>										
-										<button   value="Carregar " class="btn btn-info col-md-offset-3">Salvar </button>																															
-									</div>							      				        								     
-							</div>															  
-					    
-					     </div>
-					    			
-					</div>	      			      			      			      			      			       			       
-			       
-			       <div class="modal-footer">
-				       
-				  </div>			      
-			     </div>
-			    </div>	  				
-		<!-- Final do modal -->	
-		
-		
-                </h:form>
-        
+				</div>			        
 			  </section>
 			</div>                    
             <!-- Modal Confirm -->
@@ -258,7 +214,7 @@
 				  <div class="modal-dialog modal-sm">
 				    <div class="modal-content">
 				      <br/>
-					       <h4 class="col-xs-offset-1">Todos dados relacionado ao cliente serão excluido,você esta certo disso ? </h4>
+					       <h4 class="col-xs-offset-1">Você esta certo disso ? </h4>
 					        <br/>
 					       <div class="col-xs-offset-4">					       
 					         <button type="submit" class="btn btn-success" jsf:id="bt_delete" jsf:action="#{vendedorBean.deletar}">
