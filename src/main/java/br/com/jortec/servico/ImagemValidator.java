@@ -29,7 +29,7 @@ public class ImagemValidator implements Serializable{
 Alerta alerta;
 
 	/*Ler arquivo part e gera um arquivo q serar salvo */	
-	 private final int limitTamanho = 40000;
+	 private final int limitTamanho = 2000000;
 	 private final String tipoArquivo = "jpeg|jpg|gif|png";	   
 	 String realSavePath;
 	 String fileSavePath ;

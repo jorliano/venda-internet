@@ -76,7 +76,7 @@ public void loade(){
   } 
   
   public String deletar(){
-	
+	cliente.setEstatus("cancelado");
 	dao.atualiza(cliente);
     alerta.info("Cliente deletado com sucesso");   
     return "cliente?faces-redirect=true";

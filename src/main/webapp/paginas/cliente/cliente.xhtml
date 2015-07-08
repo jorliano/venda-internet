@@ -15,7 +15,7 @@
        <t:saveState value="#{clienteBean.cliente}"></t:saveState>
           
       <h:form id="form" prependId="false">                       	       
-        <h:dataTable id="tabelaCli" var="list" value="#{clienteBean.listaDoVendedor}" 
+        <h:dataTable id="tabelaCli" var="list" value="#{clienteBean.listaDoVendedor}"  rendered="#{not empty clienteBean.listaDoVendedor}"           
             styleClass="table table-responsive  table-hover" rows="20">
            <h:column >
               <f:facet name="header">Id</f:facet>

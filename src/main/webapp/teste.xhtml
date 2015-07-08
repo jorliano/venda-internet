@@ -66,7 +66,25 @@
 				</div>
 				</section>
 			</div>			
-                  
+                  <script type="text/javascript">
+
+                  $( ".telefone" ).blur(function() {    	 
+                 	 var er = new RegExp(/\(\d{2}\) \d{4}-\d{4}/);
+                      if (!er.test($.trim( $(this).val() ))){
+                                
+                          $(this).parent().find('span').html('campo requirido').fadeOut(500).fadeIn(500).fadeOut(500).fadeIn(500);
+                           
+                      }
+                      else{
+                        
+                          $(this).parent().find('span').fadeOut(500);
+                           
+                      }		
+               });	
+
+
+
+                  </script>
                  	</ui:define>
 	</ui:composition>
 </body>

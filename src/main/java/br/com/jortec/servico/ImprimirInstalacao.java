@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.faces.context.FacesContext;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 
@@ -40,6 +41,7 @@ public class ImprimirInstalacao {
 		List<Cliente> lista = new ArrayList<Cliente>();		
 		lista.add(cliente);
 		
+		  		
 		
 		if(dados.getIpPrint() != ""){
 			parametro.put("geradoPor", geradoPor);
@@ -49,7 +51,7 @@ public class ImprimirInstalacao {
 			parametro.put("dns", dados.getDnsPrint());
 			parametro.put("descricao", dados.getDescricao());
 			dados = new DadosDeImpressao ();
-			gerarArquivo("/ireport/print.jasper",lista);
+			//gerarArquivo("/ireport/print.jasper",lista);
 			
 		}
 		else{
@@ -60,45 +62,38 @@ public class ImprimirInstalacao {
 			parametro.put("mask", dados.getSenhaPrint());
 			parametro.put("descricao", dados.getDescricao());
 			dados = new DadosDeImpressao ();
-			gerarArquivo("/ireport/print2.jasper",lista);
+			//gerarArquivo("/ireport/print2.jasper",lista);
 			
 		}
 		
 			
 		
 	}
-	public void gerarArquivo(String arquivo,List lista){
-    try {
-			
-			//File jasper = new File("/home/jorliano/Downloads/wildfly-8.2.0.Final/standalone/deployments/venda-internet.war/ireport/print.jasper");
-			File jasper = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath(arquivo));
-			JasperPrint jasperPrint = JasperFillManager.fillReport(jasper.getPath(),parametro,new JRBeanCollectionDataSource(lista));
-			byte[] b = JasperExportManager.exportReportToPdf(jasperPrint);   
-			
-			HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();			
-			response.addHeader("Content-disposition", "inline; filename=instalacao.pdf");
-			
-			
-			response.getOutputStream().write(b);  
-			response.getCharacterEncoding();  
-			
-			//Download do arquivo direto
-			//response.addHeader("Content-disposition", "attachmnt; filename=instalacao.pdf");
-			//ServletOutputStream stream = response.getOutputStream();
-			//JasperExportManager.exportReportToPdfStream(jasperPrint, stream);
-			
-			//Documento docx
-			//JRDocxExporter exporter = new JRDocxExporter();
-			//exporter.setParameter(JRExporterParameter.JASPER_PRINT,jasperPrint);
-			//exporter.setParameter(JRExporterParameter.OUTPUT_STREAM,stream);
-			//exporter.exportReport();
-			
-			
-			FacesContext.getCurrentInstance().responseComplete();
-			
-		} catch (JRException | IOException e) {			
-			e.printStackTrace();
-			System.err.print("Erro ao tentar imprimir");
-		}
+public void gerarArquivo(String arquivo,List lista) throws IOException{
+    //File jasper = new File("/home/jorliano/Downloads/wildfly-8.2.0.Final/standalone/deployments/venda-internet.war/ireport/print.jasper");
+	File jasper = new File(FacesContext.getCurrentInstance().getExternalContext().getRealPath(arquivo));
+	//JasperPrint jasperPrint = JasperFillManager.fillReport(jasper.getPath(),parametro,new JRBeanCollectionDataSource(lista));
+	//byte[] b = JasperExportManager.exportReportToPdf(jasperPrint);   
+	
+	//HttpServletResponse response = (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();			
+	//response.addHeader("Content-disposition", "inline; filename=instalacao.pdf");
+	
+	
+	//response.getOutputStream().write(b);  
+	//response.getCharacterEncoding();  
+	
+	//Download do arquivo direto
+	//response.addHeader("Content-disposition", "attachmnt; filename=instalacao.pdf");
+	//ServletOutputStream stream = response.getOutputStream();
+	//JasperExportManager.exportReportToPdfStream(jasperPrint, stream);
+	
+	//Documento docx
+	//JRDocxExporter exporter = new JRDocxExporter();
+	//exporter.setParameter(JRExporterParameter.JASPER_PRINT,jasperPrint);
+	//exporter.setParameter(JRExporterParameter.OUTPUT_STREAM,stream);
+	//exporter.exportReport();
+	
+	
+	FacesContext.getCurrentInstance().responseComplete();
 	}
 }

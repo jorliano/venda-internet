@@ -41,20 +41,27 @@ public class UsuarioBean implements Serializable{
 	}
 	
 	public void salvar(){
+		Usuario us = new Usuario();
 		if(usuario.getId() == 0){
-			if(confirmeSenha.equals(usuario.getSenha())){
-				 dao.salvar(usuario);
-				 alerta.info("Usuario salvo com sucesso");
-				 this.usuario = new Usuario();
-			}
-			else{
-				Alerta.error("Senhas não conferi");
-			}
-			 
-		}else{
-			Usuario us = new Usuario();
+			us = dao.buscaPorLogin(usuario.getLogin());
+			if(!us.getLogin().equals(usuario.getLogin()))	
+			  {	
+				if(confirmeSenha.equals(usuario.getSenha())){
+					 dao.salvar(usuario);
+					 alerta.info("Usuario salvo com sucesso");
+					 this.usuario = new Usuario();
+				}
+				else{
+					Alerta.error("Senhas não conferi");
+				}
+			  }
+			  else{
+				    usuario.setLogin("");
+					Alerta.error("Login já existe");
+			 }
+		}else{			
 			us = dao.buscaPorId(usuario.getId());			
-			System.out.println(us.getSenha()+" equals "+usuario.getSenha());
+			
 			 if(usuario.getSenha().length() > 0 || confirmeSenha.length() > 0)
 			 {
 				 

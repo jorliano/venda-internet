@@ -59,6 +59,18 @@ public  class VendedorDao {
         	return null;
         }				       
 	}
+	public Vendedor buscaPorIdLogin(String login) {
+		 
+        try{
+        	return manager
+        			.createQuery("select v from Vendedor v "
+        			        + "where  login =:login", Vendedor.class)
+        			        .setParameter("login",login)        			        
+        			        .getSingleResult();
+        }catch(NoResultException e){
+        	return null;
+        }				       
+	}
 
 	public void atualiza(Vendedor vendedor) {
 		manager.merge(vendedor);

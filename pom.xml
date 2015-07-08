@@ -10,6 +10,14 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+	
+	<repositories>
+		<!-- repositorio do ireport -->
+		<repository>
+			<id>jasperreports</id>
+			<url>http://jasperreports.sourceforge.net/maven2</url>
+		</repository>
+	</repositories>
 
 	<build>
 		<finalName>venda-internet</finalName>
@@ -26,6 +34,7 @@
 
 		</plugins>
 	</build>
+
 
 
 	<dependencies>
@@ -64,13 +73,14 @@
 		</dependency>
 		<!-- Mojarra (implementacao do JSF) -->
 
-		<dependency> <groupId>org.glassfish
-		</groupId> 
-		    <artifactId>javax.faces</artifactId> 
-			<version>2.2.2</version> 
-			<scope>compile</scope> 
+		<dependency>
+			<groupId>org.glassfish
+		</groupId>
+			<artifactId>javax.faces</artifactId>
+			<version>2.2.2</version>
+			<scope>compile</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>javax</groupId>
 			<artifactId>javaee-api</artifactId>
@@ -110,7 +120,7 @@
 			<artifactId>spring-web</artifactId>
 			<version>3.2.8.RELEASE</version>
 		</dependency>
-		<!-- Myfaces    -->
+		<!-- Myfaces -->
 		<dependency>
 			<groupId>org.apache.myfaces.tomahawk</groupId>
 			<artifactId>tomahawk20</artifactId>
@@ -124,23 +134,21 @@
 		</dependency>
 		<!-- Ireport relatorio -->
 		<dependency>
-	       <groupId>net.sf.jasperreports</groupId>
-	       <artifactId>jasperreports</artifactId>
-	       <version>5.0.1</version>
-		</dependency>	  		
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>5.0.1</version>
+		</dependency>
 		<dependency>
-		        <groupId>net.sf.jasperreports</groupId>
-		        <artifactId>jasperreports-fonts</artifactId>
-		        <version>4.0.0</version>
-		</dependency>		   
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports-fonts</artifactId>
+			<version>4.0.0</version>
+		</dependency>
 		<dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi</artifactId>
-            <version>3.10-FINAL</version>
-        </dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.10-FINAL</version>
+		</dependency>		
 
 
-
-		
 	</dependencies>
 </project>

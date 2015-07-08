@@ -103,7 +103,7 @@
         		       	 																											
 		</div>		
 		<br/>	       
-        <h:dataTable id="tabelaCli" var="list" value="#{instalacaoBean.lista}" 
+        <h:dataTable id="tabelaCli" var="list" value="#{instalacaoBean.lista}"  rendered="#{not empty instalacaoBean.lista}"
             styleClass="table table-responsive  table-hover" rows="7" style="margin-top: -8%;">
            <h:column >
               
@@ -138,7 +138,7 @@
                         <f:setPropertyActionListener target="#{instalacaoBean.cliente}" value="#{list}"/>                        
                       </button>
                       &nbsp;
-                      <button jsf:id="bt_salvar" jsf:action="#{instalacaoBean.inalizar}" class="btn btn-success"  onclick="return confirm('A instalação esta concluida ?')"
+                      <button jsf:id="bt_salvar" jsf:action="#{instalacaoBean.finalizar}" class="btn btn-success"  onclick="return confirm('A instalação esta concluida ?')"
                         data-toggle="tooltip" data-placement="top" title="Finalizar" ><i class="fa fa-check"></i>
                         <f:setPropertyActionListener target="#{instalacaoBean.cliente}" value="#{list}"/>   
                         <f:ajax render="@form"/>                    

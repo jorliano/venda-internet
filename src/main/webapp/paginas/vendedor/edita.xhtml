@@ -50,12 +50,9 @@
 																	<img jsf:id="img" src="#{request.contextPath}#{vendedorBean.vendedor.url}" style="height: 120px;width: 120px" />
 															</div>
 															<h:commandButton value="Carregar" action="#{vendedorBean.carregaFoto}" styleClass="btn btn-info " >															
-															    <f:ajax execute="@form" render="img arquivo"/>
+															    <f:ajax execute="arquivo" render="img arquivo"/>
 															</h:commandButton>			
-															&nbsp;
-															<button  type="button"  class="btn btn-info" 
-															  >Camera </button>																												
-															</div>
+														</div>	
 													</div>												                                                 				                                      													
 													<div class="form-group">
 														<label class="col-md-3 control-label" for="primeiroNome">Primeiro
@@ -109,7 +106,7 @@
 													<div class="form-group">
 														<label class="col-md-3 control-label" for="data">Data Nascimento</label>
 														<div class="col-md-7">
-															<input type="date" name="data"
+															<input type="text" name="data"
 																jsf:value="#{vendedorBean.vendedor.dataNascimento}"
 																class="form-control quiredmask data" required="true" />
 															<span>Campo obrigatorio</span>	

@@ -78,4 +78,16 @@ public class UsuarioDao  {
         	return null;
         }	
 	}
+	public Usuario buscaPorLogin(String login) {
+		try{
+        	return manager
+        			.createQuery("select u from Usuario u "
+        			        + "where login=:login", Usuario.class)
+        			        .setParameter("login",login)
+        			      
+        			        .getSingleResult();
+        }catch(NoResultException e){
+        	return null;
+        }	
+	}
 }

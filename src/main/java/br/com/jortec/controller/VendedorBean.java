@@ -68,25 +68,32 @@ public class VendedorBean implements Serializable {
 	}
 
 	public void salvar() {
-
+		Vendedor v = new Vendedor();
 		if (vendedor.getId() == 0) {
-			if (vendedor.getSenha().equals(confirmeSenha)) {
-				if (img.salvaImagem() != null) {
-					vendedor.setImg(img.salvaImagem());
-					vendedor.setUrl("/imagens/" +getRandomImageName() +".jpg");
+			v = dao.buscaPorIdLogin(vendedor.getLogin());
+			if(!v.getLogin().equals(vendedor.getLogin())){
+				
+			
+				if (vendedor.getSenha().equals(confirmeSenha)) {
+					if (img.salvaImagem() != null) {
+						vendedor.setImg(img.salvaImagem());
+						vendedor.setUrl("/imagens/" +getRandomImageName() +".jpg");
+					} else {
+						vendedor.setUrl("/imagens/vendedor/padrao.png");
+					}
+	
+					dao.salvar(vendedor);
+					alerta.info("vendedor salvo com sucesso");
+					this.vendedor = new Vendedor();
 				} else {
-					vendedor.setUrl("/imagens/vendedor/padrao.png");
+					Alerta.error("Senhas não conferi");
 				}
-
-				dao.salvar(vendedor);
-				alerta.info("vendedor salvo com sucesso");
-				this.vendedor = new Vendedor();
-			} else {
-				Alerta.error("Senhas não conferi");
+			}else {
+				Alerta.error("Login já existe");
+				vendedor.setLogin("");
 			}
-
 		} else {
-			Vendedor v = new Vendedor();
+			
 			v = dao.buscaPorId(vendedor.getId());
 			
 			// Conferir se tem imagem
@@ -127,7 +134,7 @@ public class VendedorBean implements Serializable {
 	}
 
 	public void carregaFoto() throws IOException {
-		System.out.println(foto.getSize());
+		//System.out.println(foto.getSize());
 		if (foto != null) {
 			
 			String nome = img.Upload(foto, "vendedor.jpg");			
