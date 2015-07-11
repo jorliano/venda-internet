@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import br.com.jortec.model.Usuario;
+import br.com.jortec.model.Vendedor;
 import br.com.jortec.dao.UsuarioDao;
 import br.com.jortec.servico.ImagemValidator;
 import br.com.jortec.util.Alerta;
@@ -44,7 +45,7 @@ public class UsuarioBean implements Serializable{
 		Usuario us = new Usuario();
 		if(usuario.getId() == 0){
 			us = dao.buscaPorLogin(usuario.getLogin());
-			if(!us.getLogin().equals(usuario.getLogin()))	
+			if(!loginExiste(us))	
 			  {	
 				if(confirmeSenha.equals(usuario.getSenha())){
 					 dao.salvar(usuario);
@@ -97,6 +98,16 @@ public class UsuarioBean implements Serializable{
 	public void busca(){
 		lista = dao.listarPorNome(usuario.getNome());
 	}
+	//confirma login
+		 public boolean loginExiste(Usuario u){
+			 if(u != null){
+					if(u.getLogin().equals(usuario.getLogin())){
+						return true;					
+					}	
+				}
+				
+			 return false;
+		 }
 	
 	public Usuario getUsuario() {
 		return usuario;

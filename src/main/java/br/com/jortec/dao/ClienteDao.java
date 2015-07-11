@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.jortec.model.Cliente;
 
+
 @Transactional
 @Repository
 public class ClienteDao {
@@ -92,7 +93,19 @@ public class ClienteDao {
 		return query.getResultList();
 	}
 	
-	
+	//Pesquisar Nome existente
+	public Cliente buscaPorNome(String nome) {
+		 
+        try{
+        	return manager
+        			.createQuery("select c from Cliente c "
+        			        + "where nome=:nome", Cliente.class)
+        			        .setParameter("nome",nome)        			        
+        			        .getSingleResult();
+        }catch(NoResultException e){
+        	return null;
+        }				       
+	}
 	
     
 	

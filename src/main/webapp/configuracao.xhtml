@@ -53,7 +53,7 @@
 													<div class="form-group">
 														<label class="col-md-3 control-label" for="valor">Valor</label>
 														<div class="col-md-7">
-															<input type="number" jsf:id="valor" jsf:label="Valor"
+															<input type="number" jsf:id="valor" jsf:label="Valor" step="0.05"
 																required="true" class="form-control required"
 																jsf:value="#{sistemaBean.sistema.valor}" /> <span></span>
 														</div>
@@ -73,10 +73,9 @@
 													jsf:prependId="false">
 													<div class="col-xs-12">
 
-														<h:dataTable id="tabela" var="list"
-															value="#{sistemaBean.lista}"
+														<h:dataTable id="tabela" var="list" value="#{sistemaBean.lista}"
 															styleClass="table table-responsive  table-hover "
-															rows="10">
+															rows="10" rendered="#{not empty sistemaBean.lista}">
 															<h:column>
 																<f:facet name="header">Plano</f:facet>									
                       #{list.plano}                                                                                
@@ -159,13 +158,11 @@
 													</div>
 													<h:inputHidden value="#{sistemaBean.dadosEmail.id}" />
 												</form>
-												<form jsf:id="form3" class="form-horizontal validate"
-													jsf:prependId="false">
-													<div class="col-xs-12">
-														<h:dataTable id="tabela2" var="list"
-															value="#{sistemaBean.listEmail}"
+												<form jsf:id="form3" class="form-horizontal validate" jsf:prependId="false">
+													<div class="col-xs-12" >
+														<h:dataTable id="tabela2" var="list" value="#{sistemaBean.listEmail}"
 															styleClass="table table-responsive  table-hover "
-															rows="1">
+															rows="1" rendered="#{not empty sistemaBean.listEmail}">
 															<h:column>
 																<f:facet name="header">Remetente</f:facet>
 										                      #{list.remetente}              

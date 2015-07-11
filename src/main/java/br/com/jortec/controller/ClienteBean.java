@@ -60,11 +60,19 @@ public void loade(){
   public void salvar(){  			 
 	  
 	  if(cliente.getId() == 0 ){	
-		  cliente.setDataCadastro(new Date());
-		  cliente.setEstatus("pendente");
-		  dao.salvar(cliente);   		  
-		  alerta.info("Cliente salvo com sucesso");
-		  this.cliente = new Cliente();
+		  Cliente c = new Cliente();
+		  c = dao.buscaPorNome(cliente.getNome());
+		  if(!nomeExiste(c)){
+			  cliente.setDataCadastro(new Date());
+			  cliente.setEstatus("pendente");
+			  dao.salvar(cliente);   		  
+			  alerta.info("Cliente salvo com sucesso");
+			  this.cliente = new Cliente();
+		  }else{
+			  alerta.error("Nome já exisste");
+			  cliente.setNome("");
+		  }
+		  
 	  }	
 	  else{		 
 		  cliente.setEstatus("cancelado");
@@ -88,7 +96,17 @@ public void loade(){
   public String edita(){
 	 return "edita";
   }    
- 
+//confirma se o nome já existe
+	 public boolean nomeExiste(Cliente c){
+		 if(c != null){
+				if(c.getNome().equals(cliente.getNome())){
+					return true;					
+				}	
+			}
+			
+		 return false;
+	 }
+
 public Cliente getCliente() {
 	return cliente;
 }

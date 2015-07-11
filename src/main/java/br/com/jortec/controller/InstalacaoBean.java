@@ -1,11 +1,14 @@
 package br.com.jortec.controller;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+
+import net.sf.jasperreports.engine.JRException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -96,7 +99,7 @@ public class InstalacaoBean implements Serializable {
 
 	
 
-	public void imprimir() {
+	public void imprimir() throws IOException, JRException {
 
 		print.imprime(cliente,usuarioLogado.getNomeLogado());
 

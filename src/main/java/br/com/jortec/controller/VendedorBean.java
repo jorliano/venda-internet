@@ -10,6 +10,7 @@ import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.event.BehaviorEvent;
 import javax.servlet.http.Part;
 
+import org.apache.poi.hssf.record.PageBreakRecord.Break;
 import org.primefaces.event.CaptureEvent;
 import org.primefaces.model.CroppedImage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,8 +72,8 @@ public class VendedorBean implements Serializable {
 		Vendedor v = new Vendedor();
 		if (vendedor.getId() == 0) {
 			v = dao.buscaPorIdLogin(vendedor.getLogin());
-			if(!v.getLogin().equals(vendedor.getLogin())){
-				
+			
+			if(!loginExiste(v)){
 			
 				if (vendedor.getSenha().equals(confirmeSenha)) {
 					if (img.salvaImagem() != null) {
@@ -88,7 +89,7 @@ public class VendedorBean implements Serializable {
 				} else {
 					Alerta.error("Senhas não conferi");
 				}
-			}else {
+			}else{
 				Alerta.error("Login já existe");
 				vendedor.setLogin("");
 			}
@@ -175,6 +176,16 @@ public class VendedorBean implements Serializable {
 	         
 	        return String.valueOf(i);
 	}
+	 //confirma login
+	 public boolean loginExiste(Vendedor v){
+		 if(v != null){
+				if(v.getLogin().equals(vendedor.getLogin())){
+					return true;					
+				}	
+			}
+			
+		 return false;
+	 }
 	
 	public void setVendedor(Vendedor vendedor) {
 		this.vendedor = vendedor;
