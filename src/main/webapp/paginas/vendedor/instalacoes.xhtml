@@ -56,7 +56,14 @@
 											class="form-control ip" name="dns" /> <span>255.255.255.255</span>
 									</div>
 								</div>
-
+                                <div class="form-group">
+									<label class="col-md-3 control-label" for="sobre">Observações</label>
+								<div class="col-md-7">
+									<h:inputTextarea id="sobre"
+											value="#{dados.descricao}" rows="3"
+											styleClass="form-control" />
+									</div>
+								</div>
 								<div class="form-group">
 									<div class="col-md-7 col-md-push-5">
 										<button jsf:id="bt" class="btn btn-primary topo">

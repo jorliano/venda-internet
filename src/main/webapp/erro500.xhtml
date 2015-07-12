@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+
+<body>
+	<ui:composition template="/sistema.xhtml">
+		<ui:define name="titulo">
+			<i class="fa fa-angle-right"></i> configuração</ui:define>
+		<ui:define name="conteudo">
+
+			<div class="main-content">
+				<section>
+				<div class="container-fluid container-padded">
+					<div class="row">
+						<div class="col-md-12 page-title">
+							<h2>Error 500</h2>							
+						</div>
+					</div>
+				</div>
+				<div class="container-fluid container-padded">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="text-center">
+								<i class="fa fa-bug fa-10x text-danger"></i>
+								<h1>Ocorreu erro 500</h1>
+								<p class="lead">Nós Descupe!Alguma errado deve ter ocorrido
+									em seu servidor.</p>
+								<p class="lead">Você deve voltar para a pagina inicial.</p>
+								<a href="./" class="btn btn-primary"><i class="fa fa-home"></i>
+								&nbsp;Pagina Inicial</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				</section>
+			</div>
+
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

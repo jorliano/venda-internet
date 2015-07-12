@@ -40,10 +40,8 @@ public class ImprimirInstalacao {
 	
 	public void imprime(Cliente cliente,String geradoPor) throws IOException, JRException{
 		List<Cliente> lista = new ArrayList<Cliente>();		
-		cliente.setRua(cliente.getRua()+" N° "+cliente.getNumero()+" "+cliente.getComplemento());
-		lista.add(cliente);
-		
-		  	dados.setDescricao("Instalação do cliente está agendada para o mais rapido possivel , 10:00 H.");	
+		cliente.setRua(cliente.getRua()+" N° "+cliente.getNumero()+" "+cliente.getComplemento());	
+		lista.add(cliente);		  	
 		   
 		
 			parametro.put("geradoPor", geradoPor);
@@ -51,8 +49,7 @@ public class ImprimirInstalacao {
 			parametro.put("mask", dados.getMaskPrint());
 			parametro.put("gatwaey", dados.getGatweyPrint());
 			parametro.put("dns", dados.getDnsPrint());
-			parametro.put("descricao", dados.getDescricao());
-			dados = new DadosDeImpressao ();
+			parametro.put("descricao", dados.getDescricao());			
 			gerarArquivo("/ireport/instalacao.jasper",lista);
 			
 		

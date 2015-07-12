@@ -43,7 +43,7 @@
 			<button class="navbar-toggle navbar-toggle-settings"
 				data-target="#top-navbar" data-toggle="collapse" type="button">
 				<span class="sr-only">Toggle navigation</span> <i
-					class="fa fa-wrench"></i>
+					class="fa fa-user"></i>
 			</button>
 			<a class="navbar-brand logo" href="#" > <img src="#{request.contextPath}/imagens/logo.png" 
 				alt="App logo" width="100" /></a>
@@ -57,7 +57,7 @@
 		<div class="collapse navbar-collapse" id="top-navbar">
 		    <ul class="nav navbar-nav navbar-center" style="margin-top: 2%">
 								    
-					<li ><h:outputLabel value="ADM #{usuarioLogado.usuario.nome}" rendered="#{usuarioLogado.usuario != null}" />
+					<li ><h:outputLabel value="ADM #{usuarioLogado.usuario.nome}" rendered="#{usuarioLogado.duploLog == true}" />
 					</li>
 				
 			</ul>
@@ -263,19 +263,20 @@
 			</div>
 		</div>
 	</div>
-<!-- 	<footer>
-	<div class="container">
+	
+ 	<footer >
+	<div class="container" >
 		<div class="row">
 			<div class="col-md-12">				
 				<ul class="list-inline">
-					<li><small> Criado pod Jorliano</small></li>					
+					<li><small> Criado por Jorliano</small></li>					
 					<li><small><a href="#">Termos de uso</a></small></li>
 				</ul>
 			</div>
 		</div>
 	</div>
-	</footer> -->
-
+	</footer> 
+	
 	<ui:insert name="javascript">
 		<!-- jQuery -->
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

@@ -21,14 +21,24 @@
 		     	  <f:ajax execute="@form" render="@form"></f:ajax>
 		     	</button>     	
 		     	<div class="col-xs-4">
-			     <h:selectOneMenu  styleClass="form-control" value="#{graficoBean.nome}">						
+			     <h:selectOneMenu  styleClass="form-control" value="#{graficoBean.nome}">		
+			            <f:selectItem itemLabel="Trimestre"/>	
 						<f:selectItem itemLabel="Primeiro tremestre" itemValue="primeiroTrimestre"/>
 						<f:selectItem itemLabel="Segundo  tremestre" itemValue="segundoTrimestre"/>
 						<f:selectItem itemLabel="Terceiro tremestre" itemValue="terceiroTrimestre"/>
 						<f:selectItem itemLabel="Quarto tremestre" itemValue="quartoTrimestre"/>											
 					</h:selectOneMenu>
 		        </div>
-		     
+		        <div class="col-xs-2">
+			     <h:selectOneMenu  styleClass="form-control" value="#{graficoBean.nome}">	
+			            <f:selectItem itemLabel="Ano" />							
+						<f:selectItem itemLabel="2015" itemValue="2015"/>
+						<f:selectItem itemLabel="2016" itemValue="2016"/>
+						<f:selectItem itemLabel="2017" itemValue="2017"/>
+						<f:selectItem itemLabel="2018" itemValue="2018"/>											
+					</h:selectOneMenu>
+		        </div>
+		        
 		       
 			     <div class="col-xs-12" style="margin-top: 18px;">
 	              <div class="panel panel-default " >

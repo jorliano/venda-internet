@@ -40,5 +40,13 @@
   <welcome-file-list>
     <welcome-file>index.xhtml</welcome-file>
   </welcome-file-list>
-  
+  <!-- Paginas de erro -->
+  <error-page>
+   <exception-type>java.lang.Exception</exception-type>
+   <location>/erro404.xhtml</location>
+  </error-page>
+  <error-page>
+    <error-code>404</error-code>
+    <location>/erro500.xhtml</location>
+  </error-page>
 </web-app>

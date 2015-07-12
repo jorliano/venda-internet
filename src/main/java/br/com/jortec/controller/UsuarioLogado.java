@@ -23,6 +23,7 @@ public class UsuarioLogado implements Serializable{
 	private Vendedor vendedor;
 	private String nomeLogado;  
 	private String img;
+	private boolean duploLog = false;
 	
 	public UsuarioLogado(){
 		permissao.add("/paginas/cliente/cliente.xhtml");
@@ -39,6 +40,10 @@ public class UsuarioLogado implements Serializable{
 	public void logarVendedor(Vendedor vendedor){
 		this.vendedor = vendedor;
 		img= vendedor.getUrl();
+		//duplo log
+		if(usuario != null){
+			duploLog = true;
+		}
 	}
 	
 	public String desloga() {
@@ -46,6 +51,7 @@ public class UsuarioLogado implements Serializable{
 			this.vendedor = null;
 			setNomeLogado(this.usuario.getNome());
 			img = "/imagens/adm/adm.png";
+			duploLog = false;
 			return "/sistema?faces-redirect=true";
 		}			
 		else{  
@@ -84,6 +90,10 @@ public class UsuarioLogado implements Serializable{
 
 	public String getImg() {
 		return img;
+	}
+
+	public boolean isDuploLog() {
+		return duploLog;
 	}
 	
 	
