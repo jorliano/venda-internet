@@ -84,7 +84,7 @@ public class VendedorBean implements Serializable {
 					}
 	
 					dao.salvar(vendedor);
-					alerta.info("vendedor salvo com sucesso");
+					alerta.info("vendedor salvo com sucesso",false);
 					this.vendedor = new Vendedor();
 				} else {
 					Alerta.error("Senhas não conferi");
@@ -111,7 +111,7 @@ public class VendedorBean implements Serializable {
 				if (v.getSenha().equals(vendedor.getSenha()) && confirmeSenha.length() > 0) {
 					vendedor.setSenha(confirmeSenha);
 					dao.atualiza(vendedor);
-					alerta.info("dados atualizados com sucesso");
+					alerta.info("dados atualizados com sucesso",false);
 				} else {
 					Alerta.error("Senha antiga errada");
 				}
@@ -119,7 +119,7 @@ public class VendedorBean implements Serializable {
 			} else {
 				vendedor.setSenha(v.getSenha());
 				dao.atualiza(vendedor);
-				alerta.info("dados atualizados com sucesso");
+				alerta.info("dados atualizados com sucesso",false);
 			}
 
 		}
@@ -129,7 +129,7 @@ public class VendedorBean implements Serializable {
 	public String deletar() {
 
 		dao.deletar(vendedor);
-		alerta.info("vendedor deletado com sucesso");
+		alerta.info("vendedor deletado com sucesso",true);
 
 		return "vendedor?faces-redirect=true";
 	}
@@ -165,7 +165,7 @@ public class VendedorBean implements Serializable {
 	                 
 		
 		if(email.enviarEmail(msgEmail, "Necessario para melhorar a empresa") == true){
-			Alerta.info("email enviado com sucesso");
+			Alerta.info("email enviado com sucesso",false);
 		}else
 			Alerta.warn("A empresa precisa cadastrar um email valido ");
 		

@@ -49,7 +49,7 @@ public class UsuarioBean implements Serializable{
 			  {	
 				if(confirmeSenha.equals(usuario.getSenha())){
 					 dao.salvar(usuario);
-					 alerta.info("Usuario salvo com sucesso");
+					 alerta.info("Usuario salvo com sucesso",false);
 					 this.usuario = new Usuario();
 				}
 				else{
@@ -69,7 +69,7 @@ public class UsuarioBean implements Serializable{
 				if(us.getSenha().equals(usuario.getSenha()) && confirmeSenha.length() > 0) {					
 					 usuario.setSenha(confirmeSenha);
 					 dao.atualiza(usuario);
-					 alerta.info("Dados atualizados com sucesso");
+					 alerta.info("Dados atualizados com sucesso",false);
 				}
 				else
 				{
@@ -79,7 +79,7 @@ public class UsuarioBean implements Serializable{
 			else{
 				 usuario.setSenha(us.getSenha());
 				 dao.atualiza(usuario);
-				 alerta.info("Dados atualizados com sucesso");
+				 alerta.info("Dados atualizados com sucesso",false);
 			}
 		}				 
 	  }
@@ -91,7 +91,7 @@ public class UsuarioBean implements Serializable{
 	public String deletar(){
 		System.out.println("usuario deletado");
 		dao.deletar(usuario);
-		alerta.info("Usuario deletado com sucesso");
+		alerta.info("Usuario deletado com sucesso",true);
 		return "usuario.xhtml?faces-redirect=true";
 	}
 	

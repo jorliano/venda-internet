@@ -62,11 +62,11 @@ public class SistemaBean implements Serializable {
 
 		if (sistema.getId() == 0) {
 			dao.salvar(sistema);
-			alerta.info("Plano salvo com sucesso");
+			alerta.info("Plano salvo com sucesso",false);
 			this.sistema = new Sistema();
 		} else {
 			dao.atualiza(sistema);
-			alerta.info("Dados atualizados com sucesso");
+			alerta.info("Dados atualizados com sucesso",false);
 			this.sistema = new Sistema();
 		}
 		lista = dao.listar();
@@ -76,7 +76,7 @@ public class SistemaBean implements Serializable {
 	public String deletar() {
 		System.out.println("salvar chamado" + sistema.getPlano());
 		dao.deletar(sistema);
-		alerta.info("Plano deletado com sucesso");
+		alerta.info("Plano deletado com sucesso",true);
 		lista = dao.listar();
 		return null;
 	}
@@ -84,14 +84,14 @@ public class SistemaBean implements Serializable {
 	// Tabela email
 	public void salvarEmail() {
 		dao.atualizaEmail(dadosEmail);
-		alerta.info("Dados atualizados com sucesso");
+		alerta.info("Dados atualizados com sucesso",false);
 		listEmail = dao.listarEmail();
 		this.dadosEmail = new DadosdeEmail();
 	}
 
 	public void deletarEmail() {
 		dao.deletarEmail(dadosEmail);
-		alerta.info("Dados atualizados com sucesso");
+		alerta.info("Dados atualizados com sucesso",false);
 		this.dadosEmail = new DadosdeEmail();
 	}
 	

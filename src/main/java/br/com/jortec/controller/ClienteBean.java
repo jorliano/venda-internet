@@ -66,7 +66,7 @@ public void loade(){
 			  cliente.setDataCadastro(new Date());
 			  cliente.setEstatus("pendente");
 			  dao.salvar(cliente);   		  
-			  alerta.info("Cliente salvo com sucesso");
+			  alerta.info("Cliente salvo com sucesso",false);
 			  this.cliente = new Cliente();
 		  }else{
 			  alerta.error("Nome já exisste");
@@ -77,7 +77,7 @@ public void loade(){
 	  else{		 
 		  cliente.setEstatus("cancelado");
 		  dao.atualiza(cliente);		  
-		  alerta.info("Cliente atualizado com sucesso");
+		  alerta.info("Cliente atualizado com sucesso",false);
 		  
 	  }	
 	  
@@ -86,7 +86,7 @@ public void loade(){
   public String deletar(){
 	cliente.setEstatus("cancelado");
 	dao.atualiza(cliente);
-    alerta.info("Cliente deletado com sucesso");   
+    alerta.info("Cliente deletado com sucesso",true);   
     return "cliente?faces-redirect=true";
   }
   public void busca(){

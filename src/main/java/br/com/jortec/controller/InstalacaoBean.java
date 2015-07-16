@@ -50,7 +50,7 @@ public class InstalacaoBean implements Serializable {
 		cliente.setEstatus("cancelado");
 		cliente.setDataCadastro(new Date());
 		dao.atualiza(cliente);
-		alerta.info("Instalação cancelado com sucesso");
+		alerta.info("Instalação cancelado com sucesso",false);
 		lista = dao.listar();
 		return null;
 	}
@@ -60,7 +60,7 @@ public class InstalacaoBean implements Serializable {
 		cliente.setDataCadastro(new Date());
 		dao.atualiza(cliente);
 		lista = dao.listar();
-		alerta.info("Instalação concluida do sucesso");
+		alerta.info("Instalação concluida do sucesso",false);
 		return null;
 	}
     //pagina do vendedor
