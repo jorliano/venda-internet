@@ -110,31 +110,25 @@
         		       	 																											
 		</div>		
 			       
-        <h:dataTable id="tabelaCli" var="list" value="#{instalacaoBean.lista}"  rendered="#{not empty instalacaoBean.lista}"
+        <br/>
+        <h:dataTable id="tabelaCli" var="list" value="#{instalacaoBean.lista}" 
             styleClass="table table-responsive  table-hover" rows="7" >
            <h:column >
               
                
-                  <label>Nome : #{list.nome}</label>
-                  <br/>
-                  <label>Endereco : #{list.rua}  N° #{list.numero} #{list.complemento}</label>
-                  <br/>
-                  <label>Referencia : #{list.referencia}</label>
-                   <br/>
-                 <label>Data e hora :</label> 
+                  <p><label>Nome : #{list.nome}</label></p>
+                  <p><label>Endereco : #{list.rua}  N° #{list.numero} #{list.complemento}</label></p>
+                  <label>Data e hora :</label> 
                   <h:outputLabel value="#{list.dataCadastro}" >
                            <f:convertDateTime pattern="dd/MM/yyyy hh:mm"/>
                   </h:outputLabel>   
              </h:column>
              <h:column>                                           
                
-                  <label class="pull-right">Vendedor : #{list.vendedor.primeiroNome}</label>
-                  <label>CPF : #{list.cpf}</label>                   
-                  <br/>
-                  <label>Bairro : #{list.bairro}</label>
-                  <br/>
-                  <label>Plano : #{list.plano}</label>
-                  <br/>
+                   <label class="pull-right">Vendedor : #{list.vendedor.primeiroNome}</label>
+                   <p><label>CPF : #{list.cpf}</label></p>                                   
+                   <p> <label>Bairro : #{list.bairro}</label></p>                  
+                   <label>Plano : #{list.plano}</label>
                   <div class="pull-right">
                       <button jsf:id="bt_imprimir" type="button" class="btn btn-primary" onclick="$('.bs-example-modal-lg').modal('show')"
                     	  data-toggle="tooltip" data-placement="top" title="Dados">IP                        

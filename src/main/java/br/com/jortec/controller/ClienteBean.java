@@ -74,8 +74,7 @@ public void loade(){
 		  }
 		  
 	  }	
-	  else{		 
-		  cliente.setEstatus("cancelado");
+	  else{		 		 
 		  dao.atualiza(cliente);		  
 		  alerta.info("Cliente atualizado com sucesso",false);
 		  
