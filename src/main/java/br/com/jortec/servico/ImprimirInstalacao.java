@@ -79,7 +79,7 @@ public void gerarArquivo(String arquivo,List<Cliente> lista) throws IOException,
 	response.addHeader("Content-disposition", "inline; filename=instalacao.pdf");
 	
 	
-	response.getOutputStream().write(b);  
+	response.getOutputStream().write(b );  
 	response.getCharacterEncoding();  
 	
 	//Download do arquivo direto

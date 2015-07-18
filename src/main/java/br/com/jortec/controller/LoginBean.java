@@ -44,6 +44,7 @@ public class LoginBean {
 			if(usuario != null){			
 				usuarioLogado.logarUsuario(usuario);
 				usuarioLogado.setNomeLogado(usuario.getNome());
+				alerta.sucess("Seja bem vindo "+usuarioLogado.getNomeLogado(), true);
 				return "sistema?faces-redirect=true";
 			}
 			
@@ -53,11 +54,12 @@ public class LoginBean {
 				img.caregarImagem(vendedor);
 				usuarioLogado.logarVendedor(vendedor);
 				usuarioLogado.setNomeLogado(vendedor.getPrimeiroNome());
+				alerta.sucess("Seja bem vindo "+usuarioLogado.getNomeLogado(), true);
 				return "sistema?faces-redirect=true";
 			}
 			
 		}			
-		alerta.error("Usuario ou Senha incorreto");   
+		alerta.error("Usuario ou Senha incorreto"); 		
 		return null;
 	}
 	
@@ -67,18 +69,13 @@ public class LoginBean {
 			img.caregarImagem(vendedor);
 			usuarioLogado.logarVendedor(vendedor);
 			usuarioLogado.setNomeLogado(vendedor.getPrimeiroNome());
+			alerta.sucess("Você logou com o vendedor "+usuarioLogado.getNomeLogado(), true);
 			return "/paginas/cliente/cliente?faces-redirect=true";
 		}
 		alerta.error("Usuario ou Senha incorreto");   
 		return null;
 	}
-	public String proximaPagina(){	
-		//alerta.info("Seja Bem vindo "+usuarioLogado.getNomeLogado());
-		Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
-		flash.setKeepMessages(true);		
-		return null;
-		
-	}
+	
 	
 
 	public String getLogin() {

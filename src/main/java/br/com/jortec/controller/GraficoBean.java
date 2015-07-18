@@ -30,6 +30,7 @@ public class GraficoBean implements Serializable {
 	String terceiroTrimestre[] = {"julho","agosto","setembro"};
 	String quartoTrimestre  [] = {"outubro" ,"novembro" ,"dezembro "};
 	private String nome ="primeiroTrimestre";
+	private int ano = 2015;
 	private List<Cliente> lista = new ArrayList<Cliente>();
 	GregorianCalendar calendar = new GregorianCalendar();  
 	int[] concluido =  new int [3];
@@ -52,15 +53,15 @@ public class GraficoBean implements Serializable {
     public void load(){
     	createAnimatedModel();
     	pieGrafico();
-    	lista = dao.listarPrimeiroTrimestre();
+    	lista = dao.listarPrimeiroTrimestre(ano);
     	
     }
     public void barGrafico(){
     	createAnimatedModel();
-    	lista = dao.listarPrimeiroTrimestre();
+    	lista = dao.listarPrimeiroTrimestre(ano);
     }
     public void pieGrafico(){    	
-    	listaCliMes = dao.listaMes(mes);
+    	listaCliMes = dao.listaMes(mes,ano);
     	listaVen = dao.listaVendedor();
     	createPieModel1();
     }
@@ -75,7 +76,7 @@ public class GraficoBean implements Serializable {
     private void createAnimatedModel() {                 	    	
     	
         animatedModel2 = initBarModel();
-        animatedModel2.setTitle("Ano 2015");
+        animatedModel2.setTitle("Ano "+ano);
         animatedModel2.setAnimate(true);
         animatedModel2.setLegendPosition("ne");
         Axis yAxis = animatedModel2.getAxis(AxisType.Y);
@@ -124,7 +125,7 @@ public class GraficoBean implements Serializable {
         	pieModel1.set(listaVen.get(i).getPrimeiroNome()+" "+quant[i], quant[i]);
 		}        
                 
-        pieModel1.setTitle("Ano 2015");
+        pieModel1.setTitle("Ano "+ano);
         pieModel1.setLegendPosition("e");        
         pieModel1.setFill(false);
         pieModel1.setShowDataLabels(true);
@@ -134,22 +135,22 @@ public class GraficoBean implements Serializable {
     public String[] trimestre(String nome){
     	
     	if(nome.equals("primeiroTrimestre")){
-    		lista = dao.listarPrimeiroTrimestre();
+    		lista = dao.listarPrimeiroTrimestre(ano);
     		dadosPrimeiroTrimestre();
     		return primeiroTrimestre;
     	}
     	if(nome.equals("segundoTrimestre")){
-    		lista = dao.listarSegundoTrimestre();
+    		lista = dao.listarSegundoTrimestre(ano);
     		dadosSegundoTrimestre();
     		return segundoTrimestre;
     	}
     	if(nome.equals("terceiroTrimestre")){
-    		lista = dao.listarTerceiroTrimestre();
+    		lista = dao.listarTerceiroTrimestre(ano);
     		dadosTerceiroTrimestre();
     		return terceiroTrimestre;
     	}
     	if(nome.equals("quartoTrimestre")){
-    	    lista = dao.listarQuartoTrimestre();
+    	    lista = dao.listarQuartoTrimestre(ano);
     	    dadosQuartoTrimestre();
     		return quartoTrimestre;
     	}
@@ -163,6 +164,7 @@ public class GraficoBean implements Serializable {
            calendar.setTime(lista.get(i).getDataCadastro());
        	
             int mes = calendar.get(GregorianCalendar.MONTH);  
+          
 			if(lista.get(i).getEstatus().equals("concluido") && mes == 0 ){
 				concluido[0] = concluido[0] +1;
 			}
@@ -334,7 +336,13 @@ public class GraficoBean implements Serializable {
 	public void setMes(int mes) {
 		this.mes = mes;
 	}
-
+	public int getAno() {
+		return ano;
+	}
+	public void setAno(int ano) {
+		this.ano = ano;
+	}
+    
 	
     
 }

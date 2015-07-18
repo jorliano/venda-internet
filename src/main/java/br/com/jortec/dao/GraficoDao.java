@@ -19,30 +19,30 @@ public class GraficoDao {
 	@PersistenceContext
 	private EntityManager manager;
 
-	public List<Cliente> listarPrimeiroTrimestre() {
+	public List<Cliente> listarPrimeiroTrimestre(int ano) {
 
-		String consulta = "select c from Cliente c where dataCadastro BETWEEN '2015/01/01' AND '2015/03/31' ";
+		String consulta = "select c from Cliente c where dataCadastro BETWEEN '"+ano+"/01/01' AND '"+ano+"/03/31' ";
 		TypedQuery<Cliente> query = manager
 				.createQuery(consulta, Cliente.class);
 		return query.getResultList();
 	}	
-	public List<Cliente> listarSegundoTrimestre() {
+	public List<Cliente> listarSegundoTrimestre(int ano) {
 
-		String consulta = "select c from Cliente c where dataCadastro BETWEEN '2015/04/01' AND '2015/06/31' ";
+		String consulta = "select c from Cliente c where dataCadastro BETWEEN '"+ano+"/04/01' AND '"+ano+"/06/31' ";
 		TypedQuery<Cliente> query = manager
 				.createQuery(consulta, Cliente.class);
 		return query.getResultList();
 	}
-	public List<Cliente> listarTerceiroTrimestre() {
+	public List<Cliente> listarTerceiroTrimestre(int ano) {
 
-		String consulta = "select c from Cliente c where dataCadastro BETWEEN '2015/07/01' AND '2015/09/31' ";
+		String consulta = "select c from Cliente c where dataCadastro BETWEEN '"+ano+"/07/01' AND '"+ano+"/09/31' ";
 		TypedQuery<Cliente> query = manager
 				.createQuery(consulta, Cliente.class);
 		return query.getResultList();
 	}
-	public List<Cliente> listarQuartoTrimestre() {
+	public List<Cliente> listarQuartoTrimestre(int ano) {
 
-		String consulta = "select c from Cliente c where dataCadastro BETWEEN '2015/10/01' AND '2015/12/31' ";
+		String consulta = "select c from Cliente c where dataCadastro BETWEEN '"+ano+"/10/01' AND '"+ano+"/12/31' ";
 		TypedQuery<Cliente> query = manager
 				.createQuery(consulta, Cliente.class);
 		return query.getResultList();
@@ -50,8 +50,8 @@ public class GraficoDao {
   
 	//Grafico pieVendedor
 	
-	public List<Cliente> listaMes(int mes){
-		String consulta = "select c from Cliente c where estatus='concluido' and dataCadastro BETWEEN '2015/0"+mes+"/01' AND '2015/0"+mes+"/31' ";
+	public List<Cliente> listaMes(int mes,int ano){
+		String consulta = "select c from Cliente c where estatus='concluido' and dataCadastro BETWEEN '"+ano+"/0"+mes+"/01' AND '"+ano+"/0"+mes+"/31' ";
 		TypedQuery<Cliente> query = manager
 				.createQuery(consulta, Cliente.class);
 		return query.getResultList();

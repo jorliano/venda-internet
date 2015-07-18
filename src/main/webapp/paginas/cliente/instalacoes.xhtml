@@ -68,9 +68,7 @@
 
 								<div class="form-group">
 									<div class="col-md-7 col-md-push-5">
-										<button jsf:id="bt" class="btn btn-primary topo">
-											OK											
-										</button>
+										<h:button styleClass="btn btn-primary topo" value="Salvar"/>
 										&nbsp;
 										<button class="btn btn-danger" type="button"
 											data-dismiss="modal">Voltar</button>
@@ -111,9 +109,9 @@
         		</div>    
         		       	 																											
 		</div>		
-		<br/>	       
+			       
         <h:dataTable id="tabelaCli" var="list" value="#{instalacaoBean.lista}"  rendered="#{not empty instalacaoBean.lista}"
-            styleClass="table table-responsive  table-hover" rows="7" style="margin-top: -8%;">
+            styleClass="table table-responsive  table-hover" rows="7" >
            <h:column >
               
                

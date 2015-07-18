@@ -21,8 +21,7 @@
 		     	  <f:ajax execute="@form" render="@form"></f:ajax>
 		     	</button>     	
 		     	<div class="col-xs-4">
-			     <h:selectOneMenu  styleClass="form-control" value="#{graficoBean.nome}">		
-			            <f:selectItem itemLabel="Trimestre"/>	
+			     <h:selectOneMenu  styleClass="form-control" value="#{graficoBean.nome}">				           
 						<f:selectItem itemLabel="Primeiro tremestre" itemValue="primeiroTrimestre"/>
 						<f:selectItem itemLabel="Segundo  tremestre" itemValue="segundoTrimestre"/>
 						<f:selectItem itemLabel="Terceiro tremestre" itemValue="terceiroTrimestre"/>
@@ -30,12 +29,13 @@
 					</h:selectOneMenu>
 		        </div>
 		        <div class="col-xs-2">
-			     <h:selectOneMenu  styleClass="form-control" value="#{graficoBean.nome}">	
-			            <f:selectItem itemLabel="Ano" />							
+			     <h:selectOneMenu  styleClass="form-control" value="#{graficoBean.ano}">				            						
 						<f:selectItem itemLabel="2015" itemValue="2015"/>
 						<f:selectItem itemLabel="2016" itemValue="2016"/>
 						<f:selectItem itemLabel="2017" itemValue="2017"/>
-						<f:selectItem itemLabel="2018" itemValue="2018"/>											
+						<f:selectItem itemLabel="2018" itemValue="2018"/>			
+						<f:selectItem itemLabel="2019" itemValue="2019"/>	
+						<f:selectItem itemLabel="2020" itemValue="2020"/>									
 					</h:selectOneMenu>
 		        </div>
 		        
